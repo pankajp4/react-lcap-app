@@ -17,15 +17,15 @@ import {
 import { useCallback, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import type { RootState } from "../../../features/store";
-import store from "../../../features/store";
-import { FormService } from "../../../services/FormService";
-import { HistoryService } from "../../../services/HistoryService";
-import { addToHistory } from "../../../features/builder/historySlice";
-import { useApiCall } from "../../../utils/hooks/useApiCall";
-import { ErrorBoundary } from "../../atoms/display/ErrorBoundary";
-import api from "../../../config/api";
-import styles from "./TopNavbar.module.css";
+import type { RootState } from "../../../../features/store";
+import store from "../../../../features/store";
+import { FormService } from "../../../../services/FormService";
+import { HistoryService } from "../../../../services/HistoryService";
+import { addToHistory } from "../../../../features/builder/historySlice";
+import { useApiCall } from "../../../../utils/hooks/useApiCall";
+import { ErrorBoundary } from "../../../atoms/display/ErrorBoundary";
+import api from "../../../../config/api";
+import styles from "./styles.module.css";
 
 interface Props {
   onLogout: () => void;
@@ -191,7 +191,7 @@ export const TopNavbar = ({ onLogout, onSettings }: Props) => {
 
       <div className={styles.rightSection}>
         <button
-          className={styles.userSection}
+          className={styles.userButton}
           onClick={(e) => setUserMenuAnchor(e.currentTarget)}
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") {
@@ -209,7 +209,7 @@ export const TopNavbar = ({ onLogout, onSettings }: Props) => {
           anchorEl={userMenuAnchor}
           open={Boolean(userMenuAnchor)}
           onClose={() => setUserMenuAnchor(null)}
-          className={styles.menu}
+          className={styles.userMenu}
         >
           <MenuItem onClick={handleSettings} className={styles.menuItem}>
             <SettingsIcon className={styles.menuIcon} />

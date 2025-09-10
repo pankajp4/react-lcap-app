@@ -1,0 +1,65 @@
+.componentWrapper {
+  position: relative;
+  margin: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.componentWrapper:hover {
+  outline: 2px solid #1976d2;
+}
+
+.selected {
+  outline: 2px solid #1976d2;
+  box-shadow: 0 0 0 4px rgba(25, 118, 210, 0.1);
+}
+
+.resizeHandle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #1976d2;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+}
+
+.resizeHandleRight {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #1976d2;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: ew-resize;
+}
+
+.resizeHandleBottom {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #1976d2;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: ns-resize;
+}
+
+.resizeHandleCorner {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #1976d2;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  right: -4px;
+  bottom: -4px;
+  cursor: nwse-resize;
+}

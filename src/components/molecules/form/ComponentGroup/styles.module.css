@@ -1,0 +1,15 @@
+.accordion {
+  &::before {
+    display: none;
+  }
+  box-shadow: none;
+}
+
+.accordionSummary {
+  background-color: var(--background-default);
+  border-radius: 4px;
+}
+
+.accordionDetails {
+  padding: 8px;
+}

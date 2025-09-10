@@ -11,12 +11,79 @@ export const availableComponents: ComponentConfig[] = [
     label: "Text Input",
     icon: "TextFields",
     props: {
+      // Basic props
+      label: String,
+      placeholder: String,
+      helperText: String,
+      type: [
+        "text",
+        "password",
+        "email",
+        "tel",
+        "currency",
+        "number",
+        "decimal",
+        "url",
+        "search",
+      ],
       variant: ["outlined", "filled", "standard"],
-      type: ["text", "number", "email", "tel", "password", "currency"],
-      size: ["small", "medium", "large"],
+      size: ["small", "medium"],
       required: Boolean,
       disabled: Boolean,
-      placeholder: String,
+      readOnly: Boolean,
+      fullWidth: Boolean,
+      autoFocus: Boolean,
+
+      // Validation props
+      minLength: Number,
+      maxLength: Number,
+      pattern: String,
+      min: Number,
+      max: Number,
+
+      // Currency props
+      currency: ["USD", "EUR", "GBP", "INR", "JPY"],
+      locale: String,
+      decimals: Number,
+
+      // Style props
+      className: String,
+      inputClassName: String,
+
+      // API props
+      apiEndpoint: String,
+      apiMethod: ["GET", "POST", "PUT", "PATCH"],
+      apiHeaders: Object,
+
+      // Additional props
+      tooltip: String,
+      infoTooltip: String,
+    },
+    style: {
+      width: Number,
+      height: Number,
+      margin: String,
+      padding: String,
+      backgroundColor: String,
+      borderColor: String,
+      borderRadius: String,
+      fontSize: String,
+      fontFamily: String,
+      color: String,
+    },
+    validation: {
+      required: Boolean,
+      minLength: Number,
+      maxLength: Number,
+      pattern: String,
+      customValidation: String,
+    },
+    api: {
+      endpoint: String,
+      method: ["GET", "POST", "PUT", "PATCH"],
+      headers: Object,
+      onSuccess: String,
+      onError: String,
     },
   },
   {

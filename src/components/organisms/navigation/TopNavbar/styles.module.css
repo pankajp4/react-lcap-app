@@ -1,0 +1,47 @@
+.navbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.divider {
+  margin: 0 8px;
+  height: 24px;
+}
+
+.userButton {
+  padding: 4px;
+  font-size: 0.875rem;
+}
+
+.userMenu {
+  min-width: 200px;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+}
+
+.menuIcon {
+  width: 20px;
+  height: 20px;
+  color: rgba(0, 0, 0, 0.54);
+}

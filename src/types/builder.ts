@@ -20,6 +20,9 @@ export interface ComponentConfig {
   label: string;
   icon: string;
   props: Record<string, any>;
+  style?: Record<string, any>;
+  validation?: Record<string, any>;
+  api?: Record<string, any>;
 }
 
 export interface BuilderComponent extends ComponentConfig {

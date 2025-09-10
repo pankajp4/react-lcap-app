@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import React, { useCallback } from "react";
-import { TopNavbar } from "./components/organisms/navigation/TopNavbar";
+import { TopNavbar } from "./components/organisms/navigation/TopNavbar/index";
 import { BuilderLayout } from "./components/organisms/builder/BuilderLayout";
 import { NotificationSystem } from "./components/atoms/display/NotificationSystem";
 import { ErrorBoundary } from "./components/atoms/display/ErrorBoundary";
