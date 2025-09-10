@@ -1,13 +1,29 @@
-import { Container, Typography } from "@mui/material";
-import React from "react";
+import { Box } from "@mui/material";
+import React, { useCallback } from "react";
+import { TopNavbar } from "./components/organisms/navigation/TopNavbar";
+import { BuilderLayout } from "./components/organisms/builder/BuilderLayout";
+import { NotificationSystem } from "./components/atoms/display/NotificationSystem";
+import { ErrorBoundary } from "./components/atoms/display/ErrorBoundary";
 
 const App: React.FC = () => {
+  const handleLogout = useCallback(() => {
+    // Implement logout logic
+    console.log("Logout clicked");
+  }, []);
+
+  const handleSettings = useCallback(() => {
+    // Implement settings logic
+    console.log("Settings clicked");
+  }, []);
+
   return (
-    <Container>
-      <Typography variant="h4" align="center" mt={4}>
-        Low-Code Application Platform (LCAP)
-      </Typography>
-    </Container>
+    <ErrorBoundary>
+      <Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
+        <TopNavbar onLogout={handleLogout} onSettings={handleSettings} />
+        <BuilderLayout />
+        <NotificationSystem />
+      </Box>
+    </ErrorBoundary>
   );
 };
 
