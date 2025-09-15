@@ -14,6 +14,14 @@ export type ComponentType =
 
 export type ComponentCategory = "input" | "display";
 
+export interface PropertyConfig {
+  name: string;
+  type: string;
+  label: string;
+  options?: Array<{ label: string; value: any }>;
+  defaultValue?: any;
+}
+
 export interface ComponentConfig {
   type: ComponentType;
   category: ComponentCategory;
@@ -23,6 +31,7 @@ export interface ComponentConfig {
   style?: Record<string, any>;
   validation?: Record<string, any>;
   api?: Record<string, any>;
+  properties?: PropertyConfig[];
 }
 
 export interface BuilderComponent extends ComponentConfig {

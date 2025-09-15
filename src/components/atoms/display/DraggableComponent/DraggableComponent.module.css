@@ -1,0 +1,22 @@
+.draggable {
+  cursor: grab;
+  margin: 8px 0;
+  user-select: none;
+  touch-action: none;
+}
+
+.draggable:active {
+  cursor: grabbing;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+}
+
+.icon {
+  font-size: 20px;
+  color: #666;
+}

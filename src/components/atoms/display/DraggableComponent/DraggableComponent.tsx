@@ -2,7 +2,8 @@ import { useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 import { Paper, Typography } from "@mui/material";
 import * as MuiIcons from "@mui/icons-material";
-import type { ComponentConfig } from "../../../types/builder";
+import type { ComponentConfig } from "../../../../types/builder";
+import styles from "./DraggableComponent.module.css";
 
 interface DraggableComponentProps {
   component: ComponentConfig;
@@ -30,23 +31,15 @@ export const DraggableComponent = ({ component }: DraggableComponentProps) => {
     <Paper
       ref={setNodeRef}
       elevation={1}
-      sx={{
-        p: 1,
-        mb: 1,
-        cursor: "grab",
-        "&:hover": {
-          backgroundColor: "action.hover",
-        },
-        display: "flex",
-        alignItems: "center",
-        gap: 1,
-      }}
+      className={styles.draggable}
       style={style}
       {...attributes}
       {...listeners}
     >
-      <Icon color="primary" fontSize="small" />
-      <Typography variant="body2">{component.label}</Typography>
+      <div className={styles.content}>
+        {Icon && <Icon className={styles.icon} />}
+        <Typography variant="body2">{component.label}</Typography>
+      </div>
     </Paper>
   );
 };

@@ -1,6 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type { BuilderComponent, FormConfig } from "../../types/builder";
+import type {
+  BuilderComponent,
+  FormConfig,
+  ComponentConfig,
+} from "../../types/builder";
 
 interface BuilderState {
   forms: FormConfig[];
@@ -8,6 +12,8 @@ interface BuilderState {
   selectedComponentId: string | null;
   isDragging: boolean;
   clipboard: BuilderComponent | null;
+  formSaving: boolean;
+  availableComponents: ComponentConfig[];
 }
 
 const initialState: BuilderState = {
@@ -16,6 +22,8 @@ const initialState: BuilderState = {
   selectedComponentId: null,
   isDragging: false,
   clipboard: null,
+  formSaving: false,
+  availableComponents: [],
 };
 
 export const builderSlice = createSlice({
@@ -51,24 +59,6 @@ export const builderSlice = createSlice({
         form.components.push(action.payload.component);
       }
     },
-    updateComponent: (
-      state,
-      action: PayloadAction<{
-        formId: string;
-        componentId: string;
-        updates: Partial<BuilderComponent>;
-      }>
-    ) => {
-      const form = state.forms.find((f) => f.id === action.payload.formId);
-      if (form) {
-        const component = form.components.find(
-          (c) => c.id === action.payload.componentId
-        );
-        if (component) {
-          Object.assign(component, action.payload.updates);
-        }
-      }
-    },
     deleteComponent: (
       state,
       action: PayloadAction<{ formId: string; componentId: string }>
@@ -91,6 +81,33 @@ export const builderSlice = createSlice({
     },
     clearClipboard: (state) => {
       state.clipboard = null;
+    },
+    saveForm: (state, action: PayloadAction<{ formId: string }>) => {
+      state.formSaving = true;
+    },
+    saveFormSuccess: (state) => {
+      state.formSaving = false;
+    },
+    saveFormFailure: (state) => {
+      state.formSaving = false;
+    },
+    updateComponent: (
+      state,
+      action: PayloadAction<{
+        formId: string;
+        componentId: string;
+        updates: Partial<BuilderComponent>;
+      }>
+    ) => {
+      const form = state.forms.find((f) => f.id === action.payload.formId);
+      if (form) {
+        const component = form.components.find(
+          (c) => c.id === action.payload.componentId
+        );
+        if (component) {
+          Object.assign(component, action.payload.updates);
+        }
+      }
     },
   },
 });

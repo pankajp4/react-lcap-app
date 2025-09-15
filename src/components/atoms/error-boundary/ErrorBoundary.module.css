@@ -1,0 +1,29 @@
+.errorContainer {
+  padding: 16px;
+  margin: 16px;
+  border: 1px solid #ff5252;
+  border-radius: 4px;
+  background-color: #ffebee;
+}
+
+.errorContainer h2 {
+  color: #d32f2f;
+  margin-top: 0;
+}
+
+.errorContainer details {
+  margin-top: 8px;
+}
+
+.errorContainer summary {
+  cursor: pointer;
+  color: #d32f2f;
+}
+
+.errorContainer pre {
+  margin-top: 8px;
+  padding: 8px;
+  background-color: #fff;
+  border-radius: 4px;
+  overflow-x: auto;
+}

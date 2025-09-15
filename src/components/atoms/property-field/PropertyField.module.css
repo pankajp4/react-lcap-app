@@ -1,0 +1,11 @@
+.field {
+  margin: 8px 0;
+}
+
+.field:first-child {
+  margin-top: 0;
+}
+
+.field:last-child {
+  margin-bottom: 0;
+}
