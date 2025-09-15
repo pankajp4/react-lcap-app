@@ -2,4 +2,56 @@
   display: flex;
   justify-content: space-between;
   background-color: #fff;
+  padding: 0 16px;
+}
+
+.homeLink {
+  cursor: pointer;
+  color: inherit;
+}
+
+.homeLink:hover {
+  opacity: 0.8;
+}
+
+.centerSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex: 1;
+  margin: 0 24px;
+}
+
+.searchContainer {
+  position: relative;
+  width: 200px;
+}
+
+.searchInput {
+  width: 100%;
+}
+
+.searchInput input {
+  padding-left: 36px !important;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(0, 0, 0, 0.54);
+  pointer-events: none;
+}
+
+.userAvatar {
+  width: 32px;
+  height: 32px;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
