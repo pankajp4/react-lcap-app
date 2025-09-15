@@ -14,12 +14,25 @@ export type ComponentType =
 
 export type ComponentCategory = "input" | "display";
 
+export type PropertyType =
+  | "string"
+  | "number"
+  | "boolean"
+  | "object"
+  | "array"
+  | "date";
+
+export interface PropertyOption {
+  label: string;
+  value: string | number | boolean;
+}
+
 export interface PropertyConfig {
   name: string;
-  type: string;
+  type: PropertyType;
   label: string;
-  options?: Array<{ label: string; value: any }>;
-  defaultValue?: any;
+  options?: PropertyOption[];
+  defaultValue?: string | number | boolean | object | unknown[];
 }
 
 export interface ComponentConfig {
@@ -27,10 +40,31 @@ export interface ComponentConfig {
   category: ComponentCategory;
   label: string;
   icon: string;
-  props: Record<string, any>;
-  style?: Record<string, any>;
-  validation?: Record<string, any>;
-  api?: Record<string, any>;
+  props: Record<string, unknown>;
+  style?: {
+    width?: string | number;
+    height?: string | number;
+    margin?: string | number;
+    padding?: string | number;
+    backgroundColor?: string;
+    color?: string;
+    [key: string]: string | number | undefined;
+  };
+  validation?: {
+    required?: boolean;
+    minLength?: number;
+    maxLength?: number;
+    pattern?: string;
+    min?: number;
+    max?: number;
+    [key: string]: string | number | boolean | undefined;
+  };
+  api?: {
+    method?: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
+    endpoint?: string;
+    headers?: Record<string, string>;
+    params?: Record<string, string | number | boolean>;
+  };
   properties?: PropertyConfig[];
 }
 
@@ -42,7 +76,14 @@ export interface BuilderComponent extends ComponentConfig {
   height: number;
   style?: {
     backgroundColor?: string;
-    [key: string]: any;
+    width?: string | number;
+    height?: string | number;
+    margin?: string | number;
+    padding?: string | number;
+    color?: string;
+    fontSize?: string | number;
+    fontWeight?: string | number;
+    [key: string]: string | number | undefined;
   };
   api?: {
     method?: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";

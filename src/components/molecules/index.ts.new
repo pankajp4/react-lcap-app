@@ -1,2 +1,0 @@
-// Form Components
-export { ComponentGroup } from './component-group/ComponentGroup';

@@ -1,11 +1,27 @@
-import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
+import LogoutIcon from "@mui/icons-material/Logout";
+import SettingsIcon from "@mui/icons-material/Settings";
+import {
+  AppBar,
+  Box,
+  Button,
+  IconButton,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { saveForm } from "../../../features/builder/builderSlice";
+
 import type { RootState } from "../../../features/store";
 import styles from "./TopNavbar.module.css";
 
-export const TopNavbar = () => {
+interface TopNavbarProps {
+  onLogout?: () => void;
+  onSettings?: () => void;
+}
+
+export const TopNavbar = ({ onLogout, onSettings }: TopNavbarProps) => {
   const dispatch = useDispatch();
   const { activeFormId, formSaving } = useSelector((state: RootState) => ({
     activeFormId: state.builder.activeFormId,
@@ -23,7 +39,7 @@ export const TopNavbar = () => {
         <Typography variant="h6" component="h1">
           Form Builder
         </Typography>
-        <Box>
+        <Box sx={{ display: "flex", gap: 1 }}>
           <Button
             variant="contained"
             color="primary"
@@ -32,6 +48,26 @@ export const TopNavbar = () => {
           >
             {formSaving ? "Saving..." : "Save"}
           </Button>
+          {onSettings && (
+            <IconButton
+              color="default"
+              onClick={onSettings}
+              size="medium"
+              aria-label="settings"
+            >
+              <SettingsIcon />
+            </IconButton>
+          )}
+          {onLogout && (
+            <IconButton
+              color="default"
+              onClick={onLogout}
+              size="medium"
+              aria-label="logout"
+            >
+              <LogoutIcon />
+            </IconButton>
+          )}
         </Box>
       </Toolbar>
     </AppBar>

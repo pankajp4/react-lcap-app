@@ -17,18 +17,18 @@ export const BuilderCanvas: React.FC = () => {
     id: "builder-canvas",
   });
 
-  const activeForm = useSelector((state: RootState) => {
-    const activeFormId = state.builder.activeFormId;
-    return activeFormId
-      ? state.builder.forms.find((f) => f.id === activeFormId)
-      : null;
-  });
+  const { activeFormId, activeForm } = useSelector((state: RootState) => ({
+    activeFormId: state.builder.activeFormId,
+    activeForm: state.builder.activeFormId
+      ? state.builder.forms.find((f) => f.id === state.builder.activeFormId)
+      : null,
+  }));
 
   const handleSelect = useCallback(
     (id: string) => {
       dispatch(setSelectedComponent(id));
     },
-    [dispatch]
+    [dispatch, activeFormId]
   );
 
   const handleDeselect = useCallback(() => {
@@ -37,10 +37,12 @@ export const BuilderCanvas: React.FC = () => {
 
   const handleComponentResize = useCallback(
     (id: string) => (width: number, height: number) => {
+      if (!activeFormId) return;
       dispatch(
         updateComponent({
-          id,
-          changes: {
+          formId: activeFormId,
+          componentId: id,
+          updates: {
             style: {
               width: `${width}px`,
               height: `${height}px`,

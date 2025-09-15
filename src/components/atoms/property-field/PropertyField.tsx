@@ -13,8 +13,8 @@ import styles from "./PropertyField.module.css";
 
 interface PropertyFieldProps {
   property: ComponentProperty;
-  value: any;
-  onChange: (value: any) => void;
+  value: string | number | boolean | null;
+  onChange: (value: string | number | boolean) => void;
 }
 
 export const PropertyField: FC<PropertyFieldProps> = (props) => {

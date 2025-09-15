@@ -6,7 +6,7 @@ import styles from "./NotificationSystem.module.css";
 
 export const NotificationSystem = () => {
   const dispatch = useDispatch();
-  const { message, type, isOpen } = useSelector(
+  const { message, severity, open } = useSelector(
     (state: RootState) => state.notification
   );
 
@@ -16,13 +16,13 @@ export const NotificationSystem = () => {
 
   return (
     <Snackbar
-      open={isOpen}
+      open={open}
       autoHideDuration={6000}
       onClose={handleClose}
       anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
       className={styles.snackbar}
     >
-      <Alert onClose={handleClose} severity={type} variant="filled">
+      <Alert onClose={handleClose} severity={severity} variant="filled">
         {message}
       </Alert>
     </Snackbar>

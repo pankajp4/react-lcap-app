@@ -31,7 +31,7 @@ export const PropertiesSidebar = () => {
   );
 
   const handlePropertyChange = useCallback(
-    (property: string) => (value: any) => {
+    (property: string) => (value: string | number | boolean) => {
       if (!selectedComponent) return;
 
       if (!activeFormId) return;

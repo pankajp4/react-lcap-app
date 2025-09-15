@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Box } from "@mui/material";
 import type { BuilderComponent } from "../../../types/builder";
 import type { RootState } from "../../../features/store";
 import styles from "./DroppableComponent.module.css";
@@ -20,9 +19,8 @@ export const DroppableComponent = ({
   isSelected,
   onResize,
 }: DroppableComponentProps) => {
-  const [isDraggingOver, setIsDraggingOver] = useState(false);
+  const isDraggingOver = false; // TODO: Implement drag over state
   const [isResizing, setIsResizing] = useState(false);
-  const [size, setSize] = useState({ width: 0, height: 0 });
 
   const selectedId = useSelector(
     (state: RootState) => state.builder.selectedComponentId
@@ -45,35 +43,47 @@ export const DroppableComponent = ({
     }
   };
 
-  const handleResizeStart = () => {
+  const handleResizeStart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     setIsResizing(true);
-  };
 
-  const handleResize = (width: number, height: number) => {
-    setSize({ width, height });
-    onResize?.(width, height);
-  };
+    const handleMouseMove = (moveEvent: MouseEvent) => {
+      if (!isResizing) return;
 
-  const handleResizeEnd = () => {
-    setIsResizing(false);
+      const newWidth = Math.max(100, moveEvent.clientX - e.clientX);
+      const newHeight = Math.max(50, moveEvent.clientY - e.clientY);
+
+      if (onResize) {
+        onResize(newWidth, newHeight);
+      }
+    };
+
+    const handleMouseUp = () => {
+      setIsResizing(false);
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
   };
 
   return (
-    <Box
+    <button
+      type="button"
       className={`${styles.droppable} ${
         isDraggingOver ? styles.draggingOver : ""
       } ${isSelected ? styles.selected : ""}`}
       onClick={handleMouseDown}
       onKeyDown={handleKeyDown}
-      tabIndex={0}
-      role="button"
       aria-pressed={isSelected}
       style={{
-        width: size.width || component.style?.width || "100%",
-        height: size.height || component.style?.height || "auto",
+        width: component.style?.width || "100%",
+        height: component.style?.height || "auto",
       }}
     >
-      {component.children?.map((child) => (
+      {component.children?.map((child: BuilderComponent) => (
         <DroppableComponent
           key={child.id}
           component={child}
@@ -86,24 +96,32 @@ export const DroppableComponent = ({
 
       {isSelected && !isResizing && (
         <div className={styles.resizeHandles}>
-          <div
+          <button
+            type="button"
             className={`${styles.handle} ${styles.topLeft}`}
             onMouseDown={handleResizeStart}
+            aria-label="Resize from top-left corner"
           />
-          <div
+          <button
+            type="button"
             className={`${styles.handle} ${styles.topRight}`}
             onMouseDown={handleResizeStart}
+            aria-label="Resize from top-right corner"
           />
-          <div
+          <button
+            type="button"
             className={`${styles.handle} ${styles.bottomLeft}`}
             onMouseDown={handleResizeStart}
+            aria-label="Resize from bottom-left corner"
           />
-          <div
+          <button
+            type="button"
             className={`${styles.handle} ${styles.bottomRight}`}
             onMouseDown={handleResizeStart}
+            aria-label="Resize from bottom-right corner"
           />
         </div>
       )}
-    </Box>
+    </button>
   );
 };

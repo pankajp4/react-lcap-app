@@ -125,6 +125,9 @@ export const {
   setIsDragging,
   copyComponent,
   clearClipboard,
+  saveForm,
+  saveFormSuccess,
+  saveFormFailure,
 } = builderSlice.actions;
 
 export default builderSlice.reducer;
