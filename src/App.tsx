@@ -1,39 +1,38 @@
-import { Box } from "@mui/material";
-import React, { useCallback } from "react";
-
+import { Box, ThemeProvider, createTheme } from "@mui/material";
+import React from "react";
 import { ErrorBoundary, NotificationSystem } from "./components/atoms";
-import { BuilderLayout, TopNavbar } from "./components/organisms/";
+import BuilderLayout from "./components/organisms/BuilderLayout/BuilderLayout";
+
+// Create a dark theme for the builder
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+    primary: {
+      main: "#90caf9",
+    },
+    background: {
+      default: "#121212",
+      paper: "#1e1e1e",
+    },
+  },
+});
 
 const App: React.FC = () => {
-  const handleLogout = useCallback(() => {
-    // Implement logout logic
-    console.log("Logout clicked");
-  }, []);
-
-  const handleSettings = useCallback(() => {
-    // Implement settings logic
-    console.log("Settings clicked");
-  }, []);
-
-  const handlePreview = useCallback(() => {
-    // Implement preview logic
-    console.log("Preview clicked");
-  }, []);
-
   return (
-    <ErrorBoundary>
-      <Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
-        <TopNavbar
-          onLogout={handleLogout}
-          onSettings={handleSettings}
-          onPreview={handlePreview}
-          userName="John Doe" // Replace with actual user name from auth
-          userAvatar="https://via.placeholder.com/40" // Replace with actual user avatar
-        />
-        <BuilderLayout />
-        <NotificationSystem />
+    <ThemeProvider theme={darkTheme}>
+      <Box
+        sx={{
+          minHeight: "100vh",
+          bgcolor: "background.default",
+          color: "text.primary",
+        }}
+      >
+        <ErrorBoundary>
+          <NotificationSystem />
+          <BuilderLayout />
+        </ErrorBoundary>
       </Box>
-    </ErrorBoundary>
+    </ThemeProvider>
   );
 };
 
