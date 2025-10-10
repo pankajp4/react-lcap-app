@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 
 import App from "./App";
 import store from "./features/store";
+import "./styles/globals.css";
 
 const container = document.getElementById("root");
 if (!container) throw new Error("Root container not found");

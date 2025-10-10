@@ -138,13 +138,50 @@ export const Textbox = forwardRef<HTMLInputElement, TextboxProps>(
 
     if (type === "number") {
       return (
-        <NumericFormat
-          customInput={TextField}
+        <div className={styles.textbox}>
+          <NumericFormat
+            customInput={TextField}
+            value={value}
+            defaultValue={defaultValue}
+            onValueChange={(values) => {
+              onChange?.(values.value);
+            }}
+            onBlur={onBlur}
+            onFocus={onFocus}
+            error={error}
+            helperText={helperText}
+            disabled={disabled}
+            required={required}
+            autoFocus={autoFocus}
+            className={className}
+            fullWidth={fullWidth}
+            inputRef={ref}
+            thousandSeparator
+            decimalScale={decimalScale}
+            allowNegative={min === undefined || min < 0}
+            isAllowed={(values) => {
+              const { floatValue } = values;
+              if (floatValue === undefined) return true;
+              if (min !== undefined && floatValue < min) return false;
+              if (max !== undefined && floatValue > max) return false;
+              return true;
+            }}
+            {...props}
+            InputProps={{
+              endAdornment: renderErrorIcon() || renderInfoIcon(),
+            }}
+          />
+        </div>
+      );
+    }
+
+    return (
+      <div className={styles.textbox}>
+        <TextField
+          type={type === "password" && showPassword ? "text" : type}
           value={value}
           defaultValue={defaultValue}
-          onValueChange={(values) => {
-            onChange?.(values.value);
-          }}
+          onChange={handleChange}
           onBlur={onBlur}
           onFocus={onFocus}
           error={error}
@@ -152,62 +189,31 @@ export const Textbox = forwardRef<HTMLInputElement, TextboxProps>(
           disabled={disabled}
           required={required}
           autoFocus={autoFocus}
+          autoComplete={autoComplete}
           className={className}
           fullWidth={fullWidth}
-          inputRef={ref}
-          thousandSeparator
-          decimalScale={decimalScale}
-          allowNegative={min === undefined || min < 0}
-          isAllowed={(values) => {
-            const { floatValue } = values;
-            if (floatValue === undefined) return true;
-            if (min !== undefined && floatValue < min) return false;
-            if (max !== undefined && floatValue > max) return false;
-            return true;
+          multiline={multiline}
+          rows={rows}
+          maxRows={maxRows}
+          minRows={minRows}
+          inputProps={{
+            maxLength,
+            min,
+            max,
+            step,
           }}
+          name={name}
+          id={id}
+          inputRef={ref}
           {...props}
           InputProps={{
-            endAdornment: renderErrorIcon() || renderInfoIcon(),
+            endAdornment:
+              renderPasswordAdornment() ||
+              renderErrorIcon() ||
+              renderInfoIcon(),
           }}
         />
-      );
-    }
-
-    return (
-      <TextField
-        type={type === "password" && showPassword ? "text" : type}
-        value={value}
-        defaultValue={defaultValue}
-        onChange={handleChange}
-        onBlur={onBlur}
-        onFocus={onFocus}
-        error={error}
-        helperText={helperText}
-        disabled={disabled}
-        required={required}
-        autoFocus={autoFocus}
-        autoComplete={autoComplete}
-        className={className}
-        fullWidth={fullWidth}
-        multiline={multiline}
-        rows={rows}
-        maxRows={maxRows}
-        minRows={minRows}
-        inputProps={{
-          maxLength,
-          min,
-          max,
-          step,
-        }}
-        name={name}
-        id={id}
-        inputRef={ref}
-        {...props}
-        InputProps={{
-          endAdornment:
-            renderPasswordAdornment() || renderErrorIcon() || renderInfoIcon(),
-        }}
-      />
+      </div>
     );
   }
 );

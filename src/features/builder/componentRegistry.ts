@@ -95,20 +95,34 @@ export const componentRegistry: ComponentGroup[] = [
         allowedChildren: ["input", "select", "button"],
       },
       {
-        type: "input",
+        type: "Textbox",
         name: "Input Field",
         defaultProps: {
           type: "text",
           placeholder: "Enter text...",
           required: false,
+          fullWidth: true,
         },
         properties: [
           {
             name: "type",
             type: "select",
             label: "Type",
-            options: ["text", "number", "email", "password", "date"],
+            options: [
+              "text",
+              "number",
+              "password",
+              "email",
+              "tel",
+              "search",
+              "url",
+            ],
             default: "text",
+          },
+          {
+            name: "label",
+            type: "string",
+            label: "Label",
           },
           {
             name: "placeholder",
@@ -116,10 +130,60 @@ export const componentRegistry: ComponentGroup[] = [
             label: "Placeholder",
           },
           {
+            name: "helperText",
+            type: "string",
+            label: "Helper Text",
+          },
+          {
             name: "required",
             type: "boolean",
             label: "Required",
             default: false,
+          },
+          {
+            name: "disabled",
+            type: "boolean",
+            label: "Disabled",
+            default: false,
+          },
+          {
+            name: "autoFocus",
+            type: "boolean",
+            label: "Auto Focus",
+            default: false,
+          },
+          {
+            name: "fullWidth",
+            type: "boolean",
+            label: "Full Width",
+            default: true,
+          },
+          {
+            name: "multiline",
+            type: "boolean",
+            label: "Multiline",
+            default: false,
+          },
+          {
+            name: "rows",
+            type: "number",
+            label: "Rows",
+            default: 1,
+          },
+          {
+            name: "maxRows",
+            type: "number",
+            label: "Max Rows",
+          },
+          {
+            name: "minRows",
+            type: "number",
+            label: "Min Rows",
+          },
+          {
+            name: "maxLength",
+            type: "number",
+            label: "Max Length",
           },
         ],
       },

@@ -1,8 +1,30 @@
 .textbox {
-  width: 100%;
-  margin: 4px 0;
+  width: var(--textbox-width, 100%);
+  margin: var(--textbox-margin, 4px 0);
+  padding: var(--textbox-padding, 0);
 }
 
 .textbox input {
-  font-size: 14px;
+  font-size: var(--textbox-font-size, 14px);
+  color: var(--textbox-color, inherit);
+  background-color: var(--textbox-bg-color, transparent);
+  border: var(--textbox-border, 1px solid #ccc);
+  border-radius: var(--textbox-border-radius, 4px);
+  padding: var(--textbox-input-padding, 8px 12px);
+}
+
+.textbox input:focus {
+  outline: none;
+  border-color: var(--textbox-focus-border-color, #1976d2);
+  box-shadow: var(--textbox-focus-shadow, 0 0 0 2px rgba(25, 118, 210, 0.2));
+}
+
+.textbox input:disabled {
+  background-color: var(--textbox-disabled-bg, #f5f5f5);
+  color: var(--textbox-disabled-color, #757575);
+  border-color: var(--textbox-disabled-border, #e0e0e0);
+}
+
+.textbox input::placeholder {
+  color: var(--textbox-placeholder-color, #757575);
 }

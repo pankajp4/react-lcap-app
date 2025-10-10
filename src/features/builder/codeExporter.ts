@@ -3,10 +3,40 @@ import { componentRegistry } from "./componentRegistry";
 
 const generateImports = (components: BaseComponent[]): string => {
   const usedComponents = new Set(components.map((c) => c.type));
-  return `import React from 'react';
-import { 
-  ${Array.from(usedComponents).join(",\n  ")}
-} from '@mui/material';`;
+  const localComponents = new Set<string>();
+  const muiComponents = new Set<string>();
+
+  usedComponents.forEach((type) => {
+    switch (type) {
+      case "Textbox":
+      case "DraggableComponent":
+      case "DroppableComponent":
+      case "PropertyField":
+      case "ErrorBoundary":
+      case "NotificationSystem":
+        localComponents.add(type);
+        break;
+      default:
+        muiComponents.add(type);
+    }
+  });
+
+  const imports = [];
+  imports.push(`import React from 'react';`);
+
+  if (localComponents.size > 0) {
+    imports.push(`import {
+  ${Array.from(localComponents).join(",\n  ")}
+} from '../components/atoms';`);
+  }
+
+  if (muiComponents.size > 0) {
+    imports.push(`import {
+  ${Array.from(muiComponents).join(",\n  ")}
+} from '@mui/material';`);
+  }
+
+  return imports.join("\n");
 };
 
 const generateProps = (props: Record<string, any>): string => {
@@ -38,15 +68,18 @@ const generateComponentTree = (
   const props = generateProps(component.props);
   const propsStr = props ? ` ${props}` : "";
 
+  // Use the actual component type from the registry for the JSX
+  const componentType = component.type;
+
   if (!component.children?.length) {
-    return `${spacing}<${componentDef.name}${propsStr} />`;
+    return `${spacing}<${componentType}${propsStr} />`;
   }
 
-  return `${spacing}<${componentDef.name}${propsStr}>
+  return `${spacing}<${componentType}${propsStr}>
 ${component.children
   .map((child) => generateComponentTree(child, indent + 1))
   .join("\n")}
-${spacing}</${componentDef.name}>`;
+${spacing}</${componentType}>`;
 };
 
 const generateCode = (components: BaseComponent[]): string => {

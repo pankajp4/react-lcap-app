@@ -1,20 +1,23 @@
-import React from "react";
 import {
-  Container,
-  Grid,
   Button,
-  TextField,
   Card,
   CardContent,
+  Container,
+  Grid,
+  Paper,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
-  Paper,
 } from "@mui/material";
+import React from "react";
 
+import {
+  Textbox,
+  // Add other components as they become available
+} from "../../../components/atoms";
 import type { BaseComponent } from "../types";
 
 interface ComponentRendererProps {
@@ -79,16 +82,14 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({ component }) => {
         </form>
       );
 
-    case "input":
+    case "Textbox":
       return (
-        <TextField
+        <Textbox
           {...component.props}
-          fullWidth
-          margin="normal"
-          variant="outlined"
           type={component.props.type || "text"}
           placeholder={component.props.placeholder}
           required={component.props.required}
+          fullWidth={true}
         />
       );
 

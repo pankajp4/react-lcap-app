@@ -1,0 +1,78 @@
+.canvasContainer {
+  padding: var(--canvas-padding);
+  min-height: var(--canvas-min-height);
+  background-color: var(--canvas-background);
+  border-radius: var(--canvas-border-radius);
+  border: var(--canvas-border);
+}
+
+.componentWrapper {
+  padding: var(--component-wrapper-padding);
+  margin-bottom: var(--component-wrapper-margin-bottom);
+  border: var(--component-wrapper-border);
+  border-radius: var(--component-wrapper-border-radius);
+}
+
+.isSelected {
+  border: var(--component-wrapper-selected-border);
+}
+
+.componentPreview {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.componentButton {
+  flex-grow: 1;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.deleteButton {
+  min-width: auto !important;
+  padding: 4px !important;
+  color: var(--delete-icon-button-color) !important;
+}
+
+.deleteButton:hover {
+  color: var(--delete-icon-button-hover-color) !important;
+  background-color: var(--icon-button-hover-bg) !important;
+}
+
+.deleteButton:active {
+  background-color: var(--icon-button-active-bg) !important;
+}
+
+.dropIndicator {
+  margin-top: var(--drop-area-margin-top);
+  padding: var(--drop-area-padding);
+  border: var(--drop-area-border);
+  border-radius: var(--drop-area-border-radius);
+  min-height: var(--drop-area-min-height);
+  background-color: var(--drop-area-background);
+}
+
+.isOver {
+  border: var(--drop-area-active-border);
+}
+
+.emptyCanvas {
+  height: 100%;
+  min-height: var(--empty-canvas-min-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--empty-canvas-border);
+  border-radius: var(--canvas-border-radius);
+  color: var(--empty-canvas-text-color);
+}
+
+.emptyCanvas.isOver {
+  border: var(--empty-canvas-active-border);
+}
+
+.dropText {
+  color: var(--drop-area-text-color);
+  text-align: center;
+}
