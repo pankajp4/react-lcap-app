@@ -1,8 +1,48 @@
+/**
+ * @module Config
+ * @description
+ * Configuration module that defines all available form components and their properties
+ * in the form builder system.
+ * @category Components
+ */
+
 import type { ComponentConfig } from "../types/builder";
 
 /**
- * Configuration for all available components in the builder
- * Each component has its own set of properties and configurations
+ * Configuration array for all available components in the form builder.
+ * Each component is defined with its type, category, properties, and validations.
+ *
+ * @constant
+ * @category Configuration
+ * @since 1.0.0
+ *
+ * @remarks
+ * This configuration defines the complete set of components available in the form builder.
+ * Each component is described with:
+ * - Basic information (type, category, label, icon)
+ * - Available properties and their types
+ * - Validation rules
+ * - Style configurations
+ * - Event handlers
+ * - Default values
+ *
+ * The configuration is used by:
+ * - ComponentSidebar to display available components
+ * - PropertiesSidebar to show editable properties
+ * - BuilderCanvas to render components correctly
+ *
+ * @example
+ * ```typescript
+ * // Using the configuration to filter components by category
+ * const inputComponents = availableComponents.filter(
+ *   comp => comp.category === 'input'
+ * );
+ *
+ * // Getting component properties
+ * const textboxConfig = availableComponents.find(
+ *   comp => comp.type === 'textbox'
+ * );
+ * ```
  */
 export const availableComponents: ComponentConfig[] = [
   {
@@ -12,78 +52,76 @@ export const availableComponents: ComponentConfig[] = [
     icon: "TextFields",
     props: {
       // Basic props
-      label: String,
-      placeholder: String,
-      helperText: String,
-      type: [
-        "text",
-        "password",
-        "email",
-        "tel",
-        "currency",
-        "number",
-        "decimal",
-        "url",
-        "search",
-      ],
-      variant: ["outlined", "filled", "standard"],
-      size: ["small", "medium"],
-      required: Boolean,
-      disabled: Boolean,
-      readOnly: Boolean,
-      fullWidth: Boolean,
-      autoFocus: Boolean,
+      label: "",
+      placeholder: "",
+      helperText: "",
+      type: "text" as
+        | "text"
+        | "password"
+        | "email"
+        | "tel"
+        | "currency"
+        | "number"
+        | "decimal"
+        | "url"
+        | "search",
+      variant: "outlined" as "outlined" | "filled" | "standard",
+      size: "medium" as "small" | "medium",
+      required: false,
+      disabled: false,
+      readOnly: false,
+      fullWidth: true,
+      autoFocus: false,
 
       // Validation props
-      minLength: Number,
-      maxLength: Number,
-      pattern: String,
-      min: Number,
-      max: Number,
+      minLength: 0,
+      maxLength: 0,
+      pattern: "",
+      min: 0,
+      max: 0,
 
       // Currency props
-      currency: ["USD", "EUR", "GBP", "INR", "JPY"],
-      locale: String,
-      decimals: Number,
+      currency: "USD" as "USD" | "EUR" | "GBP" | "INR" | "JPY",
+      locale: "",
+      decimals: 2,
 
       // Style props
-      className: String,
-      inputClassName: String,
+      className: "",
+      inputClassName: "",
 
       // API props
-      apiEndpoint: String,
-      apiMethod: ["GET", "POST", "PUT", "PATCH"],
-      apiHeaders: Object,
+      apiEndpoint: "",
+      apiMethod: "GET" as "GET" | "POST" | "PUT" | "PATCH",
+      apiHeaders: {} as Record<string, string>,
 
       // Additional props
-      tooltip: String,
-      infoTooltip: String,
+      tooltip: "",
+      infoTooltip: "",
     },
     style: {
-      width: Number,
-      height: Number,
-      margin: String,
-      padding: String,
-      backgroundColor: String,
-      borderColor: String,
-      borderRadius: String,
-      fontSize: String,
-      fontFamily: String,
-      color: String,
+      width: 200,
+      height: 40,
+      margin: "0",
+      padding: "8px",
+      backgroundColor: "#ffffff",
+      borderColor: "#cccccc",
+      borderRadius: "4px",
+      fontSize: "14px",
+      fontFamily: "Roboto, sans-serif",
+      color: "#000000",
     },
     validation: {
-      required: Boolean,
-      minLength: Number,
-      maxLength: Number,
-      pattern: String,
-      customValidation: String,
+      required: false,
+      minLength: 0,
+      maxLength: 100,
+      pattern: "",
+      customValidation: "",
     },
     api: {
-      endpoint: String,
-      method: ["GET", "POST", "PUT", "PATCH"],
-      headers: Object,
-      onSuccess: String,
-      onError: String,
+      endpoint: "",
+      method: "POST",
+      headers: {} as Record<string, string>,
+      params: {} as Record<string, string | number | boolean>,
     },
   },
   {

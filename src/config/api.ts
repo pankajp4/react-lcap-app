@@ -1,8 +1,55 @@
+/**
+ * @module Config
+ * @description
+ * API configuration module that sets up an Axios instance with interceptors
+ * and authentication handling for the form builder's backend communication.
+ * @category API
+ */
+
 import axios from "axios";
 
 /**
- * Axios instance with default configuration and interceptors
- * Handles common API operations and error handling
+ * Configured Axios instance for all API communications.
+ *
+ * @constant
+ * @category API
+ * @since 1.0.0
+ *
+ * @remarks
+ * This Axios instance is configured with:
+ * - Base URL configuration from environment variables
+ * - Default request timeout
+ * - Authentication token handling
+ * - Automatic token refresh
+ * - Error handling and retries
+ *
+ * Features:
+ * - Automatic token injection for authenticated requests
+ * - Token refresh handling for 401 responses
+ * - Consistent error handling
+ * - Request/response interceptors
+ * - Environment-based configuration
+ *
+ * Security:
+ * - Token-based authentication
+ * - Secure token storage
+ * - Automatic session management
+ * - Authorization header handling
+ *
+ * @example
+ * ```typescript
+ * // Making an authenticated API request
+ * import { api } from '../config/api';
+ *
+ * async function fetchUserData() {
+ *   try {
+ *     const response = await api.get('/user/profile');
+ *     return response.data;
+ *   } catch (error) {
+ *     console.error('Failed to fetch user data:', error);
+ *   }
+ * }
+ * ```
  */
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:3000",

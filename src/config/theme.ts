@@ -1,8 +1,47 @@
+/**
+ * @module Config
+ * @description
+ * Theme configuration module that defines the global styling and design system
+ * for the form builder application using Material-UI's theming system.
+ * @category Theme
+ */
+
 import { createTheme } from "@mui/material/styles";
 
 /**
- * Custom theme configuration for the LCAP application
- * Follows Material Design principles with custom color palette
+ * Custom Material-UI theme configuration for the form builder application.
+ *
+ * @constant
+ * @category Theme
+ * @since 1.0.0
+ *
+ * @remarks
+ * This theme configuration defines:
+ * - Color palette with primary and secondary colors
+ * - Typography system with font families and settings
+ * - Component-specific style overrides
+ * - Spacing and layout defaults
+ *
+ * The theme follows Material Design principles while providing:
+ * - Consistent color usage across components
+ * - Accessible color contrast ratios
+ * - Responsive typography scaling
+ * - Unified component styling
+ *
+ * @example
+ * ```tsx
+ * // Using theme in a component
+ * import { ThemeProvider } from '@mui/material';
+ * import { theme } from '../config/theme';
+ *
+ * function App() {
+ *   return (
+ *     <ThemeProvider theme={theme}>
+ *       <YourComponents />
+ *     </ThemeProvider>
+ *   );
+ * }
+ * ```
  */
 export const theme = createTheme({
   palette: {
