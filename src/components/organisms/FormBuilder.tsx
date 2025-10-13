@@ -82,9 +82,9 @@ const FormBuilder: React.FC = () => {
       collisionDetection={closestCenter}
       onDragEnd={handleDragEnd}
     >
-      <Box sx={{ flex: 1, p: 2 }}>
+      <Box sx={{ flex: 1, p: 2, backgroundColor: "red" }}>
         <Typography variant="h6">Form Builder Area</Typography>
-        <Paper sx={{ minHeight: "400px", p: 2, bgcolor: "#fff" }}>
+        <Paper sx={{ minHeight: "400px", p: 2, bgcolor: "#0411cdff" }}>
           {formElements.length === 0 ? (
             <Typography variant="body2" color="text.secondary">
               Drag components here

@@ -27,12 +27,17 @@
  * ```
  */
 
+import { useEffect } from "react";
 import { useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 import { Paper, Typography } from "@mui/material";
 import * as MuiIcons from "@mui/icons-material";
 import type { ComponentConfig } from "../../../types/builder";
 import styles from "./DraggableComponent.module.css";
+
+type DragEvent = {
+  [key: string]: any;
+};
 
 /**
  * Props for the DraggableComponent
@@ -64,6 +69,21 @@ interface DraggableComponentProps {
    * - properties: Optional component-specific configuration
    */
   component: ComponentConfig;
+
+  /**
+   * Callback when drag starts
+   */
+  onDragStart?: () => void;
+
+  /**
+   * Callback when drag ends
+   */
+  onDragEnd?: () => void;
+
+  /**
+   * Whether the component is disabled
+   */
+  disabled?: boolean;
 }
 
 /**
@@ -95,15 +115,56 @@ interface DraggableComponentProps {
  * @param {DraggableComponentProps} props - The component props
  * @returns {JSX.Element} A draggable Paper component containing an icon and label
  */
-export const DraggableComponent = ({ component }: DraggableComponentProps) => {
+export const DraggableComponent = ({
+  component,
+  onDragStart,
+  onDragEnd,
+  disabled = false,
+}: DraggableComponentProps) => {
   /**
    * Hook up the draggable functionality using dnd-kit's useDraggable hook.
    * Creates a unique ID for each component type and attaches the component data.
    */
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
+  const {
+    attributes,
+    listeners: baseListeners,
+    setNodeRef,
+    transform,
+  } = useDraggable({
     id: `sidebar-${component.type}`,
     data: component,
+    disabled,
   });
+
+  // Don't create listeners if disabled
+  const listeners = disabled
+    ? undefined
+    : {
+        ...baseListeners,
+        onDragStart: (e: any) => {
+          baseListeners?.onDragStart?.(e);
+          onDragStart?.();
+        },
+        onDragEnd: (e: any) => {
+          baseListeners?.onDragEnd?.(e);
+          onDragEnd?.();
+        },
+      };
+
+  // Create enhanced listeners that call our callback functions
+  const enhancedListeners = disabled
+    ? undefined
+    : {
+        ...baseListeners,
+        onDragStart: (e: any) => {
+          baseListeners?.onDragStart?.(e);
+          onDragStart?.();
+        },
+        onDragEnd: (e: any) => {
+          baseListeners?.onDragEnd?.(e);
+          onDragEnd?.();
+        },
+      };
 
   /**
    * Dynamically get the Material-UI icon component based on the icon name in the config.
@@ -126,18 +187,44 @@ export const DraggableComponent = ({ component }: DraggableComponentProps) => {
    * The ref, attributes, and listeners from dnd-kit are spread onto the Paper component
    * to enable drag functionality. The content includes an optional icon and a label.
    */
+  // Setup drag event handlers
+  useEffect(() => {
+    if (listeners) {
+      const originalDragStart = listeners.onDragStart;
+      const originalDragEnd = listeners.onDragEnd;
+
+      const newListeners = {
+        ...listeners,
+        onDragStart: (e: DragEvent) => {
+          originalDragStart?.(e);
+          onDragStart?.();
+        },
+        onDragEnd: (e: DragEvent) => {
+          originalDragEnd?.(e);
+          onDragEnd?.();
+        },
+      };
+
+      Object.assign(listeners, newListeners);
+    }
+  }, [listeners, onDragStart, onDragEnd]);
+
   return (
     <Paper
       ref={setNodeRef}
       elevation={1}
-      className={styles.draggable}
+      data-draggable-id={`sidebar-${component.type}`}
+      aria-label={`Drag ${component.label} component`}
+      className={`${styles.draggable} ${disabled ? styles.disabled : ""}`}
       style={style}
       {...attributes}
-      {...listeners}
+      {...enhancedListeners}
     >
       <div className={styles.content}>
         {/* Conditionally render the icon if one is specified in the config */}
-        {Icon && <Icon className={styles.icon} />}
+        {Icon && (
+          <Icon className={styles.icon} data-testid={`${component.icon}Icon`} />
+        )}
         {/* Display the component label using MUI Typography */}
         <Typography variant="body2">{component.label}</Typography>
       </div>

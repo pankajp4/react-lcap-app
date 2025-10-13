@@ -4,7 +4,10 @@
  * Droppable component module that implements drop target functionality for the form builder canvas.
  * Provides a rich interactive container for form elements with selection, resizing,
  * and drag-and-drop capabilities.
- * @category DragAndDrop
+ * @categ      style={containerStyle}
+      onDragEnter={handleDragEnter}
+      onDragLeave={handleDragLeave}
+      onDragOver={handleDragOver}>ry DragAndDrop
  * @since 1.0.0
  *
  * @remarks
@@ -139,7 +142,26 @@ export const DroppableComponent = ({
   onResize,
 }: DroppableComponentProps) => {
   /** Tracks whether another component is being dragged over this one */
-  const isDraggingOver = false; // FIXME: Implement using dnd-kit's useDroppable hook
+  const [isDraggingOver, setIsDraggingOver] = useState(false);
+
+  // Handle drag events
+  const handleDragEnter = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDraggingOver(true);
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDraggingOver(false);
+  };
+
   /** Tracks whether the component is currently being resized */
   const [isResizing, setIsResizing] = useState(false);
 
@@ -148,6 +170,13 @@ export const DroppableComponent = ({
     (state: RootState) => state.builder.selectedComponentId
   );
 
+  // Memoize component styles and attributes
+  const containerStyle = {
+    transform: `translate(${component.x}px, ${component.y}px)`,
+    width: `${component.width}px`,
+    height: `${component.height}px`,
+  };
+
   /**
    * Effect to handle deselection when another component is selected
    */
@@ -155,6 +184,29 @@ export const DroppableComponent = ({
     if (!isSelected && selectedId !== component.id) {
       onDeselect();
     }
+
+    // Add click outside handler when component is selected
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      const componentElement = document.querySelector(
+        `[data-testid="${component.id}"]`
+      );
+      if (
+        isSelected &&
+        componentElement &&
+        !componentElement.contains(target)
+      ) {
+        onDeselect();
+      }
+    };
+
+    if (isSelected) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, [component.id, isSelected, onDeselect, selectedId]);
 
   /**
@@ -192,8 +244,8 @@ export const DroppableComponent = ({
     const handleMouseMove = (moveEvent: MouseEvent) => {
       if (!isResizing) return;
 
-      const newWidth = Math.max(100, moveEvent.clientX - e.clientX);
-      const newHeight = Math.max(50, moveEvent.clientY - e.clientY);
+      const newWidth = Math.max(100, moveEvent.clientX);
+      const newHeight = Math.max(50, moveEvent.clientY);
 
       if (onResize) {
         onResize(newWidth, newHeight);
@@ -223,18 +275,18 @@ export const DroppableComponent = ({
    * - Resize handles when selected
    */
   return (
-    <button
-      type="button"
+    <div
       className={`${styles.droppable} ${
         isDraggingOver ? styles.draggingOver : ""
       } ${isSelected ? styles.selected : ""}`}
-      onClick={handleMouseDown}
+      onMouseDown={handleMouseDown}
       onKeyDown={handleKeyDown}
+      data-testid={component.id}
+      data-dragging={`${isDraggingOver}`}
+      tabIndex={0}
+      role="button"
       aria-pressed={isSelected}
-      style={{
-        width: component.style?.width || "100%",
-        height: component.style?.height || "auto",
-      }}
+      style={containerStyle}
     >
       {/* Recursively render child components */}
       {component.children?.map((child: BuilderComponent) => (
@@ -251,32 +303,36 @@ export const DroppableComponent = ({
       {/* Render resize handles when component is selected */}
       {isSelected && !isResizing && (
         <div className={styles.resizeHandles}>
-          <button
-            type="button"
+          <div
+            role="button"
+            tabIndex={0}
             className={`${styles.handle} ${styles.topLeft}`}
             onMouseDown={handleResizeStart}
             aria-label="Resize from top-left corner"
           />
-          <button
-            type="button"
+          <div
+            role="button"
+            tabIndex={0}
             className={`${styles.handle} ${styles.topRight}`}
             onMouseDown={handleResizeStart}
             aria-label="Resize from top-right corner"
           />
-          <button
-            type="button"
+          <div
+            role="button"
+            tabIndex={0}
             className={`${styles.handle} ${styles.bottomLeft}`}
             onMouseDown={handleResizeStart}
             aria-label="Resize from bottom-left corner"
           />
-          <button
-            type="button"
+          <div
+            role="button"
+            tabIndex={0}
             className={`${styles.handle} ${styles.bottomRight}`}
             onMouseDown={handleResizeStart}
             aria-label="Resize from bottom-right corner"
           />
         </div>
       )}
-    </button>
+    </div>
   );
 };

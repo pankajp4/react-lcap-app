@@ -3,10 +3,17 @@
   margin: 8px 0;
   user-select: none;
   touch-action: none;
+  transition: opacity 0.2s;
 }
 
 .draggable:active {
   cursor: grabbing;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .content {
