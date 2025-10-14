@@ -45,7 +45,9 @@ interface ComponentListProps {
   onEditTemplate?: (template: CustomTemplate) => void;
 }
 
-const ComponentList: React.FC<ComponentListProps> = ({ onEditTemplate }) => {
+const ComponentList: React.FC<ComponentListProps> = ({
+  onEditTemplate: _onEditTemplate,
+}) => {
   const [searchTerm, setSearchTerm] = React.useState("");
 
   const handleDragStart = (e: React.DragEvent, component: BaseComponent) => {

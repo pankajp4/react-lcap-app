@@ -127,7 +127,7 @@ export const builderSlice = createSlice({
     clearClipboard: (state) => {
       state.clipboard = null;
     },
-    saveForm: (state, action: PayloadAction<{ formId: string }>) => {
+    saveForm: (state, _action: PayloadAction<{ formId: string }>) => {
       state.formSaving = true;
     },
     saveFormSuccess: (state) => {

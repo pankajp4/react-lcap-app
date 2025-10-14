@@ -2,7 +2,12 @@
  * @module Atoms
  * @description
  * Enhanced textbox component that supports various input types and features
- * like password visibility toggle, number formatting, and validation states.
+ * like password visibility toggle, number formatting, and validation const TextboxComponent = (
+    {
+      // Input configuration
+      type = "text",
+      value,
+      defaultValue,
  * @category Input
  */
 

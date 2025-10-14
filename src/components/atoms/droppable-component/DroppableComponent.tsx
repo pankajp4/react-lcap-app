@@ -1,50 +1,6 @@
-/**
- * @module Atoms
- * @description
- * Droppable component module that implements drop target functionality for the form builder canvas.
- * Provides a rich interactive container for form elements with selection, resizing,
- * and drag-and-drop capabilities.
- * @categ      style={containerStyle}
-      onDragEnter={handleDragEnter}
-      onDragLeave={handleDragLeave}
-      onDragOver={handleDragOver}>ry DragAndDrop
- * @since 1.0.0
- *
- * @remarks
- * This module implements complex form element interaction:
- * - Drop target for new components
- * - Component selection and focus management
- * - Resize handles with keyboard support
- * - Position snapping and grid alignment
- * - Touch device support
- * - Accessibility compliance
- *
- * Accessibility Features:
- * - ARIA roles and attributes for interactive elements
- * - Keyboard navigation support
- * - Focus management during drag operations
- * - Screen reader announcements for state changes
- *
- * @example
- * ```tsx
- * // Basic usage in the canvas
- * const component = {
- *   id: 'text-1',
- *   type: 'textbox',
- *   position: { x: 100, y: 100 },
- *   size: { width: 200, height: 40 }
- * };
- *
- * <DroppableComponent
- *   component={component}
- *   onSelect={(id) => setSelectedId(id)}
- *   onDeselect={() => setSelectedId(null)}
- *   isSelected={selectedId === component.id}
- * />
- * ```
- */
-
-import { useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect } from "react";
+import { styled as _styled } from "@mui/material/styles";
+import { Box as _Box } from "@mui/material";
 import { useSelector } from "react-redux";
 import type { BuilderComponent } from "../../../types/builder";
 import type { RootState } from "../../../features/store";
@@ -141,26 +97,14 @@ export const DroppableComponent = ({
   isSelected,
   onResize,
 }: DroppableComponentProps) => {
-  /** Tracks whether another component is being dragged over this one */
+  /** Tracks whether the component is being dragged over */
   const [isDraggingOver, setIsDraggingOver] = useState(false);
 
-  // Handle drag events
-  const handleDragEnter = (e: React.DragEvent) => {
+  const handleDrag = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setIsDraggingOver(true);
-  };
-
-  const handleDragOver = (e: React.DragEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-  };
-
-  const handleDragLeave = (e: React.DragEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsDraggingOver(false);
-  };
+    setIsDraggingOver(e.type === "dragenter");
+  }, []);
 
   /** Tracks whether the component is currently being resized */
   const [isResizing, setIsResizing] = useState(false);
@@ -281,6 +225,9 @@ export const DroppableComponent = ({
       } ${isSelected ? styles.selected : ""}`}
       onMouseDown={handleMouseDown}
       onKeyDown={handleKeyDown}
+      onDragEnter={handleDrag}
+      onDragLeave={handleDrag}
+      onDragOver={handleDrag}
       data-testid={component.id}
       data-dragging={`${isDraggingOver}`}
       tabIndex={0}

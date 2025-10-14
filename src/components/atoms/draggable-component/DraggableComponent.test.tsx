@@ -122,7 +122,11 @@ describe("DraggableComponent", () => {
   });
 
   it("handles missing callbacks gracefully", () => {
-    const { onDragStart, onDragEnd, ...propsWithoutCallbacks } = defaultProps;
+    const {
+      onDragStart: _,
+      onDragEnd: __,
+      ...propsWithoutCallbacks
+    } = defaultProps;
 
     render(
       <TestWrapper>
