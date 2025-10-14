@@ -31,7 +31,7 @@
 import { Box, ThemeProvider, createTheme } from "@mui/material";
 import React from "react";
 import { ErrorBoundary, NotificationSystem } from "./components/atoms";
-import BuilderLayout from "./components/organisms/BuilderLayout/BuilderLayout";
+import { BuilderLayout } from "./components/organisms";
 
 /**
  * Dark theme configuration for the builder interface
