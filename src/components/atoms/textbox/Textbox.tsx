@@ -24,6 +24,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import ErrorIcon from "@mui/icons-material/Error";
 import InfoIcon from "@mui/icons-material/Info";
+import styles from "./Textbox.module.css";
 
 /**
  * Supported input types for the Textbox component
@@ -326,7 +327,7 @@ export const Textbox = forwardRef<HTMLInputElement, TextboxProps>(
      */
     if (type === "number") {
       return (
-        <Box sx={{ width: fullWidth ? "100%" : "auto", margin: "4px 0" }}>
+        <Box className={styles.textbox}>
           <NumericFormat
             customInput={TextField}
             value={value}
@@ -370,7 +371,7 @@ export const Textbox = forwardRef<HTMLInputElement, TextboxProps>(
      * Uses Material-UI TextField with appropriate props and icons
      */
     return (
-      <Box sx={{ width: fullWidth ? "100%" : "auto", margin: "4px 0" }}>
+      <Box className={styles.textbox}>
         <TextField
           type={type === "password" && showPassword ? "text" : type}
           value={value}

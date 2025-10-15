@@ -76,3 +76,13 @@
 .tableRowHoverable:hover {
   background-color: var(--hover-background);
 }
+
+/**
+ * Error message styles
+ * @description
+ * Error message display for unknown component types.
+ */
+.errorMessage {
+  padding: var(--spacing-sm);
+  color: #d32f2f;
+}

@@ -18,6 +18,7 @@ import {
   updateComponent,
 } from "../../../store/builder/builderSlice";
 import { DroppableComponent } from "../../atoms";
+import styles from "./BuilderCanvas.module.css";
 
 /**
  * The main canvas area where form components can be dropped and arranged.
@@ -124,13 +125,7 @@ export const BuilderCanvas: React.FC = () => {
       <Box
         component="section"
         aria-label="Empty form canvas"
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "calc(100vh - 64px)",
-          backgroundColor: "#f5f5f5",
-        }}
+        className={styles.emptyCanvas}
       >
         <Typography variant="body1" color="textSecondary">
           Select or create a form to start building
@@ -147,17 +142,7 @@ export const BuilderCanvas: React.FC = () => {
       component="section"
       ref={setNodeRef}
       aria-label="Form builder canvas"
-      sx={{
-        flex: 1,
-        padding: 3,
-        backgroundColor: "#f5f5f5",
-        overflowY: "auto",
-        minHeight: "calc(100vh - 64px)",
-        border: 2,
-        borderStyle: "dashed",
-        borderColor: isOver ? "primary.main" : "transparent",
-        transition: "border-color 0.3s",
-      }}
+      className={`${styles.canvas} ${isOver ? styles.dragOver : ""}`}
     >
       {/* Map and render all form components */}
       {activeForm.components?.map((component: BuilderComponent) => (
@@ -173,14 +158,7 @@ export const BuilderCanvas: React.FC = () => {
 
       {/* Show empty state message when no components exist */}
       {activeForm.components?.length === 0 && (
-        <Box
-          component="output"
-          sx={{
-            textAlign: "center",
-            padding: 3,
-            color: "text.secondary",
-          }}
-        >
+        <Box component="output" className={styles.emptyMessage}>
           <Typography variant="body1" color="textSecondary">
             Drag and drop components here
           </Typography>

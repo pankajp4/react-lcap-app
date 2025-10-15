@@ -33,6 +33,7 @@ import React from "react";
 
 import { ErrorBoundary, NotificationSystem } from "./components/atoms";
 import { BuilderLayout } from "./components/organisms";
+import styles from "./App.module.css";
 
 /**
  * Light theme configuration for the builder interface
@@ -95,13 +96,7 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={lightTheme}>
       <CssBaseline />
-      <Box
-        sx={{
-          minHeight: "100vh",
-          backgroundColor: "background.default",
-          color: "text.primary",
-        }}
-      >
+      <Box className={styles.appContainer}>
         <ErrorBoundary>
           <NotificationSystem />
           <BuilderLayout />

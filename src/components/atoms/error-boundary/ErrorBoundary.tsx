@@ -6,6 +6,7 @@
 
 import { Component, type ReactNode } from "react";
 import { Box, Typography } from "@mui/material";
+import styles from "./ErrorBoundary.module.css";
 
 /**
  * Props for the ErrorBoundary component
@@ -83,41 +84,13 @@ export class ErrorBoundary extends Component<Props, State> {
   render() {
     if (this.state.hasError) {
       return (
-        <Box
-          sx={{
-            padding: 2,
-            margin: 2,
-            border: "1px solid #ff5252",
-            borderRadius: 1,
-            backgroundColor: "#ffebee",
-          }}
-        >
-          <Typography
-            variant="h6"
-            sx={{
-              color: "#d32f2f",
-              marginTop: 0,
-            }}
-          >
+        <Box className={styles.errorContainer}>
+          <Typography variant="h6" className={styles.errorHeading}>
             Something went wrong.
           </Typography>
-          <details style={{ marginTop: "8px" }}>
-            <summary style={{ cursor: "pointer", color: "#d32f2f" }}>
-              Error details
-            </summary>
-            <Box
-              component="pre"
-              sx={{
-                marginTop: 1,
-                padding: 1,
-                backgroundColor: "#fff",
-                border: "1px solid #ddd",
-                borderRadius: 0.5,
-                overflow: "auto",
-                fontSize: "0.875rem",
-                fontFamily: "monospace",
-              }}
-            >
+          <details className={styles.errorDetails}>
+            <summary className={styles.errorSummary}>Error details</summary>
+            <Box component="pre" className={styles.errorStack}>
               {this.state.error?.toString()}
             </Box>
           </details>

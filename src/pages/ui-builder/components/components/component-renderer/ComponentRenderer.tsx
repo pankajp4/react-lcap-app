@@ -30,6 +30,7 @@ import {
   Textbox,
   // Add other components as they become available
 } from "../../../../../components/atoms";
+import styles from "./ComponentRenderer.module.css";
 
 /**
  * Props for the ComponentRenderer
@@ -69,11 +70,12 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({ component }) => {
       return (
         <Container
           {...component.props}
-          sx={{
-            padding: component.props.padding || 2,
-            maxWidth: component.props.maxWidth || "100%",
-            display: component.props.display || "block",
-            flexDirection: component.props.flexDirection || "row",
+          className={styles.container}
+          style={{
+            padding: component.props.padding,
+            maxWidth: component.props.maxWidth,
+            display: component.props.display,
+            flexDirection: component.props.flexDirection,
           }}
         >
           {renderChildren(component.children)}
@@ -85,15 +87,13 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({ component }) => {
         <Grid
           container
           spacing={Number(component.props.gap?.replace("rem", "") || 1)}
-          sx={{ width: "100%" }}
+          className={styles.gridContainer}
         >
           {component.children?.map((child) => (
             <Box
               key={child.id}
-              sx={{
-                flex: 1,
-                width: "100%",
-                padding: 1,
+              className={styles.gridChild}
+              style={{
                 maxWidth: `${100 / (component.props.columns || 1)}%`,
               }}
             >
@@ -108,8 +108,9 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({ component }) => {
         <Box
           component="form"
           {...component.props}
-          sx={{
-            padding: component.props.padding || 2,
+          className={styles.form}
+          style={{
+            padding: component.props.padding,
           }}
           onSubmit={(e: React.FormEvent) => e.preventDefault()}
         >
@@ -144,8 +145,9 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({ component }) => {
         <Card
           {...component.props}
           elevation={component.props.elevation}
-          sx={{
-            padding: component.props.padding || 2,
+          className={styles.card}
+          style={{
+            padding: component.props.padding,
           }}
         >
           <CardContent>{renderChildren(component.children)}</CardContent>
@@ -167,17 +169,13 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({ component }) => {
               {component.props.data?.map((row: any[], rowIndex: number) => (
                 <TableRow
                   key={`row-${component.id}-${rowIndex}`}
-                  sx={{
-                    backgroundColor:
-                      component.props.striped && rowIndex % 2 !== 0
-                        ? "rgba(0, 0, 0, 0.04)"
-                        : "transparent",
-                    "&:hover": component.props.hoverable
-                      ? {
-                          backgroundColor: "action.hover",
-                        }
-                      : undefined,
-                  }}
+                  className={`${
+                    component.props.striped && rowIndex % 2 !== 0
+                      ? styles.tableRowStriped
+                      : ""
+                  } ${
+                    component.props.hoverable ? styles.tableRowHoverable : ""
+                  }`}
                 >
                   {row.map((cell, cellIndex) => (
                     <TableCell
@@ -195,7 +193,7 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({ component }) => {
 
     default:
       return (
-        <Box sx={{ padding: 1, color: "error.main" }}>
+        <Box className={styles.errorMessage}>
           Unknown component type: {component.type}
         </Box>
       );

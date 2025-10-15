@@ -63,6 +63,7 @@ import {
   FormControlLabel,
 } from "@mui/material";
 import type { PropertyConfig, PropertyOption } from "../../../types/builder";
+import styles from "./PropertyField.module.css";
 
 /**
  * Type for property field values
@@ -131,15 +132,7 @@ export const PropertyField: FC<PropertyFieldProps> = ({
    */
   const renderTextInput = (inputType: "text" | "number" | "color") => (
     <TextField
-      sx={{
-        margin: "8px 0",
-        "&:first-of-type": {
-          marginTop: 0,
-        },
-        "&:last-of-type": {
-          marginBottom: 0,
-        },
-      }}
+      className={styles.field}
       label={property.label}
       type={inputType}
       value={inputType === "number" ? value || "" : safeValueToString(value)}
@@ -158,20 +151,7 @@ export const PropertyField: FC<PropertyFieldProps> = ({
    * Renders a select dropdown field
    */
   const renderSelect = () => (
-    <FormControl
-      fullWidth
-      size="small"
-      margin="dense"
-      sx={{
-        margin: "8px 0",
-        "&:first-of-type": {
-          marginTop: 0,
-        },
-        "&:last-of-type": {
-          marginBottom: 0,
-        },
-      }}
-    >
+    <FormControl fullWidth size="small" margin="dense" className={styles.field}>
       <InputLabel>{property.label}</InputLabel>
       <Select
         value={safeValueToString(value)}
@@ -195,15 +175,7 @@ export const PropertyField: FC<PropertyFieldProps> = ({
    */
   const renderSwitch = () => (
     <FormControlLabel
-      sx={{
-        margin: "8px 0",
-        "&:first-of-type": {
-          marginTop: 0,
-        },
-        "&:last-of-type": {
-          marginBottom: 0,
-        },
-      }}
+      className={styles.field}
       control={
         <Switch
           checked={Boolean(value)}

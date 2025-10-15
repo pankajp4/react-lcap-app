@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import type { RootState } from "../../../store/store";
 import { hideNotification } from "../../../store/notification/notificationSlice";
+import styles from "./NotificationSystem.module.css";
 
 /**
  * A component that provides a global notification system using Material-UI's Snackbar
@@ -59,9 +60,7 @@ export const NotificationSystem = () => {
       autoHideDuration={6000}
       onClose={handleClose}
       anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-      sx={{
-        zIndex: 1400,
-      }}
+      className={styles.snackbar}
     >
       <Alert onClose={handleClose} severity={severity} variant="filled">
         {message}

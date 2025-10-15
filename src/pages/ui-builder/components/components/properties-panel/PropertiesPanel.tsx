@@ -25,6 +25,7 @@ import type {
   BaseComponent,
   PropertyDefinition,
 } from "../../../../../store/builder/types";
+import styles from "./PropertiesPanel.module.css";
 
 interface PropertiesPanelProps {
   selectedComponent: BaseComponent | null;
@@ -105,8 +106,8 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
 }) => {
   if (!selectedComponent) {
     return (
-      <Box sx={{ padding: 2 }}>
-        <Typography variant="h6" sx={{ marginBottom: 2 }}>
+      <Box className={styles.container}>
+        <Typography variant="h6" className={styles.title}>
           Properties
         </Typography>
         <Typography variant="body2" color="text.secondary">
@@ -122,8 +123,8 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
 
   if (!componentDef) {
     return (
-      <Box sx={{ padding: 2 }}>
-        <Typography variant="h6" sx={{ marginBottom: 2 }}>
+      <Box className={styles.container}>
+        <Typography variant="h6" className={styles.title}>
           Properties
         </Typography>
         <Typography variant="body2" color="text.secondary">
@@ -134,13 +135,13 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
   }
 
   return (
-    <Box sx={{ padding: 2 }}>
-      <Typography variant="h6" sx={{ marginBottom: 2 }}>
+    <Box className={styles.container}>
+      <Typography variant="h6" className={styles.title}>
         {componentDef.name} Properties
       </Typography>
 
-      <Box sx={{ marginBottom: 2 }}>
-        <InputLabel htmlFor="component-type" sx={{ marginBottom: 0.5 }}>
+      <Box className={styles.propertyGroup}>
+        <InputLabel htmlFor="component-type" className={styles.label}>
           Component Type
         </InputLabel>
         <TextField
@@ -152,8 +153,8 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
         />
       </Box>
 
-      <Box sx={{ marginBottom: 2 }}>
-        <InputLabel htmlFor="component-id" sx={{ marginBottom: 0.5 }}>
+      <Box className={styles.propertyGroup}>
+        <InputLabel htmlFor="component-id" className={styles.label}>
           ID
         </InputLabel>
         <TextField
@@ -166,8 +167,8 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
       </Box>
 
       {componentDef.properties.map((property) => (
-        <Box key={property.name} sx={{ marginBottom: 2 }}>
-          <InputLabel sx={{ marginBottom: 0.5 }}>{property.label}</InputLabel>
+        <Box key={property.name} className={styles.propertyGroup}>
+          <InputLabel className={styles.label}>{property.label}</InputLabel>
           <PropertyField
             property={property}
             value={selectedComponent.props[property.name]}

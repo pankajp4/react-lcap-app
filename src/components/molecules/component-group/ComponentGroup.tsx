@@ -17,6 +17,7 @@ import { useState } from "react";
 
 import type { ComponentConfig } from "../../../types/builder";
 import { DraggableComponent } from "../../atoms";
+import styles from "./ComponentGroup.module.css";
 
 /**
  * Props for the ComponentGroup component
@@ -119,26 +120,13 @@ export const ComponentGroup = ({ title, components }: ComponentGroupProps) => {
     <Accordion
       expanded={expanded}
       onChange={handleExpand}
-      sx={{
-        marginBottom: 1,
-        boxShadow: "none",
-        border: 1,
-        borderColor: "divider",
-      }}
+      className={styles.accordion}
     >
       {/* Accordion header with group title and component count */}
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-label={`${title} component group`}
-        sx={{
-          minHeight: "48px",
-          "& .MuiAccordionSummary-content": {
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            width: "100%",
-          },
-        }}
+        className={styles.summary}
       >
         <Typography variant="subtitle2">{title}</Typography>
         <Typography variant="caption" color="textSecondary">
@@ -147,14 +135,7 @@ export const ComponentGroup = ({ title, components }: ComponentGroupProps) => {
       </AccordionSummary>
 
       {/* Grid of draggable components */}
-      <AccordionDetails
-        sx={{
-          padding: 1,
-          display: "flex",
-          flexDirection: "column",
-          gap: 1,
-        }}
-      >
+      <AccordionDetails className={styles.details}>
         {components.map((component) => (
           <DraggableComponent
             key={component.type}

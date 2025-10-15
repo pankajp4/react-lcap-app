@@ -29,6 +29,7 @@ import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../../../store/store";
 import { saveForm } from "../../../store/builder/builderSlice";
 import { redo, undo } from "../../../store/builder/historySlice";
+import styles from "./TopNavbar.module.css";
 
 /**
  * Props for the TopNavbar component
@@ -194,25 +195,11 @@ export const TopNavbar = ({
 
   return (
     <AppBar position="static" elevation={1} color="default">
-      <Toolbar
-        variant="dense"
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          backgroundColor: "#fff",
-          padding: "0 16px",
-        }}
-      >
+      <Toolbar variant="dense" className={styles.toolbar}>
         {/* Left Section */}
         <Box
           component="div"
-          sx={{
-            cursor: "pointer",
-            color: "inherit",
-            "&:hover": {
-              opacity: 0.8,
-            },
-          }}
+          className={styles.homeLink}
           onClick={() => (window.location.href = "/")}
         >
           <Typography variant="h6" component="h1">
@@ -221,16 +208,7 @@ export const TopNavbar = ({
         </Box>
 
         {/* Center Section */}
-        <Box
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 1,
-            flex: 1,
-            margin: "0 24px",
-          }}
-        >
+        <Box className={styles.centerSection}>
           <IconButton onClick={handleUndo} size="medium" aria-label="undo">
             <UndoIcon />
           </IconButton>
@@ -251,29 +229,15 @@ export const TopNavbar = ({
               <PreviewIcon />
             </IconButton>
           )}
-          <Box sx={{ position: "relative", width: "200px" }}>
+          <Box className={styles.searchContainer}>
             <TextField
               size="small"
               placeholder="Search..."
               value={searchQuery}
               onChange={handleSearchChange}
-              sx={{
-                width: "100%",
-                "& input": {
-                  paddingLeft: "36px !important",
-                },
-              }}
+              className={styles.searchInput}
             />
-            <SearchIcon
-              sx={{
-                position: "absolute",
-                left: "8px",
-                top: "50%",
-                transform: "translateY(-50%)",
-                color: "text.secondary",
-                pointerEvents: "none",
-              }}
-            />
+            <SearchIcon className={styles.searchIcon} />
           </Box>
         </Box>
 
@@ -287,10 +251,7 @@ export const TopNavbar = ({
             <Avatar
               src={userAvatar}
               alt={userName}
-              sx={{
-                width: 32,
-                height: 32,
-              }}
+              className={styles.userAvatar}
             />
           </IconButton>
           <Menu
@@ -300,26 +261,12 @@ export const TopNavbar = ({
             onClick={handleUserMenuClose}
           >
             {onSettings && (
-              <MenuItem
-                onClick={onSettings}
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 1,
-                }}
-              >
+              <MenuItem onClick={onSettings} className={styles.menuItem}>
                 <SettingsIcon /> Settings
               </MenuItem>
             )}
             {onLogout && (
-              <MenuItem
-                onClick={onLogout}
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 1,
-                }}
-              >
+              <MenuItem onClick={onLogout} className={styles.menuItem}>
                 <LogoutIcon /> Logout
               </MenuItem>
             )}

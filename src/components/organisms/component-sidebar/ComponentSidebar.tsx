@@ -11,6 +11,7 @@ import { Paper, Box } from "@mui/material";
 import type { ComponentConfig } from "../../../types/builder";
 import { availableComponents } from "../../../config/components";
 import { ComponentGroup } from "../../molecules";
+import styles from "./ComponentSidebar.module.css";
 
 /**
  * Left sidebar component that displays available form components grouped by category.
@@ -88,23 +89,12 @@ export const ComponentSidebar = () => {
       elevation={1}
       component="section"
       aria-label="Component palette"
-      sx={{
-        width: "280px",
-        height: "100%",
-        overflowY: "auto",
-        borderRight: 1,
-        borderColor: "divider",
-      }}
+      className={styles.sidebar}
     >
       <Box
         component="nav"
         aria-label="Available components"
-        sx={{
-          padding: 2,
-          display: "flex",
-          flexDirection: "column",
-          gap: 2,
-        }}
+        className={styles.content}
       >
         {/* Render each category group */}
         {Object.entries(groupedComponents).map(([category, components]) => (

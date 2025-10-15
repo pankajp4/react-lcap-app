@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Box } from "@mui/material";
 import type { BuilderComponent } from "../../../types/builder";
 import type { RootState } from "../../../store/store";
+import styles from "./DroppableComponent.module.css";
 
 /**
  * Props for the DroppableComponent
@@ -218,15 +219,9 @@ export const DroppableComponent = ({
    */
   return (
     <Box
-      sx={{
-        position: "relative",
-        minHeight: "40px",
-        border: 2,
-        borderColor:
-          isDraggingOver || isSelected ? "primary.main" : "transparent",
-        transition: "border-color 0.3s",
-        cursor: "pointer",
-      }}
+      className={`${styles.droppable} ${
+        isDraggingOver || isSelected ? styles.selected : ""
+      }`}
       onMouseDown={handleMouseDown}
       onKeyDown={handleKeyDown}
       onDragEnter={handleDrag}
@@ -253,81 +248,32 @@ export const DroppableComponent = ({
 
       {/* Render resize handles when component is selected */}
       {isSelected && !isResizing && (
-        <Box
-          sx={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            pointerEvents: "none",
-          }}
-        >
+        <Box className={styles.resizeHandles}>
           <Box
             role="button"
             tabIndex={0}
-            sx={{
-              position: "absolute",
-              width: "8px",
-              height: "8px",
-              backgroundColor: "primary.main",
-              border: "1px solid #fff",
-              pointerEvents: "auto",
-              cursor: "nw-resize",
-              top: "-4px",
-              left: "-4px",
-            }}
+            className={`${styles.handle} ${styles.topLeft}`}
             onMouseDown={handleResizeStart}
             aria-label="Resize from top-left corner"
           />
           <Box
             role="button"
             tabIndex={0}
-            sx={{
-              position: "absolute",
-              width: "8px",
-              height: "8px",
-              backgroundColor: "primary.main",
-              border: "1px solid #fff",
-              pointerEvents: "auto",
-              cursor: "ne-resize",
-              top: "-4px",
-              right: "-4px",
-            }}
+            className={`${styles.handle} ${styles.topRight}`}
             onMouseDown={handleResizeStart}
             aria-label="Resize from top-right corner"
           />
           <Box
             role="button"
             tabIndex={0}
-            sx={{
-              position: "absolute",
-              width: "8px",
-              height: "8px",
-              backgroundColor: "primary.main",
-              border: "1px solid #fff",
-              pointerEvents: "auto",
-              cursor: "sw-resize",
-              bottom: "-4px",
-              left: "-4px",
-            }}
+            className={`${styles.handle} ${styles.bottomLeft}`}
             onMouseDown={handleResizeStart}
             aria-label="Resize from bottom-left corner"
           />
           <Box
             role="button"
             tabIndex={0}
-            sx={{
-              position: "absolute",
-              width: "8px",
-              height: "8px",
-              backgroundColor: "primary.main",
-              border: "1px solid #fff",
-              pointerEvents: "auto",
-              cursor: "se-resize",
-              bottom: "-4px",
-              right: "-4px",
-            }}
+            className={`${styles.handle} ${styles.bottomRight}`}
             onMouseDown={handleResizeStart}
             aria-label="Resize from bottom-right corner"
           />

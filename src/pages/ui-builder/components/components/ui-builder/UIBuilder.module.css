@@ -101,11 +101,20 @@
 }
 
 /**
+ * Title
+ * @description
+ * Title text for the top bar.
+ */
+.title {
+  color: #ffffff;
+}
+
+/**
  * Properties panel container
  * @description
  * Right panel for component properties.
  */
-.propertiesPanelContainer {
+.propertiesPanel {
   width: 320px;
   background-color: #ffffff;
   border-left: 1px solid #e2e8f0;
@@ -114,19 +123,19 @@
   box-shadow: -2px 0 8px rgba(0, 0, 0, 0.05);
 }
 
-.propertiesPanelContainer::-webkit-scrollbar {
+.propertiesPanel::-webkit-scrollbar {
   width: 6px;
 }
 
-.propertiesPanelContainer::-webkit-scrollbar-track {
+.propertiesPanel::-webkit-scrollbar-track {
   background: #f7f8fa;
 }
 
-.propertiesPanelContainer::-webkit-scrollbar-thumb {
+.propertiesPanel::-webkit-scrollbar-thumb {
   background: #cbd5e0;
   border-radius: 3px;
 }
 
-.propertiesPanelContainer::-webkit-scrollbar-thumb:hover {
+.propertiesPanel::-webkit-scrollbar-thumb:hover {
   background: #a0aec0;
 }

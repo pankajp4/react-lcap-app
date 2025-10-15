@@ -1,24 +1,7 @@
 /**
  * @fileoverview
  * TemplateVersionDialog component for the UI Builder.
- * Display              <Box
-                key={version.version}
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  padding: "12px",
-                  borderBottom: "1px solid #e0e0e0",
-                  backgroundColor:
-                    version.version === template.version ? "#f0f7ff" : "transparent",
-                  "&:hover": {
-                    backgroundColor: "#f5f5f5",
-                  },
-                }}
-              >
-                <Box sx={{ flex: 1 }}>
-                  <Typography variant="subtitle2">
-                    Version {version.version}istory and allows restoring previous template versions.
+ * Displays version history and allows restoring previous template versions.
  *
  * @module Pages/UIBuilder/Components/TemplateVersionDialog
  * @category UIBuilder
@@ -43,6 +26,7 @@ import type {
   CustomTemplate,
   TemplateVersion,
 } from "../../../../../utils/builder/customComponentManager";
+import styles from "./TemplateVersionDialog.module.css";
 
 /**
  * Props for the TemplateVersionDialog
@@ -106,22 +90,13 @@ const TemplateVersionDialog: React.FC<TemplateVersionDialogProps> = ({
             .map((version) => (
               <Box
                 key={version.version}
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  padding: "12px",
-                  borderBottom: "1px solid #e0e0e0",
-                  backgroundColor:
-                    version.version === template.currentVersion
-                      ? "#f0f7ff"
-                      : "transparent",
-                  "&:hover": {
-                    backgroundColor: "#f5f5f5",
-                  },
-                }}
+                className={`${styles.versionItem} ${
+                  version.version === template.currentVersion
+                    ? styles.currentVersion
+                    : ""
+                }`}
               >
-                <Box sx={{ flex: 1 }}>
+                <Box className={styles.versionContent}>
                   <Typography variant="subtitle1">
                     Version {version.version}
                   </Typography>
@@ -129,14 +104,7 @@ const TemplateVersionDialog: React.FC<TemplateVersionDialogProps> = ({
                     {formatDate(version.updatedAt)}
                   </Typography>
                   {version.notes && (
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        marginTop: "4px",
-                        color: "#666",
-                        fontSize: "0.875rem",
-                      }}
-                    >
+                    <Typography variant="body2" className={styles.versionNotes}>
                       {version.notes}
                     </Typography>
                   )}

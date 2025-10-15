@@ -27,7 +27,7 @@
  * @description
  * Styles for the error title heading with red color and no top margin.
  */
-.errorContainer h2 {
+.errorHeading {
   color: #d32f2f;
   margin-top: 0;
 }
@@ -37,7 +37,7 @@
  * @description
  * Styles for the expandable details section containing error stack trace.
  */
-.errorContainer details {
+.errorDetails {
   margin-top: var(--spacing-sm);
 }
 
@@ -46,7 +46,7 @@
  * @description
  * Clickable summary element for toggling error details visibility.
  */
-.errorContainer summary {
+.errorSummary {
   cursor: pointer;
   color: #d32f2f;
 }
@@ -57,10 +57,13 @@
  * Preformatted text container for displaying error stack traces.
  * Uses white background with horizontal scrolling for long traces.
  */
-.errorContainer pre {
+.errorStack {
   margin-top: var(--spacing-sm);
   padding: var(--spacing-sm);
   background-color: #fff;
+  border: 1px solid #ddd;
   border-radius: var(--border-radius-sm);
   overflow-x: auto;
+  font-size: 0.875rem;
+  font-family: monospace;
 }

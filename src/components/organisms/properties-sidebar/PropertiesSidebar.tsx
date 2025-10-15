@@ -14,6 +14,7 @@ import type { PropertyConfig } from "../../../types/builder";
 import type { RootState } from "../../../store/store";
 import { updateComponent } from "../../../store/builder/builderSlice";
 import { PropertyField } from "../../atoms";
+import styles from "./PropertiesSidebar.module.css";
 
 /**
  * Right sidebar component that displays and manages properties of the selected component.
@@ -130,25 +131,9 @@ export const PropertiesSidebar = () => {
         elevation={1}
         component="section"
         aria-label="Properties panel - No component selected"
-        sx={{
-          width: "300px",
-          height: "100%",
-          overflowY: "auto",
-          borderRadius: 0,
-          display: "flex",
-          flexDirection: "column",
-        }}
+        className={styles.sidebar}
       >
-        <Box
-          sx={{
-            height: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: 2,
-            textAlign: "center",
-          }}
-        >
+        <Box className={styles.empty}>
           <Typography variant="body1" color="textSecondary" component="output">
             Select a component to edit its properties
           </Typography>
@@ -165,24 +150,10 @@ export const PropertiesSidebar = () => {
       elevation={1}
       component="section"
       aria-label={`Properties panel - ${componentConfig.label}`}
-      sx={{
-        width: "300px",
-        height: "100%",
-        overflowY: "auto",
-        borderRadius: 0,
-        display: "flex",
-        flexDirection: "column",
-      }}
+      className={styles.sidebar}
     >
       {/* Header with component type and section label */}
-      <Box
-        component="header"
-        sx={{
-          padding: 2,
-          borderBottom: 1,
-          borderColor: "divider",
-        }}
-      >
+      <Box component="header" className={styles.header}>
         <Typography variant="h6">{componentConfig.label}</Typography>
         <Typography variant="caption" color="textSecondary">
           Properties
@@ -193,13 +164,7 @@ export const PropertiesSidebar = () => {
       <Box
         component="form"
         aria-label="Component properties"
-        sx={{
-          padding: 2,
-          flex: 1,
-          display: "flex",
-          flexDirection: "column",
-          gap: 2,
-        }}
+        className={styles.content}
       >
         {componentConfig.properties?.map((property: PropertyConfig) => (
           <PropertyField
