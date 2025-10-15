@@ -1,3 +1,18 @@
+/**
+ * @fileoverview
+ * Global styles for the main App component.
+ * Defines core layout styles, logo animations, and responsive design rules.
+ * 
+ * @category Styles
+ * @since 1.0.0
+ */
+
+/**
+ * Root container element styles
+ * @description
+ * Centers the application content with a maximum width and padding.
+ * Provides centered text alignment for the main app container.
+ */
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,19 +20,41 @@
   text-align: center;
 }
 
+/**
+ * Logo element styles
+ * @description
+ * Defines the logo appearance with height, padding, and hover effects.
+ * Includes smooth transition for filter changes on hover.
+ */
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
+/**
+ * Logo hover effect
+ * @description
+ * Applies a blue glow effect when hovering over the logo.
+ */
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+/**
+ * React logo hover effect
+ * @description
+ * Applies a cyan glow effect specific to the React logo on hover.
+ */
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+/**
+ * Logo spin animation
+ * @description
+ * Keyframe animation that rotates an element 360 degrees.
+ * Used for the spinning logo effect.
+ */
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -27,16 +64,32 @@
   }
 }
 
+/**
+ * Reduced motion media query
+ * @description
+ * Applies logo animation only when user hasn't enabled reduced motion preference.
+ * Ensures accessibility for users with motion sensitivity.
+ */
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
 }
 
+/**
+ * Card container styles
+ * @description
+ * Provides padding for card-style content containers.
+ */
 .card {
   padding: 2em;
 }
 
+/**
+ * Documentation link styles
+ * @description
+ * Applies a muted gray color to documentation reference links.
+ */
 .read-the-docs {
   color: #888;
 }

@@ -1,3 +1,13 @@
+/**
+ * @fileoverview
+ * TemplateImportExportDialog component for the UI Builder.
+ * Handles importing and exporting custom component templates as JSON.
+ *
+ * @module Pages/UIBuilder/Components/TemplateImportExportDialog
+ * @category UIBuilder
+ * @since 1.0.0
+ */
+
 import React from "react";
 import {
   Dialog,
@@ -12,14 +22,45 @@ import {
 import customComponentManager from "../../../../utils/builder/customComponentManager";
 import type { CustomTemplate } from "../../../../utils/builder/customComponentManager";
 
+/**
+ * Props for the TemplateImportExportDialog
+ * @interface
+ * @category Props
+ */
 interface TemplateImportExportDialogProps {
+  /** Whether the dialog is open */
   open: boolean;
+  /** Callback fired when the dialog should close */
   onClose: () => void;
+  /** Callback fired when import/export is complete */
   onComplete: () => void;
+  /** Mode of operation - import or export */
   mode: "import" | "export";
+  /** Templates to export (only used in export mode) */
   selectedTemplates?: CustomTemplate[];
 }
 
+/**
+ * TemplateImportExportDialog component
+ * @description
+ * Dialog for importing and exporting custom component templates.
+ * Supports JSON format for template data exchange.
+ *
+ * @component
+ * @param {TemplateImportExportDialogProps} props - Component props
+ * @returns {React.ReactElement} The rendered dialog
+ *
+ * @example
+ * ```tsx
+ * <TemplateImportExportDialog
+ *   open={isOpen}
+ *   onClose={handleClose}
+ *   onComplete={handleComplete}
+ *   mode="export"
+ *   selectedTemplates={templates}
+ * />
+ * ```
+ */
 const TemplateImportExportDialog: React.FC<TemplateImportExportDialogProps> = ({
   open,
   onClose,

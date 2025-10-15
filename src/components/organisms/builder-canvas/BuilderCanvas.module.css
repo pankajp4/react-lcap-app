@@ -1,3 +1,19 @@
+/**
+ * @fileoverview
+ * Styles for the BuilderCanvas organism.
+ * Provides the main canvas area for drag-and-drop form building with visual feedback.
+ * 
+ * @category Styles
+ * @module Components/Organisms/BuilderCanvas
+ * @since 1.0.0
+ */
+
+/**
+ * Canvas container styles
+ * @description
+ * Main canvas area with flex layout, gray background, and scrollable content.
+ * Includes subtle dashed border that highlights during drag operations.
+ */
 .canvas {
   flex: 1;
   padding: 24px;
@@ -8,10 +24,20 @@
   transition: border-color 0.2s ease;
 }
 
+/**
+ * Drag over state
+ * @description
+ * Highlights the canvas border when a component is being dragged over it.
+ */
 .dragOver {
   border-color: #1976d2;
 }
 
+/**
+ * Empty canvas container
+ * @description
+ * Centers the empty state message when no components are on the canvas.
+ */
 .emptyCanvas {
   display: flex;
   align-items: center;
@@ -20,6 +46,11 @@
   background-color: #f5f5f5;
 }
 
+/**
+ * Empty state message
+ * @description
+ * Styling for the placeholder message shown when canvas is empty.
+ */
 .emptyMessage {
   text-align: center;
   padding: 24px;

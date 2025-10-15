@@ -1,3 +1,13 @@
+/**
+ * @fileoverview
+ * TemplateVersionDialog component for the UI Builder.
+ * Displays version history and allows restoring previous template versions.
+ *
+ * @module Pages/UIBuilder/Components/TemplateVersionDialog
+ * @category UIBuilder
+ * @since 1.0.0
+ */
+
 import React from "react";
 import {
   Dialog,
@@ -17,13 +27,42 @@ import type {
   TemplateVersion,
 } from "../../../../utils/builder/customComponentManager";
 
+/**
+ * Props for the TemplateVersionDialog
+ * @interface
+ * @category Props
+ */
 interface TemplateVersionDialogProps {
+  /** Whether the dialog is open */
   open: boolean;
+  /** Callback fired when the dialog should close */
   onClose: () => void;
+  /** The template whose versions are being displayed */
   template: CustomTemplate;
+  /** Callback fired when a version should be restored */
   onVersionRestore: (version: TemplateVersion) => void;
 }
 
+/**
+ * TemplateVersionDialog component
+ * @description
+ * Dialog for viewing and restoring previous versions of a custom template.
+ * Displays version history with timestamps and restore actions.
+ *
+ * @component
+ * @param {TemplateVersionDialogProps} props - Component props
+ * @returns {React.ReactElement} The rendered dialog
+ *
+ * @example
+ * ```tsx
+ * <TemplateVersionDialog
+ *   open={isOpen}
+ *   onClose={handleClose}
+ *   template={template}
+ *   onVersionRestore={handleRestore}
+ * />
+ * ```
+ */
 const TemplateVersionDialog: React.FC<TemplateVersionDialogProps> = ({
   open,
   onClose,

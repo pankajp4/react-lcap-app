@@ -1,13 +1,38 @@
+/**
+ * @fileoverview
+ * Styles for the ComponentGroup molecule.
+ * Provides accordion-style grouping for related components in the sidebar.
+ * 
+ * @category Styles
+ * @module Components/Molecules/ComponentGroup
+ * @since 1.0.0
+ */
+
+/**
+ * Accordion container styles
+ * @description
+ * Removes default shadow and adds a subtle border for accordion containers.
+ */
 .accordion {
   margin-bottom: 8px;
   box-shadow: none;
   border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
+/**
+ * Accordion summary styles
+ * @description
+ * Sets minimum height for the clickable accordion header area.
+ */
 .summary {
   min-height: 48px;
 }
 
+/**
+ * Summary content layout
+ * @description
+ * Flexbox layout for the accordion summary content with space between items.
+ */
 .summary > div {
   display: flex;
   justify-content: space-between;
@@ -15,6 +40,11 @@
   width: 100%;
 }
 
+/**
+ * Accordion details styles
+ * @description
+ * Container for expanded accordion content with vertical layout and spacing.
+ */
 .details {
   padding: 8px;
   display: flex;

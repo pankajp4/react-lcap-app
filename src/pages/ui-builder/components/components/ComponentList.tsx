@@ -1,3 +1,13 @@
+/**
+ * @fileoverview
+ * ComponentList component for the UI Builder.
+ * Displays a searchable, categorized list of available components.
+ *
+ * @module Pages/UIBuilder/Components/ComponentList
+ * @category UIBuilder
+ * @since 1.0.0
+ */
+
 import React from "react";
 import styled from "@emotion/styled";
 import { componentRegistry } from "../../../../utils/builder/componentRegistry";

@@ -1,3 +1,19 @@
+/**
+ * @fileoverview
+ * Global base styles for the React LCAP application.
+ * Defines root-level typography, colors, and default element styles.
+ * 
+ * @category Styles
+ * @module Styles/Index
+ * @since 1.0.0
+ */
+
+/**
+ * Root element styles
+ * @description
+ * Sets up base typography, color scheme, and font rendering optimizations.
+ * Supports both light and dark color schemes.
+ */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -13,15 +29,30 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/**
+ * Anchor link base styles
+ * @description
+ * Default styling for links with blue color and medium weight.
+ */
 a {
   font-weight: 500;
   color: #646cff;
   text-decoration: inherit;
 }
+/**
+ * Anchor link hover state
+ * @description
+ * Lighter blue color on hover for visual feedback.
+ */
 a:hover {
   color: #535bf2;
 }
 
+/**
+ * Body element styles
+ * @description
+ * Removes default margin and centers content with minimum dimensions.
+ */
 body {
   margin: 0;
   display: flex;
@@ -30,11 +61,21 @@ body {
   min-height: 100vh;
 }
 
+/**
+ * Heading 1 styles
+ * @description
+ * Large heading with reduced line height for better visual hierarchy.
+ */
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
 
+/**
+ * Button base styles
+ * @description
+ * Default button styling with rounded corners, padding, and hover effects.
+ */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -46,14 +87,29 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+/**
+ * Button hover state
+ * @description
+ * Shows blue border on hover for interactive feedback.
+ */
 button:hover {
   border-color: #646cff;
 }
+/**
+ * Button focus state
+ * @description
+ * Displays focus outline for accessibility.
+ */
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/**
+ * Light color scheme media query
+ * @description
+ * Overrides colors for users who prefer light mode.
+ */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

@@ -1,3 +1,18 @@
+/**
+ * @fileoverview
+ * Styles for the ComponentSidebar organism.
+ * Defines the layout for the component palette sidebar.
+ * 
+ * @category Styles
+ * @module Components/Organisms/ComponentSidebar
+ * @since 1.0.0
+ */
+
+/**
+ * Sidebar container styles
+ * @description
+ * Fixed width sidebar with scrollable content and right border.
+ */
 .sidebar {
   width: 280px;
   height: 100%;
@@ -5,6 +20,11 @@
   border-right: 1px solid rgba(0, 0, 0, 0.12);
 }
 
+/**
+ * Sidebar content area
+ * @description
+ * Inner content container with vertical layout and spacing.
+ */
 .content {
   padding: 16px;
   display: flex;

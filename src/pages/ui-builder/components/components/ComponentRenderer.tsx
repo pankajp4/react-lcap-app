@@ -1,3 +1,13 @@
+/**
+ * @fileoverview
+ * ComponentRenderer for the UI Builder.
+ * Dynamically renders components based on their type with Material-UI components.
+ *
+ * @module Pages/UIBuilder/Components/ComponentRenderer
+ * @category UIBuilder
+ * @since 1.0.0
+ */
+
 import {
   Button,
   Card,
@@ -20,10 +30,31 @@ import {
 } from "../../../../components/atoms";
 import type { BaseComponent } from "../../../../store/builder/types";
 
+/**
+ * Props for the ComponentRenderer
+ * @interface
+ * @category Props
+ */
 interface ComponentRendererProps {
+  /** The component to render */
   component: BaseComponent;
 }
 
+/**
+ * ComponentRenderer component
+ * @description
+ * Recursively renders UI components based on their type definition.
+ * Supports nested components and various Material-UI component types.
+ *
+ * @component
+ * @param {ComponentRendererProps} props - Component props
+ * @returns {React.ReactElement | null} The rendered component or null
+ *
+ * @example
+ * ```tsx
+ * <ComponentRenderer component={component} />
+ * ```
+ */
 const ComponentRenderer: React.FC<ComponentRendererProps> = ({ component }) => {
   const renderChildren = (children?: BaseComponent[]) => {
     if (!children?.length) return null;

@@ -1,3 +1,18 @@
+/**
+ * @fileoverview
+ * Styles for the TopNavbar organism.
+ * Provides styling for the main application navigation bar with search and user menu.
+ * 
+ * @category Styles
+ * @module Components/Organisms/TopNavbar
+ * @since 1.0.0
+ */
+
+/**
+ * Toolbar container styles
+ * @description
+ * Main toolbar layout with space-between alignment and white background.
+ */
 .toolbar {
   display: flex;
   justify-content: space-between;
@@ -5,15 +20,30 @@
   padding: 0 16px;
 }
 
+/**
+ * Home link styles
+ * @description
+ * Clickable logo/title link with hover opacity effect.
+ */
 .homeLink {
   cursor: pointer;
   color: inherit;
 }
 
+/**
+ * Home link hover state
+ * @description
+ * Reduces opacity on hover for visual feedback.
+ */
 .homeLink:hover {
   opacity: 0.8;
 }
 
+/**
+ * Center section container
+ * @description
+ * Flexible center section for search and other toolbar items.
+ */
 .centerSection {
   display: flex;
   align-items: center;
@@ -23,19 +53,39 @@
   margin: 0 24px;
 }
 
+/**
+ * Search container styles
+ * @description
+ * Positioned container for search input with icon overlay.
+ */
 .searchContainer {
   position: relative;
   width: 200px;
 }
 
+/**
+ * Search input field
+ * @description
+ * Full width search input with custom padding for icon.
+ */
 .searchInput {
   width: 100%;
 }
 
+/**
+ * Search input padding override
+ * @description
+ * Adds left padding to accommodate search icon.
+ */
 .searchInput input {
   padding-left: 36px !important;
 }
 
+/**
+ * Search icon positioning
+ * @description
+ * Absolutely positioned search icon overlay on input field.
+ */
 .searchIcon {
   position: absolute;
   left: 8px;
@@ -45,11 +95,21 @@
   pointer-events: none;
 }
 
+/**
+ * User avatar sizing
+ * @description
+ * Fixed dimensions for user avatar in the navbar.
+ */
 .userAvatar {
   width: 32px;
   height: 32px;
 }
 
+/**
+ * Menu item layout
+ * @description
+ * Flexbox layout for menu items with icon and text alignment.
+ */
 .menuItem {
   display: flex;
   align-items: center;

@@ -1,3 +1,13 @@
+/**
+ * @fileoverview
+ * PropertiesPanel component for the UI Builder.
+ * Provides an interface for editing component properties dynamically.
+ *
+ * @module Pages/UIBuilder/Components/PropertiesPanel
+ * @category UIBuilder
+ * @since 1.0.0
+ */
+
 import React from "react";
 import styled from "@emotion/styled";
 import { componentRegistry } from "../../../../utils/builder/componentRegistry";

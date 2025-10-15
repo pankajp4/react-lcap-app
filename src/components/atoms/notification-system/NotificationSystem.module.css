@@ -1,3 +1,19 @@
+/**
+ * @fileoverview
+ * Styles for the NotificationSystem component.
+ * Configures z-index for notification snackbars to ensure proper layering.
+ * 
+ * @category Styles
+ * @module Components/Atoms/NotificationSystem
+ * @since 1.0.0
+ */
+
+/**
+ * Snackbar z-index override
+ * @description
+ * Sets a high z-index to ensure notifications appear above all other UI elements.
+ * Value of 1400 ensures visibility over modals and dialogs.
+ */
 .snackbar {
   z-index: 1400;
 }

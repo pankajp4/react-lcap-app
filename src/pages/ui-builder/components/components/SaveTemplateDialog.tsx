@@ -1,3 +1,13 @@
+/**
+ * @fileoverview
+ * SaveTemplateDialog component for the UI Builder.
+ * Allows users to save custom component templates with metadata.
+ *
+ * @module Pages/UIBuilder/Components/SaveTemplateDialog
+ * @category UIBuilder
+ * @since 1.0.0
+ */
+
 import React from "react";
 import {
   Dialog,
@@ -21,6 +31,10 @@ import type { BaseComponent } from "../../../../store/builder/types";
 import type { CustomTemplate } from "../../../../utils/builder/customComponentManager";
 import customComponentManager from "../../../../utils/builder/customComponentManager";
 
+/**
+ * Available template categories
+ * @constant
+ */
 const CATEGORIES = [
   "Layout",
   "Forms",

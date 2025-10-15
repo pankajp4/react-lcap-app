@@ -1,3 +1,18 @@
+/**
+ * @fileoverview
+ * Styles for the Canvas component in the UI Builder.
+ * Uses CSS custom properties for extensive theming capabilities.
+ * 
+ * @category Styles
+ * @module Pages/UIBuilder/Components/Canvas
+ * @since 1.0.0
+ */
+
+/**
+ * Canvas container styles
+ * @description
+ * Main canvas container with themeable padding, height, background, and borders.
+ */
 .canvasContainer {
   padding: var(--canvas-padding);
   min-height: var(--canvas-min-height);
@@ -6,6 +21,11 @@
   border: var(--canvas-border);
 }
 
+/**
+ * Component wrapper styles
+ * @description
+ * Wrapper for each component on the canvas with customizable spacing and borders.
+ */
 .componentWrapper {
   padding: var(--component-wrapper-padding);
   margin-bottom: var(--component-wrapper-margin-bottom);
@@ -13,37 +33,72 @@
   border-radius: var(--component-wrapper-border-radius);
 }
 
+/**
+ * Selected component state
+ * @description
+ * Special border styling for the currently selected component.
+ */
 .isSelected {
   border: var(--component-wrapper-selected-border);
 }
 
+/**
+ * Component preview layout
+ * @description
+ * Flexbox layout for component preview with icon and content.
+ */
 .componentPreview {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
+/**
+ * Component button styles
+ * @description
+ * Styles for clickable component buttons with left-aligned text.
+ */
 .componentButton {
   flex-grow: 1;
   justify-content: flex-start;
   text-align: left;
 }
 
+/**
+ * Delete button base styles
+ * @description
+ * Compact delete button with minimal padding and themed colors.
+ */
 .deleteButton {
   min-width: auto !important;
   padding: 4px !important;
   color: var(--delete-icon-button-color) !important;
 }
 
+/**
+ * Delete button hover state
+ * @description
+ * Hover effects for the delete button with color and background changes.
+ */
 .deleteButton:hover {
   color: var(--delete-icon-button-hover-color) !important;
   background-color: var(--icon-button-hover-bg) !important;
 }
 
+/**
+ * Delete button active state
+ * @description
+ * Active state background for delete button on click.
+ */
 .deleteButton:active {
   background-color: var(--icon-button-active-bg) !important;
 }
 
+/**
+ * Drop indicator styles
+ * @description
+ * Visual indicator for drop zones between components.
+ */
 .dropIndicator {
   margin-top: var(--drop-area-margin-top);
   padding: var(--drop-area-padding);
@@ -53,10 +108,20 @@
   background-color: var(--drop-area-background);
 }
 
+/**
+ * Drop indicator hover state
+ * @description
+ * Highlights the drop indicator when dragging over it.
+ */
 .isOver {
   border: var(--drop-area-active-border);
 }
 
+/**
+ * Empty canvas state
+ * @description
+ * Centered message display when canvas has no components.
+ */
 .emptyCanvas {
   height: 100%;
   min-height: var(--empty-canvas-min-height);
@@ -68,10 +133,20 @@
   color: var(--empty-canvas-text-color);
 }
 
+/**
+ * Empty canvas drag over state
+ * @description
+ * Highlights the empty canvas when dragging components over it.
+ */
 .emptyCanvas.isOver {
   border: var(--empty-canvas-active-border);
 }
 
+/**
+ * Drop zone text styles
+ * @description
+ * Centered text for drop zone instructions and feedback.
+ */
 .dropText {
   color: var(--drop-area-text-color);
   text-align: center;

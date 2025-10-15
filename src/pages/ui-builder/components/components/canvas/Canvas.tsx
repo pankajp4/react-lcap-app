@@ -1,3 +1,13 @@
+/**
+ * @fileoverview
+ * Canvas component for the UI Builder.
+ * Provides the main workspace for adding, arranging, and managing UI components.
+ *
+ * @module Pages/UIBuilder/Components/Canvas
+ * @category UIBuilder
+ * @since 1.0.0
+ */
+
 import React from "react";
 import { componentRegistry } from "../../../../../utils/builder/componentRegistry";
 import type { BaseComponent } from "../../../../../store/builder/types";
@@ -6,14 +16,45 @@ import DeleteIcon from "@mui/icons-material/Close";
 import clsx from "clsx";
 import styles from "./Canvas.module.css";
 
+/**
+ * Props for the Canvas component
+ * @interface
+ * @category Props
+ */
 interface CanvasProps {
+  /** Array of components currently on the canvas */
   components: BaseComponent[];
+  /** ID of the currently selected component */
   selectedId: string | null;
+  /** Callback fired when a component is dropped on the canvas */
   onComponentDrop: (component: BaseComponent, parentId?: string) => void;
+  /** Callback fired when a component is selected */
   onSelectComponent: (id: string) => void;
+  /** Callback fired when a component is deleted */
   onDeleteComponent: (id: string) => void;
 }
 
+/**
+ * Canvas component
+ * @description
+ * Main canvas area for the UI Builder where users can drag, drop, arrange,
+ * and manage components. Supports drag-and-drop, component selection, and deletion.
+ *
+ * @component
+ * @param {CanvasProps} props - Component props
+ * @returns {React.ReactElement} The rendered canvas component
+ *
+ * @example
+ * ```tsx
+ * <Canvas
+ *   components={components}
+ *   selectedId={selectedId}
+ *   onComponentDrop={handleDrop}
+ *   onSelectComponent={handleSelect}
+ *   onDeleteComponent={handleDelete}
+ * />
+ * ```
+ */
 const Canvas: React.FC<CanvasProps> = ({
   components,
   selectedId,

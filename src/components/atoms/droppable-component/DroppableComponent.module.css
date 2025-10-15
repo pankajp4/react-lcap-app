@@ -1,3 +1,19 @@
+/**
+ * @fileoverview
+ * Styles for the DroppableComponent atom.
+ * Provides drop zone visual feedback, selection states, and resize handle positioning.
+ * 
+ * @category Styles
+ * @module Components/Atoms/DroppableComponent
+ * @since 1.0.0
+ */
+
+/**
+ * Droppable zone base styles
+ * @description
+ * Base container for droppable areas with minimum height and transition effects.
+ * Uses transparent border that changes on drag-over state.
+ */
 .droppable {
   position: relative;
   min-height: 40px;
@@ -6,14 +22,30 @@
   cursor: pointer;
 }
 
+/**
+ * Dragging over state
+ * @description
+ * Highlights the droppable area when an item is being dragged over it.
+ */
 .draggingOver {
   border-color: #1976d2;
 }
 
+/**
+ * Selected state
+ * @description
+ * Highlights the droppable component when selected for editing.
+ */
 .selected {
   border-color: #1976d2;
 }
 
+/**
+ * Resize handles container
+ * @description
+ * Container for all resize handles, positioned absolutely to overlay the component.
+ * Disables pointer events by default, enabled on individual handles.
+ */
 .resizeHandles {
   position: absolute;
   top: 0;
@@ -23,6 +55,11 @@
   pointer-events: none;
 }
 
+/**
+ * Base resize handle styles
+ * @description
+ * Common styles for all resize handles with blue background and white border.
+ */
 .handle {
   position: absolute;
   width: 8px;
@@ -33,24 +70,44 @@
   cursor: nwse-resize;
 }
 
+/**
+ * Top-left resize handle
+ * @description
+ * Positioned at the top-left corner with northwest resize cursor.
+ */
 .topLeft {
   top: -4px;
   left: -4px;
   cursor: nw-resize;
 }
 
+/**
+ * Top-right resize handle
+ * @description
+ * Positioned at the top-right corner with northeast resize cursor.
+ */
 .topRight {
   top: -4px;
   right: -4px;
   cursor: ne-resize;
 }
 
+/**
+ * Bottom-left resize handle
+ * @description
+ * Positioned at the bottom-left corner with southwest resize cursor.
+ */
 .bottomLeft {
   bottom: -4px;
   left: -4px;
   cursor: sw-resize;
 }
 
+/**
+ * Bottom-right resize handle
+ * @description
+ * Positioned at the bottom-right corner with southeast resize cursor.
+ */
 .bottomRight {
   bottom: -4px;
   right: -4px;

@@ -1,3 +1,19 @@
+/**
+ * @fileoverview
+ * Styles for the DraggableComponent atom.
+ * Provides drag-and-drop visual feedback and cursor states.
+ * 
+ * @category Styles
+ * @module Components/Atoms/DraggableComponent
+ * @since 1.0.0
+ */
+
+/**
+ * Draggable element base styles
+ * @description
+ * Sets up the draggable element with grab cursor, spacing, and transition effects.
+ * Disables text selection and touch actions for better drag experience.
+ */
 .draggable {
   cursor: grab;
   margin: 8px 0;
@@ -6,16 +22,31 @@
   transition: opacity 0.2s;
 }
 
+/**
+ * Active dragging state
+ * @description
+ * Changes cursor to grabbing while element is being dragged.
+ */
 .draggable:active {
   cursor: grabbing;
 }
 
+/**
+ * Disabled draggable state
+ * @description
+ * Reduces opacity and prevents interaction when component is disabled.
+ */
 .disabled {
   opacity: 0.5;
   cursor: not-allowed;
   pointer-events: none;
 }
 
+/**
+ * Content container styles
+ * @description
+ * Flexbox layout for draggable component content with centered alignment.
+ */
 .content {
   display: flex;
   align-items: center;
@@ -23,6 +54,11 @@
   padding: 8px;
 }
 
+/**
+ * Icon element styles
+ * @description
+ * Styles for the drag handle icon with appropriate size and color.
+ */
 .icon {
   font-size: 20px;
   color: #666;

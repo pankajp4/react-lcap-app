@@ -1,11 +1,36 @@
+/**
+ * @fileoverview
+ * Styles for the PropertyField component.
+ * Provides consistent spacing for property input fields in the properties panel.
+ * 
+ * @category Styles
+ * @module Components/Atoms/PropertyField
+ * @since 1.0.0
+ */
+
+/**
+ * Property field base styles
+ * @description
+ * Sets vertical margin for property fields with exceptions for first and last children.
+ */
 .field {
   margin: 8px 0;
 }
 
+/**
+ * First field styles
+ * @description
+ * Removes top margin from the first property field to align with container top.
+ */
 .field:first-child {
   margin-top: 0;
 }
 
+/**
+ * Last field styles
+ * @description
+ * Removes bottom margin from the last property field to align with container bottom.
+ */
 .field:last-child {
   margin-bottom: 0;
 }

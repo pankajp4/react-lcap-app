@@ -1,3 +1,14 @@
+/**
+ * @fileoverview
+ * Main UIBuilder component.
+ * Orchestrates all UI builder functionality including component management,
+ * preview, template saving, and code export.
+ *
+ * @module Pages/UIBuilder/Components/UIBuilder
+ * @category UIBuilder
+ * @since 1.0.0
+ */
+
 import React from "react";
 import styled from "@emotion/styled";
 import ComponentList from "./ComponentList";

@@ -1,3 +1,18 @@
+/**
+ * @fileoverview
+ * Styles for the PropertiesSidebar organism.
+ * Provides layout for the component properties editor panel.
+ * 
+ * @category Styles
+ * @module Components/Organisms/PropertiesSidebar
+ * @since 1.0.0
+ */
+
+/**
+ * Sidebar container styles
+ * @description
+ * Right sidebar with fixed width, scrollable content, and vertical flex layout.
+ */
 .sidebar {
   width: 300px;
   height: 100%;
@@ -7,11 +22,21 @@
   flex-direction: column;
 }
 
+/**
+ * Sidebar header styles
+ * @description
+ * Header area with padding and bottom border for the properties panel.
+ */
 .header {
   padding: 16px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
+/**
+ * Sidebar content area
+ * @description
+ * Flexible content container for property fields with vertical layout.
+ */
 .content {
   padding: 16px;
   flex: 1;
@@ -20,6 +45,11 @@
   gap: 16px;
 }
 
+/**
+ * Empty state container
+ * @description
+ * Centers the empty state message when no component is selected.
+ */
 .empty {
   height: 100%;
   display: flex;

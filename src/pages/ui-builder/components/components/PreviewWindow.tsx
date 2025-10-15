@@ -1,3 +1,13 @@
+/**
+ * @fileoverview
+ * PreviewWindow component for the UI Builder.
+ * Provides a full-screen preview of the built UI components.
+ *
+ * @module Pages/UIBuilder/Components/PreviewWindow
+ * @category UIBuilder
+ * @since 1.0.0
+ */
+
 import React from "react";
 import styled from "@emotion/styled";
 import { Button } from "@mui/material";
