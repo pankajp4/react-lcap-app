@@ -34,52 +34,54 @@
 /**
  * Button base styles
  * @description
- * Primary button styling with transitions.
+ * Primary button styling with transitions using global variables.
  */
 .button {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 6px;
-  padding: 8px 16px;
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-color);
+  border: var(--button-primary-border);
+  border-radius: var(--button-border-radius);
+  padding: var(--button-padding);
   cursor: pointer;
-  font-size: 0.875rem;
-  font-weight: 500;
-  transition: all var(--transition-fast);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  transition: var(--button-transition);
   backdrop-filter: blur(10px);
 }
 
 /**
  * Button hover state
  * @description
- * Lighter background on hover.
+ * Lighter background on hover with elevation effect.
  */
 .button:hover:not(:disabled) {
-  background-color: rgba(255, 255, 255, 0.3);
-  border-color: rgba(255, 255, 255, 0.5);
+  background-color: var(--button-primary-hover-bg);
+  border-color: var(--button-primary-hover-border);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--button-primary-hover-shadow);
 }
 
 /**
  * Button active state
  * @description
- * Pressed state styling.
+ * Pressed state styling - removes elevation.
  */
 .button:active:not(:disabled) {
   transform: translateY(0);
+  background-color: var(--button-primary-active-bg);
 }
 
 /**
  * Button disabled state
  * @description
- * Muted appearance for disabled buttons.
+ * Muted appearance for disabled buttons with reduced opacity and no interaction.
  */
 .button:disabled {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.15);
+  background-color: var(--button-primary-disabled-bg);
+  border-color: var(--button-primary-disabled-border);
+  color: var(--button-primary-disabled-color);
+  opacity: var(--button-primary-disabled-opacity);
   cursor: not-allowed;
-  opacity: 0.5;
 }
 
 /**

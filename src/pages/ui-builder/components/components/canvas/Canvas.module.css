@@ -69,40 +69,51 @@
  * Component button styles
  * @description
  * Styles for clickable component buttons with left-aligned text.
+ * Uses global button variables for consistent theming.
  */
 .componentButton {
   flex-grow: 1;
   justify-content: flex-start;
   text-align: left;
-  padding: 8px 12px;
-  background-color: #f7f8fa;
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  color: #2d3748;
-  font-size: 0.875rem;
+  padding: var(--button-padding);
+  background-color: var(--button-secondary-bg);
+  border: var(--button-secondary-border);
+  border-radius: var(--button-border-radius);
+  color: var(--button-secondary-color);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: var(--button-transition);
 }
 
-.componentButton:hover {
-  background-color: #edf2f7;
-  border-color: #cbd5e0;
+.componentButton:hover:not(:disabled) {
+  background-color: var(--button-secondary-hover-bg);
+  border-color: var(--button-secondary-hover-border);
+}
+
+.componentButton:disabled {
+  background-color: var(--button-secondary-disabled-bg);
+  border-color: var(--button-secondary-disabled-border);
+  color: var(--button-secondary-disabled-color);
+  opacity: var(--button-secondary-disabled-opacity);
+  cursor: not-allowed;
 }
 
 /**
  * Delete button base styles
  * @description
  * Compact delete button with minimal padding and themed colors.
+ * Uses icon button variables for consistency.
  */
 .deleteButton {
   min-width: auto !important;
   padding: 6px !important;
-  color: #e53e3e !important;
+  color: var(--delete-icon-button-color) !important;
   background-color: transparent;
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: var(--button-transition);
 }
 
 /**
@@ -110,10 +121,23 @@
  * @description
  * Hover effects for the delete button with color and background changes.
  */
-.deleteButton:hover {
-  color: #c53030 !important;
+.deleteButton:hover:not(:disabled) {
+  color: var(--delete-icon-button-hover-color) !important;
   background-color: #fed7d7 !important;
   border-color: #fc8181 !important;
+}
+
+/**
+ * Delete button disabled state
+ * @description
+ * Disabled state for delete button with reduced opacity.
+ */
+.deleteButton:disabled {
+  color: var(--delete-icon-button-disabled-color) !important;
+  opacity: var(--icon-button-disabled-opacity);
+  cursor: not-allowed;
+  background-color: transparent !important;
+  border-color: transparent !important;
 }
 
 /**
@@ -121,7 +145,7 @@
  * @description
  * Active state background for delete button on click.
  */
-.deleteButton:active {
+.deleteButton:active:not(:disabled) {
   background-color: #feb2b2 !important;
 }
 

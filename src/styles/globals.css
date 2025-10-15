@@ -40,6 +40,11 @@
   --border-radius-md: 8px;
   --border-radius-lg: 12px;
 
+  /* Transitions */
+  --transition-fast: 0.15s ease-in-out;
+  --transition-normal: 0.25s ease-in-out;
+  --transition-slow: 0.3s ease-in-out;
+
   /* Textbox Component Variables */
   --textbox-width: 100%;
   --textbox-margin: 4px 0;
@@ -57,13 +62,48 @@
   --textbox-disabled-border: #e0e0e0;
   --textbox-placeholder-color: #757575;
 
+  /* Button Variables */
+  --button-font-size: 0.875rem;
+  --button-font-weight: 500;
+  --button-padding: 8px 16px;
+  --button-border-radius: 6px;
+  --button-transition: all 0.15s ease-in-out;
+  
+  /* Primary Button */
+  --button-primary-bg: rgba(255, 255, 255, 0.2);
+  --button-primary-color: #ffffff;
+  --button-primary-border: 1px solid rgba(255, 255, 255, 0.3);
+  --button-primary-hover-bg: rgba(255, 255, 255, 0.3);
+  --button-primary-hover-border: rgba(255, 255, 255, 0.5);
+  --button-primary-hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --button-primary-active-bg: rgba(255, 255, 255, 0.25);
+  --button-primary-disabled-bg: rgba(200, 200, 200, 0.3);
+  --button-primary-disabled-border: rgba(200, 200, 200, 0.4);
+  --button-primary-disabled-color: rgba(100, 100, 100, 0.8);
+  --button-primary-disabled-opacity: 1;
+  
+  /* Secondary Button */
+  --button-secondary-bg: transparent;
+  --button-secondary-color: #1976d2;
+  --button-secondary-border: 1px solid #1976d2;
+  --button-secondary-hover-bg: rgba(25, 118, 210, 0.04);
+  --button-secondary-hover-border: #1565c0;
+  --button-secondary-active-bg: rgba(25, 118, 210, 0.08);
+  --button-secondary-disabled-bg: rgba(0, 0, 0, 0.04);
+  --button-secondary-disabled-border: rgba(0, 0, 0, 0.26);
+  --button-secondary-disabled-color: rgba(0, 0, 0, 0.38);
+  --button-secondary-disabled-opacity: 1;
+  
   /* Icon Button Variables */
   --icon-button-color: #757575;
   --icon-button-hover-color: #333333;
   --icon-button-hover-bg: rgba(0, 0, 0, 0.04);
   --icon-button-active-bg: rgba(0, 0, 0, 0.1);
+  --icon-button-disabled-color: rgba(0, 0, 0, 0.38);
+  --icon-button-disabled-opacity: 1;
   --delete-icon-button-color: #ef4444;
   --delete-icon-button-hover-color: #dc2626;
+  --delete-icon-button-disabled-color: rgba(239, 68, 68, 0.5);
 
   /* Canvas Component Variables */
   --canvas-padding: 16px;
@@ -114,8 +154,23 @@
     --icon-button-hover-color: #ffffff;
     --icon-button-hover-bg: rgba(255, 255, 255, 0.08);
     --icon-button-active-bg: rgba(255, 255, 255, 0.12);
+    --icon-button-disabled-color: rgba(255, 255, 255, 0.4);
     --delete-icon-button-color: #f87171;
     --delete-icon-button-hover-color: #ef4444;
+    --delete-icon-button-disabled-color: rgba(248, 113, 113, 0.5);
+    
+    /* Button Dark Theme */
+    --button-primary-bg: rgba(255, 255, 255, 0.15);
+    --button-primary-hover-bg: rgba(255, 255, 255, 0.25);
+    --button-primary-disabled-bg: rgba(150, 150, 150, 0.25);
+    --button-primary-disabled-color: rgba(180, 180, 180, 0.9);
+    --button-secondary-color: #90caf9;
+    --button-secondary-border: 1px solid #90caf9;
+    --button-secondary-hover-bg: rgba(144, 202, 249, 0.08);
+    --button-secondary-hover-border: #64b5f6;
+    --button-secondary-disabled-bg: rgba(255, 255, 255, 0.05);
+    --button-secondary-disabled-border: rgba(255, 255, 255, 0.23);
+    --button-secondary-disabled-color: rgba(255, 255, 255, 0.4);
 
     --textbox-color: #e0e0e0;
     --textbox-bg-color: #333333;
