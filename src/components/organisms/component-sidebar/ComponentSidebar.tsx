@@ -6,11 +6,11 @@
  * @category FormBuilder
  */
 
-import { Paper } from "@mui/material";
+import { Paper, Box } from "@mui/material";
+
+import type { ComponentConfig } from "../../../types/builder";
 import { availableComponents } from "../../../config/components";
 import { ComponentGroup } from "../../molecules";
-import type { ComponentConfig } from "../../../types/builder";
-import styles from "./ComponentSidebar.module.css";
 
 /**
  * Left sidebar component that displays available form components grouped by category.
@@ -86,11 +86,26 @@ export const ComponentSidebar = () => {
   return (
     <Paper
       elevation={1}
-      className={styles.sidebar}
       component="section"
       aria-label="Component palette"
+      sx={{
+        width: "280px",
+        height: "100%",
+        overflowY: "auto",
+        borderRight: 1,
+        borderColor: "divider",
+      }}
     >
-      <nav className={styles.content} aria-label="Available components">
+      <Box
+        component="nav"
+        aria-label="Available components"
+        sx={{
+          padding: 2,
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+        }}
+      >
         {/* Render each category group */}
         {Object.entries(groupedComponents).map(([category, components]) => (
           <ComponentGroup
@@ -100,7 +115,7 @@ export const ComponentSidebar = () => {
             aria-label={`${formatCategoryTitle(category)} components`}
           />
         ))}
-      </nav>
+      </Box>
     </Paper>
   );
 };

@@ -6,17 +6,17 @@
  * @category FormBuilder
  */
 
-import { useState } from "react";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {
   Accordion,
-  AccordionSummary,
   AccordionDetails,
+  AccordionSummary,
   Typography,
 } from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { useState } from "react";
+
 import type { ComponentConfig } from "../../../types/builder";
 import { DraggableComponent } from "../../atoms";
-import styles from "./ComponentGroup.module.css";
 
 /**
  * Props for the ComponentGroup component
@@ -119,13 +119,26 @@ export const ComponentGroup = ({ title, components }: ComponentGroupProps) => {
     <Accordion
       expanded={expanded}
       onChange={handleExpand}
-      className={styles.accordion}
+      sx={{
+        marginBottom: 1,
+        boxShadow: "none",
+        border: 1,
+        borderColor: "divider",
+      }}
     >
       {/* Accordion header with group title and component count */}
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
-        className={styles.summary}
         aria-label={`${title} component group`}
+        sx={{
+          minHeight: "48px",
+          "& .MuiAccordionSummary-content": {
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "100%",
+          },
+        }}
       >
         <Typography variant="subtitle2">{title}</Typography>
         <Typography variant="caption" color="textSecondary">
@@ -134,7 +147,14 @@ export const ComponentGroup = ({ title, components }: ComponentGroupProps) => {
       </AccordionSummary>
 
       {/* Grid of draggable components */}
-      <AccordionDetails className={styles.details}>
+      <AccordionDetails
+        sx={{
+          padding: 1,
+          display: "flex",
+          flexDirection: "column",
+          gap: 1,
+        }}
+      >
         {components.map((component) => (
           <DraggableComponent
             key={component.type}

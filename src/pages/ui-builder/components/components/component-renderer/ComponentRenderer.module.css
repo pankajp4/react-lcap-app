@@ -9,6 +9,36 @@
  */
 
 /**
+ * Card component wrapper
+ * @description
+ * Card container with optional padding.
+ */
+.card {
+  padding: var(--card-padding, var(--spacing-md));
+}
+
+/**
+ * Container component wrapper
+ * @description
+ * Container with flexible layout properties.
+ */
+.container {
+  padding: var(--container-padding, var(--spacing-md));
+  max-width: var(--container-max-width, 100%);
+  display: var(--container-display, block);
+  flex-direction: var(--container-flex-direction, row);
+}
+
+/**
+ * Form component wrapper
+ * @description
+ * Form container with padding.
+ */
+.form {
+  padding: var(--form-padding, var(--spacing-md));
+}
+
+/**
  * Grid child wrapper
  * @description
  * Flex wrapper for grid child components with responsive width.
@@ -17,6 +47,16 @@
   flex: 1;
   width: 100%;
   padding: var(--spacing-sm);
+  max-width: var(--grid-child-max-width, 100%);
+}
+
+/**
+ * Grid container
+ * @description
+ * Full width container for grid layout.
+ */
+.gridContainer {
+  width: 100%;
 }
 
 /**
@@ -35,13 +75,4 @@
  */
 .tableRowHoverable:hover {
   background-color: var(--hover-background);
-}
-
-/**
- * Grid container
- * @description
- * Full width container for grid layout.
- */
-.gridContainer {
-  width: 100%;
 }

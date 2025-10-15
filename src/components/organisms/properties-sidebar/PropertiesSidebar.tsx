@@ -6,14 +6,14 @@
  * @category FormBuilder
  */
 
+import { Paper, Typography, Box } from "@mui/material";
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Paper, Typography } from "@mui/material";
+
+import type { PropertyConfig } from "../../../types/builder";
 import type { RootState } from "../../../store/store";
 import { updateComponent } from "../../../store/builder/builderSlice";
-import type { PropertyConfig } from "../../../types/builder";
 import { PropertyField } from "../../atoms";
-import styles from "./PropertiesSidebar.module.css";
 
 /**
  * Right sidebar component that displays and manages properties of the selected component.
@@ -128,15 +128,31 @@ export const PropertiesSidebar = () => {
     return (
       <Paper
         elevation={1}
-        className={styles.sidebar}
         component="section"
         aria-label="Properties panel - No component selected"
+        sx={{
+          width: "300px",
+          height: "100%",
+          overflowY: "auto",
+          borderRadius: 0,
+          display: "flex",
+          flexDirection: "column",
+        }}
       >
-        <div className={styles.empty}>
+        <Box
+          sx={{
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: 2,
+            textAlign: "center",
+          }}
+        >
           <Typography variant="body1" color="textSecondary" component="output">
             Select a component to edit its properties
           </Typography>
-        </div>
+        </Box>
       </Paper>
     );
   }
@@ -147,20 +163,44 @@ export const PropertiesSidebar = () => {
   return (
     <Paper
       elevation={1}
-      className={styles.sidebar}
       component="section"
       aria-label={`Properties panel - ${componentConfig.label}`}
+      sx={{
+        width: "300px",
+        height: "100%",
+        overflowY: "auto",
+        borderRadius: 0,
+        display: "flex",
+        flexDirection: "column",
+      }}
     >
       {/* Header with component type and section label */}
-      <header className={styles.header}>
+      <Box
+        component="header"
+        sx={{
+          padding: 2,
+          borderBottom: 1,
+          borderColor: "divider",
+        }}
+      >
         <Typography variant="h6">{componentConfig.label}</Typography>
         <Typography variant="caption" color="textSecondary">
           Properties
         </Typography>
-      </header>
+      </Box>
 
       {/* Property fields */}
-      <form className={styles.content} aria-label="Component properties">
+      <Box
+        component="form"
+        aria-label="Component properties"
+        sx={{
+          padding: 2,
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+        }}
+      >
         {componentConfig.properties?.map((property: PropertyConfig) => (
           <PropertyField
             key={property.name}
@@ -170,7 +210,7 @@ export const PropertiesSidebar = () => {
             aria-label={`${property.label} property`}
           />
         ))}
-      </form>
+      </Box>
     </Paper>
   );
 };

@@ -9,7 +9,11 @@
  */
 
 import React from "react";
-import styles from "./styles.module.css";
+import {
+  Box,
+  Button as MuiButton,
+  ButtonGroup as MuiButtonGroup,
+} from "@mui/material";
 
 /**
  * TopBar component
@@ -18,21 +22,51 @@ import styles from "./styles.module.css";
  */
 export const TopBar: React.FC<{ children: React.ReactNode }> = ({
   children,
-}) => <div className={styles.topBar}>{children}</div>;
+}) => (
+  <Box
+    sx={{
+      padding: "16px 24px",
+      backgroundColor: "#34495e",
+      borderBottom: "1px solid rgba(0, 0, 0, 0.2)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      gap: 2,
+      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.15)",
+      color: "#ffffff",
+    }}
+  >
+    {children}
+  </Box>
+);
 
 /**
  * Button component
  * @description
  * Primary button component with hover and disabled states.
  */
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends React.ComponentProps<typeof MuiButton> {
   children: React.ReactNode;
 }
 
 export const Button: React.FC<ButtonProps> = ({ children, ...props }) => (
-  <button className={styles.button} {...props}>
+  <MuiButton
+    variant="contained"
+    sx={{
+      backgroundColor: "#42a5f5",
+      color: "#ffffff",
+      "&:hover": {
+        backgroundColor: "#1976d2",
+      },
+      "&:disabled": {
+        backgroundColor: "rgba(255, 255, 255, 0.2)",
+        color: "rgba(255, 255, 255, 0.5)",
+      },
+    }}
+    {...props}
+  >
     {children}
-  </button>
+  </MuiButton>
 );
 
 /**
@@ -42,4 +76,4 @@ export const Button: React.FC<ButtonProps> = ({ children, ...props }) => (
  */
 export const ButtonGroup: React.FC<{ children: React.ReactNode }> = ({
   children,
-}) => <div className={styles.buttonGroup}>{children}</div>;
+}) => <MuiButtonGroup sx={{ gap: 1 }}>{children}</MuiButtonGroup>;

@@ -10,6 +10,7 @@
  */
 
 import React from "react";
+import { Box, Typography } from "@mui/material";
 import ComponentList from "../component-list";
 import Canvas from "../canvas";
 import PropertiesPanel from "../properties-panel";
@@ -20,7 +21,6 @@ import type { BaseComponent } from "../../../../../store/builder/types";
 import type { CustomTemplate } from "../../../../../utils/builder/customComponentManager";
 import { exportToCode } from "../../../../../utils/builder/codeExporter";
 import HistoryManager from "../../../../../utils/builder/historyManager";
-import styles from "./UIBuilder.module.css";
 
 const UIBuilder: React.FC = () => {
   const [components, setComponents] = React.useState<BaseComponent[]>([]);
@@ -207,9 +207,20 @@ const UIBuilder: React.FC = () => {
   };
 
   return (
-    <div className={styles.builderContainer}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        width: "100%",
+        height: "100vh",
+        backgroundColor: "#f7f8fa",
+        overflow: "hidden",
+      }}
+    >
       <TopBar>
-        <h1>UI Builder</h1>
+        <Typography variant="h5" component="h1" sx={{ color: "#ffffff" }}>
+          UI Builder
+        </Typography>
         <ButtonGroup>
           <Button
             onClick={handleUndo}
@@ -245,8 +256,38 @@ const UIBuilder: React.FC = () => {
           </Button>
         </ButtonGroup>
       </TopBar>
-      <div className={styles.editorContainer}>
-        <div className={styles.componentPanel}>
+      <Box
+        sx={{
+          display: "flex",
+          flex: 1,
+          overflow: "hidden",
+          height: "calc(100vh - 64px)",
+        }}
+      >
+        <Box
+          sx={{
+            width: "280px",
+            backgroundColor: "#2c3e50",
+            color: "#ffffff",
+            padding: "20px 16px",
+            overflowY: "auto",
+            borderRight: "1px solid rgba(0, 0, 0, 0.2)",
+            boxShadow: "2px 0 8px rgba(0, 0, 0, 0.15)",
+            "&::-webkit-scrollbar": {
+              width: "6px",
+            },
+            "&::-webkit-scrollbar-track": {
+              background: "rgba(0, 0, 0, 0.2)",
+            },
+            "&::-webkit-scrollbar-thumb": {
+              background: "rgba(255, 255, 255, 0.3)",
+              borderRadius: "3px",
+              "&:hover": {
+                background: "rgba(255, 255, 255, 0.4)",
+              },
+            },
+          }}
+        >
           <ComponentList
             onEditTemplate={(template: CustomTemplate) => {
               setComponents(template.components);
@@ -258,8 +299,32 @@ const UIBuilder: React.FC = () => {
               });
             }}
           />
-        </div>
-        <div className={styles.canvasContainer}>
+        </Box>
+        <Box
+          sx={{
+            flex: 1,
+            padding: "24px",
+            overflow: "auto",
+            backgroundColor: "#f7f8fa",
+            backgroundImage:
+              "linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px)",
+            backgroundSize: "20px 20px",
+            "&::-webkit-scrollbar": {
+              width: "10px",
+              height: "10px",
+            },
+            "&::-webkit-scrollbar-track": {
+              background: "#e2e8f0",
+            },
+            "&::-webkit-scrollbar-thumb": {
+              background: "#cbd5e0",
+              borderRadius: "5px",
+              "&:hover": {
+                background: "#a0aec0",
+              },
+            },
+          }}
+        >
           <Canvas
             components={components}
             selectedId={selectedComponent?.id || null}
@@ -284,14 +349,36 @@ const UIBuilder: React.FC = () => {
             }}
             onDeleteComponent={handleDeleteComponent}
           />
-        </div>
-        <div className={styles.propertiesPanelContainer}>
+        </Box>
+        <Box
+          sx={{
+            width: "320px",
+            backgroundColor: "#ffffff",
+            borderLeft: "1px solid #e2e8f0",
+            padding: "20px",
+            overflowY: "auto",
+            boxShadow: "-2px 0 8px rgba(0, 0, 0, 0.05)",
+            "&::-webkit-scrollbar": {
+              width: "6px",
+            },
+            "&::-webkit-scrollbar-track": {
+              background: "#f7f8fa",
+            },
+            "&::-webkit-scrollbar-thumb": {
+              background: "#cbd5e0",
+              borderRadius: "3px",
+              "&:hover": {
+                background: "#a0aec0",
+              },
+            },
+          }}
+        >
           <PropertiesPanel
             selectedComponent={selectedComponent}
             onPropertyChange={handlePropertyChange}
           />
-        </div>
-      </div>
+        </Box>
+      </Box>
       <PreviewWindow
         isOpen={isPreviewMode}
         onClose={() => setIsPreviewMode(false)}
@@ -307,7 +394,7 @@ const UIBuilder: React.FC = () => {
           forceUpdate();
         }}
       />
-    </div>
+    </Box>
   );
 };
 

@@ -6,18 +6,18 @@
  * @category FormBuilder
  */
 
+import { useDroppable } from "@dnd-kit/core";
+import { Typography, Box } from "@mui/material";
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useDroppable } from "@dnd-kit/core";
-import { Typography } from "@mui/material";
+
 import type { BuilderComponent } from "../../../types/builder";
 import type { RootState } from "../../../store/store";
 import {
-  updateComponent,
   setSelectedComponent,
+  updateComponent,
 } from "../../../store/builder/builderSlice";
 import { DroppableComponent } from "../../atoms";
-import styles from "./BuilderCanvas.module.css";
 
 /**
  * The main canvas area where form components can be dropped and arranged.
@@ -121,11 +121,21 @@ export const BuilderCanvas: React.FC = () => {
    */
   if (!activeForm) {
     return (
-      <section className={styles.emptyCanvas} aria-label="Empty form canvas">
+      <Box
+        component="section"
+        aria-label="Empty form canvas"
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "calc(100vh - 64px)",
+          backgroundColor: "#f5f5f5",
+        }}
+      >
         <Typography variant="body1" color="textSecondary">
           Select or create a form to start building
         </Typography>
-      </section>
+      </Box>
     );
   }
 
@@ -133,10 +143,21 @@ export const BuilderCanvas: React.FC = () => {
    * Render the active form canvas with its components
    */
   return (
-    <section
+    <Box
+      component="section"
       ref={setNodeRef}
-      className={`${styles.canvas} ${isOver ? styles.dragOver : ""}`}
       aria-label="Form builder canvas"
+      sx={{
+        flex: 1,
+        padding: 3,
+        backgroundColor: "#f5f5f5",
+        overflowY: "auto",
+        minHeight: "calc(100vh - 64px)",
+        border: 2,
+        borderStyle: "dashed",
+        borderColor: isOver ? "primary.main" : "transparent",
+        transition: "border-color 0.3s",
+      }}
     >
       {/* Map and render all form components */}
       {activeForm.components?.map((component: BuilderComponent) => (
@@ -152,12 +173,19 @@ export const BuilderCanvas: React.FC = () => {
 
       {/* Show empty state message when no components exist */}
       {activeForm.components?.length === 0 && (
-        <output className={styles.emptyMessage}>
+        <Box
+          component="output"
+          sx={{
+            textAlign: "center",
+            padding: 3,
+            color: "text.secondary",
+          }}
+        >
           <Typography variant="body1" color="textSecondary">
             Drag and drop components here
           </Typography>
-        </output>
+        </Box>
       )}
-    </section>
+    </Box>
   );
 };

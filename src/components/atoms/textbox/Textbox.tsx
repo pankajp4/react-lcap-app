@@ -12,13 +12,18 @@
  */
 
 import React, { forwardRef, useCallback, useState } from "react";
-import { TextField, InputAdornment, IconButton, Tooltip } from "@mui/material";
+import {
+  TextField,
+  InputAdornment,
+  IconButton,
+  Tooltip,
+  Box,
+} from "@mui/material";
 import { NumericFormat } from "react-number-format";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import ErrorIcon from "@mui/icons-material/Error";
 import InfoIcon from "@mui/icons-material/Info";
-import styles from "./Textbox.module.css";
 
 /**
  * Supported input types for the Textbox component
@@ -321,7 +326,7 @@ export const Textbox = forwardRef<HTMLInputElement, TextboxProps>(
      */
     if (type === "number") {
       return (
-        <div className={styles.textbox}>
+        <Box sx={{ width: fullWidth ? "100%" : "auto", margin: "4px 0" }}>
           <NumericFormat
             customInput={TextField}
             value={value}
@@ -350,11 +355,13 @@ export const Textbox = forwardRef<HTMLInputElement, TextboxProps>(
               return true;
             }}
             {...props}
-            InputProps={{
-              endAdornment: renderErrorIcon() || renderInfoIcon(),
+            slotProps={{
+              input: {
+                endAdornment: renderErrorIcon() || renderInfoIcon(),
+              },
             }}
           />
-        </div>
+        </Box>
       );
     }
 
@@ -363,7 +370,7 @@ export const Textbox = forwardRef<HTMLInputElement, TextboxProps>(
      * Uses Material-UI TextField with appropriate props and icons
      */
     return (
-      <div className={styles.textbox}>
+      <Box sx={{ width: fullWidth ? "100%" : "auto", margin: "4px 0" }}>
         <TextField
           type={type === "password" && showPassword ? "text" : type}
           value={value}
@@ -383,24 +390,26 @@ export const Textbox = forwardRef<HTMLInputElement, TextboxProps>(
           rows={rows}
           maxRows={maxRows}
           minRows={minRows}
-          inputProps={{
-            maxLength,
-            min,
-            max,
-            step,
-          }}
           name={name}
           id={id}
           inputRef={ref}
           {...props}
-          InputProps={{
-            endAdornment:
-              renderPasswordAdornment() ||
-              renderErrorIcon() ||
-              renderInfoIcon(),
+          slotProps={{
+            htmlInput: {
+              maxLength,
+              min,
+              max,
+              step,
+            },
+            input: {
+              endAdornment:
+                renderPasswordAdornment() ||
+                renderErrorIcon() ||
+                renderInfoIcon(),
+            },
           }}
         />
-      </div>
+      </Box>
     );
   }
 );

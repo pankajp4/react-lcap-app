@@ -5,7 +5,7 @@
  */
 
 import { Component, type ReactNode } from "react";
-import styles from "./ErrorBoundary.module.css";
+import { Box, Typography } from "@mui/material";
 
 /**
  * Props for the ErrorBoundary component
@@ -83,13 +83,45 @@ export class ErrorBoundary extends Component<Props, State> {
   render() {
     if (this.state.hasError) {
       return (
-        <div className={styles.errorContainer}>
-          <h2>Something went wrong.</h2>
-          <details>
-            <summary>Error details</summary>
-            <pre>{this.state.error?.toString()}</pre>
+        <Box
+          sx={{
+            padding: 2,
+            margin: 2,
+            border: "1px solid #ff5252",
+            borderRadius: 1,
+            backgroundColor: "#ffebee",
+          }}
+        >
+          <Typography
+            variant="h6"
+            sx={{
+              color: "#d32f2f",
+              marginTop: 0,
+            }}
+          >
+            Something went wrong.
+          </Typography>
+          <details style={{ marginTop: "8px" }}>
+            <summary style={{ cursor: "pointer", color: "#d32f2f" }}>
+              Error details
+            </summary>
+            <Box
+              component="pre"
+              sx={{
+                marginTop: 1,
+                padding: 1,
+                backgroundColor: "#fff",
+                border: "1px solid #ddd",
+                borderRadius: 0.5,
+                overflow: "auto",
+                fontSize: "0.875rem",
+                fontFamily: "monospace",
+              }}
+            >
+              {this.state.error?.toString()}
+            </Box>
           </details>
-        </div>
+        </Box>
       );
     }
 

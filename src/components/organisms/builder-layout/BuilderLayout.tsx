@@ -8,8 +8,9 @@
  * @since 1.0.0
  */
 
-import { UIBuilder } from "../../../pages/ui-builder";
 import React from "react";
+
+import { UIBuilder } from "../../../pages/ui-builder";
 
 /**
  * BuilderLayout component

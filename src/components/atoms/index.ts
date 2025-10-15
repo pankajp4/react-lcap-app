@@ -13,15 +13,15 @@ export { DraggableComponent } from "./draggable-component/DraggableComponent";
 export { DroppableComponent } from "./droppable-component/DroppableComponent";
 
 /**
- * Form Input Components
- * @category Input
- */
-export { PropertyField } from "./property-field/PropertyField";
-export { Textbox } from "./textbox/Textbox";
-
-/**
  * Error Handling and Feedback Components
  * @category Utility
  */
 export { ErrorBoundary } from "./error-boundary/ErrorBoundary";
 export { NotificationSystem } from "./notification-system/NotificationSystem";
+
+/**
+ * Form Input Components
+ * @category Input
+ */
+export { PropertyField } from "./property-field/PropertyField";
+export { Textbox } from "./textbox/Textbox";

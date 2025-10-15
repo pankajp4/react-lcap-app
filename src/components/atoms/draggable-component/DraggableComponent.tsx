@@ -30,7 +30,7 @@
 import { useEffect } from "react";
 import { useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
-import { Paper, Typography } from "@mui/material";
+import { Paper, Typography, Box } from "@mui/material";
 import * as MuiIcons from "@mui/icons-material";
 import type { ComponentConfig } from "../../../types/builder";
 import styles from "./DraggableComponent.module.css";
@@ -215,19 +215,19 @@ export const DraggableComponent = ({
       elevation={1}
       data-draggable-id={`sidebar-${component.type}`}
       aria-label={`Drag ${component.label} component`}
-      className={`${styles.draggable} ${disabled ? styles.disabled : ""}`}
+      className={disabled ? styles.disabled : styles.draggable}
       style={style}
       {...attributes}
       {...enhancedListeners}
     >
-      <div className={styles.content}>
+      <Box className={styles.content}>
         {/* Conditionally render the icon if one is specified in the config */}
         {Icon && (
           <Icon className={styles.icon} data-testid={`${component.icon}Icon`} />
         )}
         {/* Display the component label using MUI Typography */}
         <Typography variant="body2">{component.label}</Typography>
-      </div>
+      </Box>
     </Paper>
   );
 };

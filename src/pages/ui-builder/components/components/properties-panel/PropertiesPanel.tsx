@@ -9,12 +9,22 @@
  */
 
 import React from "react";
+import {
+  Box,
+  TextField,
+  Checkbox,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  Typography,
+  FormControlLabel,
+} from "@mui/material";
 import { componentRegistry } from "../../../../../utils/builder/componentRegistry";
 import type {
   BaseComponent,
   PropertyDefinition,
 } from "../../../../../store/builder/types";
-import styles from "./PropertiesPanel.module.css";
 
 interface PropertiesPanelProps {
   selectedComponent: BaseComponent | null;
@@ -29,8 +39,9 @@ const PropertyField: React.FC<{
   switch (property.type) {
     case "string":
       return (
-        <input
-          className={styles.input}
+        <TextField
+          fullWidth
+          size="small"
           type="text"
           value={value || ""}
           onChange={(e) => onChange(e.target.value)}
@@ -38,8 +49,9 @@ const PropertyField: React.FC<{
       );
     case "number":
       return (
-        <input
-          className={styles.input}
+        <TextField
+          fullWidth
+          size="small"
           type="number"
           value={value || 0}
           onChange={(e) => onChange(Number(e.target.value))}
@@ -47,31 +59,36 @@ const PropertyField: React.FC<{
       );
     case "boolean":
       return (
-        <input
-          className={styles.checkbox}
-          type="checkbox"
-          checked={value || false}
-          onChange={(e) => onChange(e.target.checked)}
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={value || false}
+              onChange={(e) => onChange(e.target.checked)}
+            />
+          }
+          label=""
         />
       );
     case "select":
       return (
-        <select
-          className={styles.select}
-          value={value || property.default}
-          onChange={(e) => onChange(e.target.value)}
-        >
-          {property.options?.map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
+        <FormControl fullWidth size="small">
+          <Select
+            value={value || property.default}
+            onChange={(e) => onChange(e.target.value)}
+          >
+            {property.options?.map((option) => (
+              <MenuItem key={option} value={option}>
+                {option}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
       );
     case "color":
       return (
-        <input
-          className={styles.input}
+        <TextField
+          fullWidth
+          size="small"
           type="color"
           value={value || "#000000"}
           onChange={(e) => onChange(e.target.value)}
@@ -88,10 +105,14 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
 }) => {
   if (!selectedComponent) {
     return (
-      <div className={styles.container}>
-        <h2 className={styles.title}>Properties</h2>
-        <p className={styles.emptyMessage}>No component selected</p>
-      </div>
+      <Box sx={{ padding: 2 }}>
+        <Typography variant="h6" sx={{ marginBottom: 2 }}>
+          Properties
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          No component selected
+        </Typography>
+      </Box>
     );
   }
 
@@ -101,52 +122,60 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
 
   if (!componentDef) {
     return (
-      <div className={styles.container}>
-        <h2 className={styles.title}>Properties</h2>
-        <p className={styles.emptyMessage}>Component type not found</p>
-      </div>
+      <Box sx={{ padding: 2 }}>
+        <Typography variant="h6" sx={{ marginBottom: 2 }}>
+          Properties
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          Component type not found
+        </Typography>
+      </Box>
     );
   }
 
   return (
-    <div className={styles.container}>
-      <h2 className={styles.title}>{componentDef.name} Properties</h2>
+    <Box sx={{ padding: 2 }}>
+      <Typography variant="h6" sx={{ marginBottom: 2 }}>
+        {componentDef.name} Properties
+      </Typography>
 
-      <div className={styles.propertyGroup}>
-        <label className={styles.label} htmlFor="component-type">
+      <Box sx={{ marginBottom: 2 }}>
+        <InputLabel htmlFor="component-type" sx={{ marginBottom: 0.5 }}>
           Component Type
-        </label>
-        <input
+        </InputLabel>
+        <TextField
           id="component-type"
-          className={styles.input}
+          fullWidth
+          size="small"
           value={selectedComponent.type}
           disabled
         />
-      </div>
+      </Box>
 
-      <div className={styles.propertyGroup}>
-        <label className={styles.label} htmlFor="component-id">
+      <Box sx={{ marginBottom: 2 }}>
+        <InputLabel htmlFor="component-id" sx={{ marginBottom: 0.5 }}>
           ID
-        </label>
-        <input
+        </InputLabel>
+        <TextField
           id="component-id"
-          className={styles.input}
+          fullWidth
+          size="small"
           value={selectedComponent.id}
           onChange={(e) => onPropertyChange("id", e.target.value)}
         />
-      </div>
+      </Box>
 
       {componentDef.properties.map((property) => (
-        <div key={property.name} className={styles.propertyGroup}>
-          <label className={styles.label}>{property.label}</label>
+        <Box key={property.name} sx={{ marginBottom: 2 }}>
+          <InputLabel sx={{ marginBottom: 0.5 }}>{property.label}</InputLabel>
           <PropertyField
             property={property}
             value={selectedComponent.props[property.name]}
             onChange={(value) => onPropertyChange(property.name, value)}
           />
-        </div>
+        </Box>
       ))}
-    </div>
+    </Box>
   );
 };
 

@@ -5,12 +5,12 @@
  */
 
 import LogoutIcon from "@mui/icons-material/Logout";
+import PreviewIcon from "@mui/icons-material/Visibility";
 import RedoIcon from "@mui/icons-material/Redo";
 import SaveIcon from "@mui/icons-material/Save";
 import SearchIcon from "@mui/icons-material/Search";
 import SettingsIcon from "@mui/icons-material/Settings";
 import UndoIcon from "@mui/icons-material/Undo";
-import PreviewIcon from "@mui/icons-material/Visibility";
 import {
   AppBar,
   Avatar,
@@ -26,11 +26,9 @@ import {
 import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import type { RootState } from "../../../store/store";
 import { saveForm } from "../../../store/builder/builderSlice";
 import { redo, undo } from "../../../store/builder/historySlice";
-
-import type { RootState } from "../../../store/store";
-import styles from "./TopNavbar.module.css";
 
 /**
  * Props for the TopNavbar component
@@ -196,11 +194,25 @@ export const TopNavbar = ({
 
   return (
     <AppBar position="static" elevation={1} color="default">
-      <Toolbar variant="dense" className={styles.toolbar}>
+      <Toolbar
+        variant="dense"
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          backgroundColor: "#fff",
+          padding: "0 16px",
+        }}
+      >
         {/* Left Section */}
         <Box
           component="div"
-          className={styles.homeLink}
+          sx={{
+            cursor: "pointer",
+            color: "inherit",
+            "&:hover": {
+              opacity: 0.8,
+            },
+          }}
           onClick={() => (window.location.href = "/")}
         >
           <Typography variant="h6" component="h1">
@@ -209,7 +221,16 @@ export const TopNavbar = ({
         </Box>
 
         {/* Center Section */}
-        <Box className={styles.centerSection}>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 1,
+            flex: 1,
+            margin: "0 24px",
+          }}
+        >
           <IconButton onClick={handleUndo} size="medium" aria-label="undo">
             <UndoIcon />
           </IconButton>
@@ -230,16 +251,30 @@ export const TopNavbar = ({
               <PreviewIcon />
             </IconButton>
           )}
-          <div className={styles.searchContainer}>
+          <Box sx={{ position: "relative", width: "200px" }}>
             <TextField
               size="small"
               placeholder="Search..."
               value={searchQuery}
               onChange={handleSearchChange}
-              className={styles.searchInput}
+              sx={{
+                width: "100%",
+                "& input": {
+                  paddingLeft: "36px !important",
+                },
+              }}
             />
-            <SearchIcon className={styles.searchIcon} />
-          </div>
+            <SearchIcon
+              sx={{
+                position: "absolute",
+                left: "8px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                color: "text.secondary",
+                pointerEvents: "none",
+              }}
+            />
+          </Box>
         </Box>
 
         {/* Right Section */}
@@ -252,7 +287,10 @@ export const TopNavbar = ({
             <Avatar
               src={userAvatar}
               alt={userName}
-              className={styles.userAvatar}
+              sx={{
+                width: 32,
+                height: 32,
+              }}
             />
           </IconButton>
           <Menu
@@ -262,12 +300,26 @@ export const TopNavbar = ({
             onClick={handleUserMenuClose}
           >
             {onSettings && (
-              <MenuItem onClick={onSettings} className={styles.menuItem}>
+              <MenuItem
+                onClick={onSettings}
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1,
+                }}
+              >
                 <SettingsIcon /> Settings
               </MenuItem>
             )}
             {onLogout && (
-              <MenuItem onClick={onLogout} className={styles.menuItem}>
+              <MenuItem
+                onClick={onLogout}
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1,
+                }}
+              >
                 <LogoutIcon /> Logout
               </MenuItem>
             )}

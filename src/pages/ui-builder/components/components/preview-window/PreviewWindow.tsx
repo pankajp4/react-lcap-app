@@ -9,10 +9,9 @@
  */
 
 import React from "react";
-import { Button } from "@mui/material";
+import { Button, Box, Typography, ButtonGroup } from "@mui/material";
 import ComponentRenderer from "../component-renderer";
 import type { BaseComponent } from "../../../../../store/builder/types";
-import styles from "./PreviewWindow.module.css";
 
 interface PreviewWindowProps {
   isOpen: boolean;
@@ -29,22 +28,62 @@ const PreviewWindow: React.FC<PreviewWindowProps> = ({
     "desktop" | "tablet" | "mobile"
   >("desktop");
 
-  const getViewportClass = () => {
+  const getViewportMaxWidth = () => {
     switch (viewport) {
       case "mobile":
-        return styles.viewportMobile;
+        return "375px";
       case "tablet":
-        return styles.viewportTablet;
+        return "768px";
       default:
-        return styles.viewportDesktop;
+        return "100%";
     }
   };
 
   return (
-    <div className={`${styles.overlay} ${!isOpen ? styles.overlayHidden : ""}`}>
-      <div className={styles.header}>
-        <h2 className={styles.title}>Preview</h2>
-        <div className={styles.viewportSelector}>
+    <Box
+      sx={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: "#ffffff",
+        zIndex: 1000,
+        display: isOpen ? "flex" : "none",
+        flexDirection: "column",
+      }}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "16px 24px",
+          background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+          color: "white",
+          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.15)",
+          minHeight: "64px",
+        }}
+      >
+        <Typography
+          variant="h5"
+          component="h2"
+          sx={{
+            margin: 0,
+            fontSize: "1.25rem",
+            fontWeight: 600,
+            color: "white",
+          }}
+        >
+          Preview
+        </Typography>
+        <ButtonGroup
+          sx={{
+            display: "flex",
+            gap: "12px",
+            marginRight: "24px",
+          }}
+        >
           <Button
             variant={viewport === "desktop" ? "contained" : "text"}
             color="inherit"
@@ -66,19 +105,31 @@ const PreviewWindow: React.FC<PreviewWindowProps> = ({
           >
             Mobile
           </Button>
-        </div>
+        </ButtonGroup>
         <Button variant="outlined" color="inherit" onClick={onClose}>
           Close Preview
         </Button>
-      </div>
-      <div className={styles.content}>
-        <div className={`${styles.viewportContainer} ${getViewportClass()}`}>
+      </Box>
+      <Box
+        sx={{
+          flex: 1,
+          overflow: "auto",
+          padding: 4,
+        }}
+      >
+        <Box
+          sx={{
+            margin: "0 auto",
+            maxWidth: getViewportMaxWidth(),
+            transition: "max-width 0.5s",
+          }}
+        >
           {components.map((component) => (
             <ComponentRenderer key={component.id} component={component} />
           ))}
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

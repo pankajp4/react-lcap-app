@@ -28,32 +28,49 @@
  * ```
  */
 
-import { ThemeProvider, createTheme } from "@mui/material";
+import { ThemeProvider, createTheme, Box, CssBaseline } from "@mui/material";
 import React from "react";
+
 import { ErrorBoundary, NotificationSystem } from "./components/atoms";
 import { BuilderLayout } from "./components/organisms";
-import styles from "./App.module.css";
 
 /**
- * Dark theme configuration for the builder interface
+ * Light theme configuration for the builder interface
  * @const
  * @type {import('@mui/material').Theme}
  *
  * @remarks
- * Customizes Material-UI's default dark theme with:
- * - Custom primary color (#90caf9)
- * - Dark background colors
+ * Customizes Material-UI's default light theme with:
+ * - Custom primary color (#1976d2)
+ * - Light background colors
  * - Paper surface colors
  */
-const darkTheme = createTheme({
+const lightTheme = createTheme({
   palette: {
-    mode: "dark",
+    mode: "light",
     primary: {
-      main: "#90caf9",
+      main: "#1976d2",
+      light: "#42a5f5",
+      dark: "#1565c0",
     },
     background: {
-      default: "#121212",
-      paper: "#1e1e1e",
+      default: "#f5f5f5",
+      paper: "#ffffff",
+    },
+    text: {
+      primary: "rgba(0, 0, 0, 0.87)",
+      secondary: "rgba(0, 0, 0, 0.6)",
+    },
+    divider: "rgba(0, 0, 0, 0.12)",
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          backgroundColor: "#f5f5f5",
+          color: "rgba(0, 0, 0, 0.87)",
+        },
+      },
     },
   },
 });
@@ -76,13 +93,20 @@ const darkTheme = createTheme({
  */
 const App: React.FC = () => {
   return (
-    <ThemeProvider theme={darkTheme}>
-      <div className={styles.appContainer}>
+    <ThemeProvider theme={lightTheme}>
+      <CssBaseline />
+      <Box
+        sx={{
+          minHeight: "100vh",
+          backgroundColor: "background.default",
+          color: "text.primary",
+        }}
+      >
         <ErrorBoundary>
           <NotificationSystem />
           <BuilderLayout />
         </ErrorBoundary>
-      </div>
+      </Box>
     </ThemeProvider>
   );
 };

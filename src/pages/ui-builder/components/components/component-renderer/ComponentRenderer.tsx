@@ -21,15 +21,15 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Box,
 } from "@mui/material";
 import React from "react";
 
+import type { BaseComponent } from "../../../../../store/builder/types";
 import {
   Textbox,
   // Add other components as they become available
 } from "../../../../../components/atoms";
-import type { BaseComponent } from "../../../../../store/builder/types";
-import styles from "./ComponentRenderer.module.css";
 
 /**
  * Props for the ComponentRenderer
@@ -69,11 +69,11 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({ component }) => {
       return (
         <Container
           {...component.props}
-          style={{
-            padding: component.props.padding,
-            maxWidth: component.props.maxWidth,
-            display: component.props.display,
-            flexDirection: component.props.flexDirection,
+          sx={{
+            padding: component.props.padding || 2,
+            maxWidth: component.props.maxWidth || "100%",
+            display: component.props.display || "block",
+            flexDirection: component.props.flexDirection || "row",
           }}
         >
           {renderChildren(component.children)}
@@ -85,31 +85,36 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({ component }) => {
         <Grid
           container
           spacing={Number(component.props.gap?.replace("rem", "") || 1)}
-          className={styles.gridContainer}
+          sx={{ width: "100%" }}
         >
           {component.children?.map((child) => (
-            <div
+            <Box
               key={child.id}
-              className={styles.gridChild}
-              style={{
+              sx={{
+                flex: 1,
+                width: "100%",
+                padding: 1,
                 maxWidth: `${100 / (component.props.columns || 1)}%`,
               }}
             >
               <ComponentRenderer component={child} />
-            </div>
+            </Box>
           ))}
         </Grid>
       );
 
     case "form":
       return (
-        <form
+        <Box
+          component="form"
           {...component.props}
-          style={{ padding: component.props.padding }}
-          onSubmit={(e) => e.preventDefault()}
+          sx={{
+            padding: component.props.padding || 2,
+          }}
+          onSubmit={(e: React.FormEvent) => e.preventDefault()}
         >
           {renderChildren(component.children)}
-        </form>
+        </Box>
       );
 
     case "Textbox":
@@ -139,7 +144,9 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({ component }) => {
         <Card
           {...component.props}
           elevation={component.props.elevation}
-          style={{ padding: component.props.padding }}
+          sx={{
+            padding: component.props.padding || 2,
+          }}
         >
           <CardContent>{renderChildren(component.children)}</CardContent>
         </Card>
@@ -160,13 +167,17 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({ component }) => {
               {component.props.data?.map((row: any[], rowIndex: number) => (
                 <TableRow
                   key={`row-${component.id}-${rowIndex}`}
-                  className={`${
-                    component.props.striped && rowIndex % 2 !== 0
-                      ? styles.tableRowStriped
-                      : ""
-                  } ${
-                    component.props.hoverable ? styles.tableRowHoverable : ""
-                  }`}
+                  sx={{
+                    backgroundColor:
+                      component.props.striped && rowIndex % 2 !== 0
+                        ? "rgba(0, 0, 0, 0.04)"
+                        : "transparent",
+                    "&:hover": component.props.hoverable
+                      ? {
+                          backgroundColor: "action.hover",
+                        }
+                      : undefined,
+                  }}
                 >
                   {row.map((cell, cellIndex) => (
                     <TableCell
@@ -183,7 +194,11 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({ component }) => {
       );
 
     default:
-      return <div>Unknown component type: {component.type}</div>;
+      return (
+        <Box sx={{ padding: 1, color: "error.main" }}>
+          Unknown component type: {component.type}
+        </Box>
+      );
   }
 };
 
