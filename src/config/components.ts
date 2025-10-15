@@ -6,7 +6,7 @@
  * @category Components
  */
 
-import type { ComponentConfig } from "../types/builder";
+import type { ComponentConfig } from "@/types/builder";
 
 /**
  * Configuration array for all available components in the form builder.

@@ -10,9 +10,9 @@
 
 import React from "react";
 import { Button, Box, Typography, ButtonGroup } from "@mui/material";
-import ComponentRenderer from "../component-renderer";
-import type { BaseComponent } from "../../../../../store/builder/types";
-import styles from "./PreviewWindow.module.css";
+import ComponentRenderer from "@pages/ui-builder/components/components/component-renderer";
+import type { BaseComponent } from "@store/builder/types";
+import styles from "@pages/ui-builder/components/components/preview-window/PreviewWindow.module.css";
 
 interface PreviewWindowProps {
   isOpen: boolean;

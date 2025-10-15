@@ -27,9 +27,9 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 
-import type { BaseComponent } from "../../../../../store/builder/types";
-import type { CustomTemplate } from "../../../../../utils/builder/customComponentManager";
-import customComponentManager from "../../../../../utils/builder/customComponentManager";
+import type { BaseComponent } from "@store/builder/types";
+import type { CustomTemplate } from "@utils/builder/customComponentManager";
+import customComponentManager from "@utils/builder/customComponentManager";
 
 /**
  * Available template categories

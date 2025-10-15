@@ -1,8 +1,8 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { vi, describe, it, expect } from "vitest";
-import { DraggableComponent } from "./DraggableComponent";
+import { DraggableComponent } from "@atoms/draggable-component/DraggableComponent";
 import { DndContext } from "@dnd-kit/core";
-import type { ComponentConfig } from "../../../types/builder";
+import type { ComponentConfig } from "@/types/builder";
 
 // Consolidate imports and reduce file handle usage
 vi.mock("@mui/icons-material", () => ({
@@ -11,7 +11,7 @@ vi.mock("@mui/icons-material", () => ({
 }));
 
 // Mock styles to avoid CSS module issues in tests
-vi.mock("./DraggableComponent.module.css", () => ({
+vi.mock("@atoms/draggable-component/DraggableComponent.module.css", () => ({
   default: {
     draggable: "draggable",
     disabled: "disabled",

@@ -32,7 +32,7 @@ import { createTheme } from "@mui/material/styles";
  * ```tsx
  * // Using theme in a component
  * import { ThemeProvider } from '@mui/material';
- * import { theme } from '../config/theme';
+ * import { theme } from '@config/theme';
  *
  * function App() {
  *   return (

@@ -8,8 +8,8 @@ import type {
   ISaveService,
   IPreviewService,
   IPublishService,
-} from "./interfaces";
-import type { FormConfig } from "../types/builder";
+} from "@services/interfaces";
+import type { FormConfig } from "@/types/builder";
 
 /**
  * Service for handling form operations including saving, previewing, and publishing

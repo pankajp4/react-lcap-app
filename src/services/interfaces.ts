@@ -7,7 +7,7 @@
  * @category Services
  */
 
-import type { FormConfig } from "../types/builder";
+import type { FormConfig } from "@/types/builder";
 
 /**
  * Interface for managing form editing history operations

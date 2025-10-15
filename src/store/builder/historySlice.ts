@@ -8,7 +8,7 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type { FormConfig } from "../../types/builder";
+import type { FormConfig } from "@/types/builder";
 
 /**
  * Interface defining the history state structure

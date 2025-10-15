@@ -6,7 +6,7 @@
 
 import { Component, type ReactNode } from "react";
 import { Box, Typography } from "@mui/material";
-import styles from "./ErrorBoundary.module.css";
+import styles from "@atoms/error-boundary/ErrorBoundary.module.css";
 
 /**
  * Props for the ErrorBoundary component

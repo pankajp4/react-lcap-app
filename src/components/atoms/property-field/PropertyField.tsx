@@ -62,8 +62,8 @@ import {
   Switch,
   FormControlLabel,
 } from "@mui/material";
-import type { PropertyConfig, PropertyOption } from "../../../types/builder";
-import styles from "./PropertyField.module.css";
+import type { PropertyConfig, PropertyOption } from "@/types/builder";
+import styles from "@atoms/property-field/PropertyField.module.css";
 
 /**
  * Type for property field values

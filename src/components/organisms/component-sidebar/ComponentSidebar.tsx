@@ -8,10 +8,10 @@
 
 import { Paper, Box } from "@mui/material";
 
-import type { ComponentConfig } from "../../../types/builder";
-import { availableComponents } from "../../../config/components";
-import { ComponentGroup } from "../../molecules";
-import styles from "./ComponentSidebar.module.css";
+import type { ComponentConfig } from "@/types/builder";
+import { availableComponents } from "@config/components";
+import { ComponentGroup } from "@molecules";
+import styles from "@organisms/component-sidebar/ComponentSidebar.module.css";
 
 /**
  * Left sidebar component that displays available form components grouped by category.

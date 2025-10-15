@@ -15,9 +15,9 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 
-import type { ComponentConfig } from "../../../types/builder";
-import { DraggableComponent } from "../../atoms";
-import styles from "./ComponentGroup.module.css";
+import type { ComponentConfig } from "@/types/builder";
+import { DraggableComponent } from "@atoms";
+import styles from "@molecules/component-group/ComponentGroup.module.css";
 
 /**
  * Props for the ComponentGroup component

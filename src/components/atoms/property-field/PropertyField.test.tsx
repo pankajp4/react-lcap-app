@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import { vi, describe, it, expect, beforeEach } from "vitest";
-import { PropertyField } from "./PropertyField";
-import type { PropertyConfig } from "../../../types/builder";
+import { PropertyField } from "@atoms/property-field/PropertyField";
+import type { PropertyConfig } from "@/types/builder";
 
 describe("PropertyField", () => {
   // Common test props

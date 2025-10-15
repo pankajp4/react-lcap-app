@@ -32,8 +32,8 @@ import { useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 import { Paper, Typography, Box } from "@mui/material";
 import * as MuiIcons from "@mui/icons-material";
-import type { ComponentConfig } from "../../../types/builder";
-import styles from "./DraggableComponent.module.css";
+import type { ComponentConfig } from "@/types/builder";
+import styles from "@atoms/draggable-component/DraggableComponent.module.css";
 
 type DragEvent = {
   [key: string]: any;

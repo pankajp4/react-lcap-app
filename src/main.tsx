@@ -26,9 +26,9 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 
-import App from "./App";
-import store from "./store/store";
-import "./styles/globals.css";
+import App from "@src/App";
+import store from "@store/store";
+import "@styles/globals.css";
 
 /**
  * Root DOM element where the React application will be mounted

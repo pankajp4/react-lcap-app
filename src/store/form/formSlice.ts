@@ -8,7 +8,7 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type { BuilderComponent } from "../../types/builder";
+import type { BuilderComponent } from "@/types/builder";
 
 /**
  * Interface defining the form state structure

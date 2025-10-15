@@ -19,8 +19,8 @@ import {
   Typography,
   Box,
 } from "@mui/material";
-import customComponentManager from "../../../../../utils/builder/customComponentManager";
-import type { CustomTemplate } from "../../../../../utils/builder/customComponentManager";
+import customComponentManager from "@utils/builder/customComponentManager";
+import type { CustomTemplate } from "@utils/builder/customComponentManager";
 
 /**
  * Props for the TemplateImportExportDialog

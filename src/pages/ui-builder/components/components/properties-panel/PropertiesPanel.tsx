@@ -20,12 +20,9 @@ import {
   Typography,
   FormControlLabel,
 } from "@mui/material";
-import { componentRegistry } from "../../../../../utils/builder/componentRegistry";
-import type {
-  BaseComponent,
-  PropertyDefinition,
-} from "../../../../../store/builder/types";
-import styles from "./PropertiesPanel.module.css";
+import { componentRegistry } from "@utils/builder/componentRegistry";
+import type { BaseComponent, PropertyDefinition } from "@store/builder/types";
+import styles from "@pages/ui-builder/components/components/properties-panel/PropertiesPanel.module.css";
 
 interface PropertiesPanelProps {
   selectedComponent: BaseComponent | null;

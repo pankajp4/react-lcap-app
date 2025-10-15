@@ -1,5 +1,5 @@
-import type { BaseComponent } from "../../store/builder/types";
-import { componentRegistry } from "./componentRegistry";
+import type { BaseComponent } from "@store/builder/types";
+import { componentRegistry } from "@utils/builder/componentRegistry";
 
 const generateImports = (components: BaseComponent[]): string => {
   const usedComponents = new Set(components.map((c) => c.type));
@@ -27,7 +27,7 @@ const generateImports = (components: BaseComponent[]): string => {
   if (localComponents.size > 0) {
     imports.push(`import {
   ${Array.from(localComponents).join(",\n  ")}
-} from '../components/atoms';`);
+} from '@atoms';`);
   }
 
   if (muiComponents.size > 0) {

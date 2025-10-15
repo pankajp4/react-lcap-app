@@ -1,4 +1,4 @@
-import type { ComponentGroup } from "../../store/builder/types";
+import type { ComponentGroup } from "@store/builder/types";
 
 export const componentRegistry: ComponentGroup[] = [
   {

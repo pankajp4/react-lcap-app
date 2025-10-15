@@ -1,9 +1,9 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Box } from "@mui/material";
-import type { BuilderComponent } from "../../../types/builder";
-import type { RootState } from "../../../store/store";
-import styles from "./DroppableComponent.module.css";
+import type { BuilderComponent } from "@/types/builder";
+import type { RootState } from "@store/store";
+import styles from "@atoms/droppable-component/DroppableComponent.module.css";
 
 /**
  * Props for the DroppableComponent

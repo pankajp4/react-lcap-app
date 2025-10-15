@@ -9,11 +9,11 @@
  */
 
 import React from "react";
-import { componentRegistry } from "../../../../../utils/builder/componentRegistry";
-import type { BaseComponent } from "../../../../../store/builder/types";
+import { componentRegistry } from "@utils/builder/componentRegistry";
+import type { BaseComponent } from "@store/builder/types";
 import { Box, IconButton, Button, Stack } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Close";
-import styles from "./Canvas.module.css";
+import styles from "@pages/ui-builder/components/components/canvas/Canvas.module.css";
 
 /**
  * Props for the Canvas component

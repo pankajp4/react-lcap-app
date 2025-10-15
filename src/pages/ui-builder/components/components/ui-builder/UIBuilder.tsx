@@ -11,17 +11,21 @@
 
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import ComponentList from "../component-list";
-import Canvas from "../canvas";
-import PropertiesPanel from "../properties-panel";
-import PreviewWindow from "../preview-window";
-import SaveTemplateDialog from "../save-template-dialog";
-import { TopBar, Button, ButtonGroup } from "../shared";
-import type { BaseComponent } from "../../../../../store/builder/types";
-import type { CustomTemplate } from "../../../../../utils/builder/customComponentManager";
-import { exportToCode } from "../../../../../utils/builder/codeExporter";
-import HistoryManager from "../../../../../utils/builder/historyManager";
-import styles from "./UIBuilder.module.css";
+import ComponentList from "@pages/ui-builder/components/components/component-list";
+import Canvas from "@pages/ui-builder/components/components/canvas";
+import PropertiesPanel from "@pages/ui-builder/components/components/properties-panel";
+import PreviewWindow from "@pages/ui-builder/components/components/preview-window";
+import SaveTemplateDialog from "@pages/ui-builder/components/components/save-template-dialog";
+import {
+  TopBar,
+  Button,
+  ButtonGroup,
+} from "@pages/ui-builder/components/components/shared";
+import type { BaseComponent } from "@store/builder/types";
+import type { CustomTemplate } from "@utils/builder/customComponentManager";
+import { exportToCode } from "@utils/builder/codeExporter";
+import HistoryManager from "@utils/builder/historyManager";
+import styles from "@pages/ui-builder/components/components/ui-builder/UIBuilder.module.css";
 
 const UIBuilder: React.FC = () => {
   const [components, setComponents] = React.useState<BaseComponent[]>([]);

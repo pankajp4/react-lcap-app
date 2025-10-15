@@ -1,4 +1,4 @@
-import type { BaseComponent } from "../../store/builder/types";
+import type { BaseComponent } from "@store/builder/types";
 
 export interface TemplateVersion {
   version: number;

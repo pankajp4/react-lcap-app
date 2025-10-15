@@ -10,10 +10,10 @@
 
 import React from "react";
 import { Box, TextField, Typography } from "@mui/material";
-import { componentRegistry } from "../../../../../utils/builder/componentRegistry";
-import type { BaseComponent } from "../../../../../store/builder/types";
-import type { CustomTemplate } from "../../../../../utils/builder/customComponentManager";
-import styles from "./ComponentList.module.css";
+import { componentRegistry } from "@utils/builder/componentRegistry";
+import type { BaseComponent } from "@store/builder/types";
+import type { CustomTemplate } from "@utils/builder/customComponentManager";
+import styles from "@pages/ui-builder/components/components/component-list/ComponentList.module.css";
 
 interface ComponentListProps {
   onEditTemplate?: (template: CustomTemplate) => void;

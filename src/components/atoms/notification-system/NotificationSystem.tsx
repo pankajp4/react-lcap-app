@@ -7,9 +7,9 @@
 import { Alert, Snackbar } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 
-import type { RootState } from "../../../store/store";
-import { hideNotification } from "../../../store/notification/notificationSlice";
-import styles from "./NotificationSystem.module.css";
+import type { RootState } from "@store/store";
+import { hideNotification } from "@store/notification/notificationSlice";
+import styles from "@atoms/notification-system/NotificationSystem.module.css";
 
 /**
  * A component that provides a global notification system using Material-UI's Snackbar

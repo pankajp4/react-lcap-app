@@ -25,12 +25,12 @@ import {
 } from "@mui/material";
 import React from "react";
 
-import type { BaseComponent } from "../../../../../store/builder/types";
+import type { BaseComponent } from "@store/builder/types";
 import {
   Textbox,
   // Add other components as they become available
-} from "../../../../../components/atoms";
-import styles from "./ComponentRenderer.module.css";
+} from "@atoms";
+import styles from "@pages/ui-builder/components/components/component-renderer/ComponentRenderer.module.css";
 
 /**
  * Props for the ComponentRenderer

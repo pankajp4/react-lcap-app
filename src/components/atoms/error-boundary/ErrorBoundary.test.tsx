@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { vi, describe, it, expect } from "vitest";
-import { ErrorBoundary } from "./ErrorBoundary";
+import { ErrorBoundary } from "@atoms/error-boundary/ErrorBoundary";
 
 // Mock console.error to prevent logging during tests
 const originalConsoleError = console.error;
@@ -13,7 +13,7 @@ afterAll(() => {
 });
 
 // Mock CSS module
-vi.mock("./ErrorBoundary.module.css", () => ({
+vi.mock("@atoms/error-boundary/ErrorBoundary.module.css", () => ({
   default: {
     errorContainer: "errorContainer",
   },

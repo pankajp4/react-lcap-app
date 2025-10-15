@@ -1,1 +1,1 @@
-export { default } from "./UIBuilder";
+export { default } from "@pages/ui-builder/components/components/ui-builder/UIBuilder";

@@ -11,14 +11,14 @@ import { Typography, Box } from "@mui/material";
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import type { BuilderComponent } from "../../../types/builder";
-import type { RootState } from "../../../store/store";
+import type { BuilderComponent } from "@/types/builder";
+import type { RootState } from "@store/store";
 import {
   setSelectedComponent,
   updateComponent,
-} from "../../../store/builder/builderSlice";
-import { DroppableComponent } from "../../atoms";
-import styles from "./BuilderCanvas.module.css";
+} from "@store/builder/builderSlice";
+import { DroppableComponent } from "@atoms";
+import styles from "@organisms/builder-canvas/BuilderCanvas.module.css";
 
 /**
  * The main canvas area where form components can be dropped and arranged.

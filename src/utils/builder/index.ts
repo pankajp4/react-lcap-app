@@ -5,10 +5,13 @@
  * @category Utils
  */
 
-export { default as HistoryManager } from "./historyManager";
-export { default as customComponentManager } from "./customComponentManager";
-export { componentRegistry } from "./componentRegistry";
-export { exportToCode } from "./codeExporter";
+export { default as HistoryManager } from "@utils/builder/historyManager";
+export { default as customComponentManager } from "@utils/builder/customComponentManager";
+export { componentRegistry } from "@utils/builder/componentRegistry";
+export { exportToCode } from "@utils/builder/codeExporter";
 
-export type { CustomTemplate, TemplateVersion } from "./customComponentManager";
-export type { HistoryState } from "./historyManager";
+export type {
+  CustomTemplate,
+  TemplateVersion,
+} from "@utils/builder/customComponentManager";
+export type { HistoryState } from "@utils/builder/historyManager";

@@ -1,1 +1,1 @@
-export { default } from "./PropertiesPanel";
+export { default } from "@pages/ui-builder/components/components/properties-panel/PropertiesPanel";

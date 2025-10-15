@@ -2,11 +2,14 @@ import { vi, describe, it, expect, beforeEach } from "vitest";
 import { Provider } from "react-redux";
 import userEvent from "@testing-library/user-event";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { DroppableComponent } from "./DroppableComponent";
-import { createMockStore, createTestProps } from "./test-utils";
+import { DroppableComponent } from "@atoms/droppable-component/DroppableComponent";
+import {
+  createMockStore,
+  createTestProps,
+} from "@atoms/droppable-component/test-utils";
 
 // Mock styles
-vi.mock("./DroppableComponent.module.css", () => ({
+vi.mock("@atoms/droppable-component/DroppableComponent.module.css", () => ({
   default: {
     droppableContainer: "droppableContainer",
     selected: "selected",

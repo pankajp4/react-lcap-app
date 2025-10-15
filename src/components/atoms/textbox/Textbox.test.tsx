@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { vi, describe, it, expect } from "vitest";
-import { Textbox } from "./Textbox";
+import { Textbox } from "@atoms/textbox/Textbox";
 
 // Mock the NumericFormat component
 vi.mock("react-number-format", () => ({

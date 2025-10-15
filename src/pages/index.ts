@@ -5,4 +5,4 @@
  * @category Pages
  */
 
-export { UIBuilder, UIBuilderPage } from "./ui-builder";
+export { UIBuilder, UIBuilderPage } from "@pages/ui-builder";

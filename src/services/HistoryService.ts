@@ -1,9 +1,9 @@
-import type { IHistoryService } from "./interfaces";
+import type { IHistoryService } from "@services/interfaces";
 import {
   undo as undoAction,
   redo as redoAction,
-} from "../store/builder/historySlice";
-import type { AppDispatch, RootState } from "../store/store";
+} from "@store/builder/historySlice";
+import type { AppDispatch, RootState } from "@store/store";
 
 /**
  * Service for managing form editing history using Redux

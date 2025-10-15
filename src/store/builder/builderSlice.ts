@@ -12,7 +12,7 @@ import type {
   BuilderComponent,
   FormConfig,
   ComponentConfig,
-} from "../../types/builder";
+} from "@/types/builder";
 
 /**
  * Interface defining the form builder's state structure

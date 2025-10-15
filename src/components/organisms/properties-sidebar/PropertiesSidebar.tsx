@@ -10,11 +10,11 @@ import { Paper, Typography, Box } from "@mui/material";
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import type { PropertyConfig } from "../../../types/builder";
-import type { RootState } from "../../../store/store";
-import { updateComponent } from "../../../store/builder/builderSlice";
-import { PropertyField } from "../../atoms";
-import styles from "./PropertiesSidebar.module.css";
+import type { PropertyConfig } from "@/types/builder";
+import type { RootState } from "@store/store";
+import { updateComponent } from "@store/builder/builderSlice";
+import { PropertyField } from "@atoms";
+import styles from "@organisms/properties-sidebar/PropertiesSidebar.module.css";
 
 /**
  * Right sidebar component that displays and manages properties of the selected component.

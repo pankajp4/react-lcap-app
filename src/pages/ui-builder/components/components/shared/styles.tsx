@@ -14,7 +14,7 @@ import {
   Button as MuiButton,
   ButtonGroup as MuiButtonGroup,
 } from "@mui/material";
-import styles from "./styles.module.css";
+import styles from "@pages/ui-builder/components/components/shared/styles.module.css";
 
 /**
  * TopBar component

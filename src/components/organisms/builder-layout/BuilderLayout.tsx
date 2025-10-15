@@ -10,7 +10,7 @@
 
 import React from "react";
 
-import { UIBuilder } from "../../../pages/ui-builder";
+import { UIBuilder } from "@pages/ui-builder";
 
 /**
  * BuilderLayout component

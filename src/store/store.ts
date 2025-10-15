@@ -19,11 +19,11 @@ import { configureStore } from "@reduxjs/toolkit";
  * - notificationReducer: Manages global notifications
  * - loadingReducer: Tracks loading states
  */
-import formReducer from "./form/formSlice";
-import builderReducer from "./builder/builderSlice";
-import historyReducer from "./builder/historySlice";
-import notificationReducer from "./notification/notificationSlice";
-import loadingReducer from "./loading/loadingSlice";
+import formReducer from "@store/form/formSlice";
+import builderReducer from "@store/builder/builderSlice";
+import historyReducer from "@store/builder/historySlice";
+import notificationReducer from "@store/notification/notificationSlice";
+import loadingReducer from "@store/loading/loadingSlice";
 
 /**
  * Configure and create the Redux store with all feature reducers

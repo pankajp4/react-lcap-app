@@ -1,1 +1,5 @@
-export { TopBar, Button, ButtonGroup } from "./styles";
+export {
+  TopBar,
+  Button,
+  ButtonGroup,
+} from "@pages/ui-builder/components/components/shared/styles";

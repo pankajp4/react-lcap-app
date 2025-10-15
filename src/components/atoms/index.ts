@@ -9,19 +9,19 @@
  * Drag and Drop Components
  * @category DnD
  */
-export { DraggableComponent } from "./draggable-component/DraggableComponent";
-export { DroppableComponent } from "./droppable-component/DroppableComponent";
+export { DraggableComponent } from "@atoms/draggable-component/DraggableComponent";
+export { DroppableComponent } from "@atoms/droppable-component/DroppableComponent";
 
 /**
  * Error Handling and Feedback Components
  * @category Utility
  */
-export { ErrorBoundary } from "./error-boundary/ErrorBoundary";
-export { NotificationSystem } from "./notification-system/NotificationSystem";
+export { ErrorBoundary } from "@atoms/error-boundary/ErrorBoundary";
+export { NotificationSystem } from "@atoms/notification-system/NotificationSystem";
 
 /**
  * Form Input Components
  * @category Input
  */
-export { PropertyField } from "./property-field/PropertyField";
-export { Textbox } from "./textbox/Textbox";
+export { PropertyField } from "@atoms/property-field/PropertyField";
+export { Textbox } from "@atoms/textbox/Textbox";

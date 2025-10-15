@@ -18,9 +18,9 @@
  * - PropertiesSidebar: Displays and edits selected component properties
  * - TopNavbar: Contains form actions and navigation controls
  */
-export { BuilderCanvas } from "./builder-canvas/BuilderCanvas";
-export { BuilderDndProvider } from "./builder-dnd-provider/BuilderDndProvider";
-export { BuilderLayout } from "./builder-layout/BuilderLayout";
-export { ComponentSidebar } from "./component-sidebar/ComponentSidebar";
-export { PropertiesSidebar } from "./properties-sidebar/PropertiesSidebar";
-export { TopNavbar } from "./top-navbar/TopNavbar";
+export { BuilderCanvas } from "@organisms/builder-canvas/BuilderCanvas";
+export { BuilderDndProvider } from "@organisms/builder-dnd-provider/BuilderDndProvider";
+export { BuilderLayout } from "@organisms/builder-layout/BuilderLayout";
+export { ComponentSidebar } from "@organisms/component-sidebar/ComponentSidebar";
+export { PropertiesSidebar } from "@organisms/properties-sidebar/PropertiesSidebar";
+export { TopNavbar } from "@organisms/top-navbar/TopNavbar";

@@ -31,9 +31,9 @@
 import { ThemeProvider, createTheme, Box, CssBaseline } from "@mui/material";
 import React from "react";
 
-import { ErrorBoundary, NotificationSystem } from "./components/atoms";
-import { BuilderLayout } from "./components/organisms";
-import styles from "./App.module.css";
+import { ErrorBoundary, NotificationSystem } from "@atoms";
+import { BuilderLayout } from "@organisms";
+import styles from "@src/App.module.css";
 
 /**
  * Light theme configuration for the builder interface

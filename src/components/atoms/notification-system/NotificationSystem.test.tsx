@@ -2,14 +2,14 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { vi, describe, it, expect } from "vitest";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-import { NotificationSystem } from "./NotificationSystem";
+import { NotificationSystem } from "@atoms/notification-system/NotificationSystem";
 import notificationReducer, {
   showNotification,
   hideNotification,
-} from "../../../store/notification/notificationSlice";
+} from "@store/notification/notificationSlice";
 
 // Mock CSS module
-vi.mock("./NotificationSystem.module.css", () => ({
+vi.mock("@atoms/notification-system/NotificationSystem.module.css", () => ({
   default: {
     snackbar: "snackbar",
   },

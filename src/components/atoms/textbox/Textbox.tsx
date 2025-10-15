@@ -24,7 +24,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import ErrorIcon from "@mui/icons-material/Error";
 import InfoIcon from "@mui/icons-material/Info";
-import styles from "./Textbox.module.css";
+import styles from "@atoms/textbox/Textbox.module.css";
 
 /**
  * Supported input types for the Textbox component

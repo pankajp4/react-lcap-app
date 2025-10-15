@@ -1,1 +1,1 @@
-export { default } from "./Canvas";
+export { default } from "@pages/ui-builder/components/components/canvas/Canvas";

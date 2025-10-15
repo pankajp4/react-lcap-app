@@ -5,19 +5,19 @@
  * @category Store
  */
 
-export { default } from "./store";
-export type { AppDispatch, RootState } from "./store";
+export { default } from "@store/store";
+export type { AppDispatch, RootState } from "@store/store";
 
 // Slice exports (Alphabetically Sorted)
-export { default as builderReducer } from "./builder/builderSlice";
-export { default as formReducer } from "./form/formSlice";
-export { default as historyReducer } from "./builder/historySlice";
-export { default as loadingReducer } from "./loading/loadingSlice";
-export { default as notificationReducer } from "./notification/notificationSlice";
+export { default as builderReducer } from "@store/builder/builderSlice";
+export { default as formReducer } from "@store/form/formSlice";
+export { default as historyReducer } from "@store/builder/historySlice";
+export { default as loadingReducer } from "@store/loading/loadingSlice";
+export { default as notificationReducer } from "@store/notification/notificationSlice";
 
 // Action exports (Alphabetically Sorted)
-export * from "./builder/builderSlice";
-export * from "./builder/historySlice";
-export * from "./form/formSlice";
-export * from "./loading/loadingSlice";
-export * from "./notification/notificationSlice";
+export * from "@store/builder/builderSlice";
+export * from "@store/builder/historySlice";
+export * from "@store/form/formSlice";
+export * from "@store/loading/loadingSlice";
+export * from "@store/notification/notificationSlice";

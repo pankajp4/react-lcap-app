@@ -39,7 +39,7 @@ import axios from "axios";
  * @example
  * ```typescript
  * // Making an authenticated API request
- * import { api } from '../config/api';
+ * import { api } from '@config/api';
  *
  * async function fetchUserData() {
  *   try {

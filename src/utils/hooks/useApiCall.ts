@@ -7,8 +7,8 @@
 
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { setLoading } from "../../store/loading/loadingSlice";
-import { showNotification } from "../../store/notification/notificationSlice";
+import { setLoading } from "@store/loading/loadingSlice";
+import { showNotification } from "@store/notification/notificationSlice";
 
 /**
  * Configuration options for the useApiCall hook
