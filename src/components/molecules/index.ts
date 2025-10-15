@@ -10,4 +10,4 @@
  * Components used to structure and organize form elements
  * @category FormBuilder
  */
-export { ComponentGroup } from "@molecules/component-group/ComponentGroup";
+export { ComponentGroup } from "./component-group/ComponentGroup";

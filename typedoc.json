@@ -1,6 +1,14 @@
 {
   "entryPoints": ["src"],
+  "entryPointStrategy": "expand",
   "out": "docs",
   "includeVersion": true,
-  "excludePrivate": true
+  "excludePrivate": true,
+  "tsconfig": "./tsconfig.typedoc.json",
+  "exclude": [
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/test/**",
+    "**/node_modules/**"
+  ]
 }
