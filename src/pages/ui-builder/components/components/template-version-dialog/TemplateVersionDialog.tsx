@@ -24,7 +24,7 @@ import RestoreIcon from "@mui/icons-material/Restore";
 import type {
   CustomTemplate,
   TemplateVersion,
-} from "../../../../utils/builder/customComponentManager";
+} from "../../../../../utils/builder/customComponentManager";
 import styles from "./TemplateVersionDialog.module.css";
 
 /**

@@ -9,11 +9,11 @@
  */
 
 import React from "react";
-import { componentRegistry } from "../../../../utils/builder/componentRegistry";
+import { componentRegistry } from "../../../../../utils/builder/componentRegistry";
 import type {
   BaseComponent,
   PropertyDefinition,
-} from "../../../../store/builder/types";
+} from "../../../../../store/builder/types";
 import styles from "./PropertiesPanel.module.css";
 
 interface PropertiesPanelProps {

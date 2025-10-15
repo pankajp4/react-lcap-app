@@ -10,8 +10,8 @@
 
 import React from "react";
 import { Button } from "@mui/material";
-import ComponentRenderer from "./ComponentRenderer";
-import type { BaseComponent } from "../../../../store/builder/types";
+import ComponentRenderer from "../component-renderer";
+import type { BaseComponent } from "../../../../../store/builder/types";
 import styles from "./PreviewWindow.module.css";
 
 interface PreviewWindowProps {

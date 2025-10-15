@@ -9,7 +9,7 @@
  */
 
 import React from "react";
-import UIBuilder from "../components/components/UIBuilder";
+import UIBuilder from "../components/components/ui-builder";
 
 /**
  * UIBuilderPage component

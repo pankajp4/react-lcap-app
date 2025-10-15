@@ -10,16 +10,16 @@
  */
 
 import React from "react";
-import ComponentList from "./ComponentList";
-import Canvas from "./canvas/Canvas";
-import PropertiesPanel from "./PropertiesPanel";
-import PreviewWindow from "./PreviewWindow";
-import SaveTemplateDialog from "./SaveTemplateDialog";
-import { TopBar, Button, ButtonGroup } from "./styles";
-import type { BaseComponent } from "../../../../store/builder/types";
-import type { CustomTemplate } from "../../../../utils/builder/customComponentManager";
-import { exportToCode } from "../../../../utils/builder/codeExporter";
-import HistoryManager from "../../../../utils/builder/HistoryManager";
+import ComponentList from "../component-list";
+import Canvas from "../canvas";
+import PropertiesPanel from "../properties-panel";
+import PreviewWindow from "../preview-window";
+import SaveTemplateDialog from "../save-template-dialog";
+import { TopBar, Button, ButtonGroup } from "../shared";
+import type { BaseComponent } from "../../../../../store/builder/types";
+import type { CustomTemplate } from "../../../../../utils/builder/customComponentManager";
+import { exportToCode } from "../../../../../utils/builder/codeExporter";
+import HistoryManager from "../../../../../utils/builder/historyManager";
 import styles from "./UIBuilder.module.css";
 
 const UIBuilder: React.FC = () => {

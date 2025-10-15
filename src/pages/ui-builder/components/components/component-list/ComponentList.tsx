@@ -9,9 +9,9 @@
  */
 
 import React from "react";
-import { componentRegistry } from "../../../../utils/builder/componentRegistry";
-import type { BaseComponent } from "../../../../store/builder/types";
-import type { CustomTemplate } from "../../../../utils/builder/customComponentManager";
+import { componentRegistry } from "../../../../../utils/builder/componentRegistry";
+import type { BaseComponent } from "../../../../../store/builder/types";
+import type { CustomTemplate } from "../../../../../utils/builder/customComponentManager";
 import styles from "./ComponentList.module.css";
 
 interface ComponentListProps {
