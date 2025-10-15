@@ -15,7 +15,7 @@ import RestoreIcon from "@mui/icons-material/Restore";
 import type {
   CustomTemplate,
   TemplateVersion,
-} from "../customComponentManager";
+} from "../../../../utils/builder/customComponentManager";
 
 interface TemplateVersionDialogProps {
   open: boolean;

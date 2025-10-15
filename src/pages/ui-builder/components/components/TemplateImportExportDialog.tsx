@@ -9,8 +9,8 @@ import {
   Typography,
   Box,
 } from "@mui/material";
-import customComponentManager from "../customComponentManager";
-import type { CustomTemplate } from "../customComponentManager";
+import customComponentManager from "../../../../utils/builder/customComponentManager";
+import type { CustomTemplate } from "../../../../utils/builder/customComponentManager";
 
 interface TemplateImportExportDialogProps {
   open: boolean;

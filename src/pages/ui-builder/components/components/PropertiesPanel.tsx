@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { componentRegistry } from "../componentRegistry";
-import type { BaseComponent, PropertyDefinition } from "../types";
+import { componentRegistry } from "../../../../utils/builder/componentRegistry";
+import type {
+  BaseComponent,
+  PropertyDefinition,
+} from "../../../../store/builder/types";
 
 const PropertiesPanelContainer = styled.div`
   display: flex;

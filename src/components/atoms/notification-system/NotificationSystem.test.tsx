@@ -6,7 +6,7 @@ import { NotificationSystem } from "./NotificationSystem";
 import notificationReducer, {
   showNotification,
   hideNotification,
-} from "../../../features/notification/notificationSlice";
+} from "../../../store/notification/notificationSlice";
 
 // Mock CSS module
 vi.mock("./NotificationSystem.module.css", () => ({

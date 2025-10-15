@@ -1,4 +1,4 @@
-import { UIBuilder } from "../../../features/builder";
+import { UIBuilder } from "../../../pages/ui-builder";
 import React from "react";
 
 export const BuilderLayout: React.FC = () => {

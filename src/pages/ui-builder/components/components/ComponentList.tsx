@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { componentRegistry } from "../componentRegistry";
-import type { BaseComponent } from "../types";
-import type { CustomTemplate } from "../customComponentManager";
+import { componentRegistry } from "../../../../utils/builder/componentRegistry";
+import type { BaseComponent } from "../../../../store/builder/types";
+import type { CustomTemplate } from "../../../../utils/builder/customComponentManager";
 
 const ComponentListContainer = styled.div`
   display: flex;

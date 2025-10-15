@@ -1,6 +1,6 @@
 import { vi } from "vitest";
 import { configureStore } from "@reduxjs/toolkit";
-import type { RootState } from "../../../features/store";
+import type { RootState } from "../../../store/store";
 import type { ComponentType, ComponentCategory } from "../../../types/builder";
 
 // Create mock store with initial state

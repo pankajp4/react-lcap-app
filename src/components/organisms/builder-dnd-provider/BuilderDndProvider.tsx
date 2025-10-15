@@ -14,9 +14,9 @@ import {
   type DragOverEvent,
   type DragStartEvent,
 } from "@dnd-kit/core";
-import { addComponent } from "../../../features/builder/builderSlice";
+import { addComponent } from "../../../store/builder/builderSlice";
 import type { ComponentConfig } from "../../../types/builder";
-import type { RootState } from "../../../features/store";
+import type { RootState } from "../../../store/store";
 
 /**
  * Props for the BuilderDndProvider component

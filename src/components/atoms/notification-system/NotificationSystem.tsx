@@ -6,8 +6,8 @@
 
 import { Alert, Snackbar } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import type { RootState } from "../../../features/store";
-import { hideNotification } from "../../../features/notification/notificationSlice";
+import type { RootState } from "../../../store/store";
+import { hideNotification } from "../../../store/notification/notificationSlice";
 import styles from "./NotificationSystem.module.css";
 
 /**

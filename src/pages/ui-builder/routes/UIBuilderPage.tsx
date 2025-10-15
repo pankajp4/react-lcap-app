@@ -1,5 +1,5 @@
 import React from "react";
-import UIBuilder from "../components/UIBuilder";
+import UIBuilder from "../components/components/UIBuilder";
 
 const UIBuilderPage: React.FC = () => {
   return <UIBuilder />;

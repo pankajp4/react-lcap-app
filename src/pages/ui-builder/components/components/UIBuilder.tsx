@@ -6,10 +6,10 @@ import PropertiesPanel from "./PropertiesPanel";
 import PreviewWindow from "./PreviewWindow";
 import SaveTemplateDialog from "./SaveTemplateDialog";
 import { TopBar, Button, ButtonGroup } from "./styles";
-import type { BaseComponent } from "../types";
-import type { CustomTemplate } from "../customComponentManager";
-import { exportToCode } from "../codeExporter";
-import HistoryManager from "../HistoryManager";
+import type { BaseComponent } from "../../../../store/builder/types";
+import type { CustomTemplate } from "../../../../utils/builder/customComponentManager";
+import { exportToCode } from "../../../../utils/builder/codeExporter";
+import HistoryManager from "../../../../utils/builder/HistoryManager";
 
 const BuilderContainer = styled.div`
   display: flex;

@@ -3,7 +3,7 @@ import { styled as _styled } from "@mui/material/styles";
 import { Box as _Box } from "@mui/material";
 import { useSelector } from "react-redux";
 import type { BuilderComponent } from "../../../types/builder";
-import type { RootState } from "../../../features/store";
+import type { RootState } from "../../../store/store";
 import styles from "./DroppableComponent.module.css";
 
 /**

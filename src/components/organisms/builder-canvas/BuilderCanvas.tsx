@@ -11,11 +11,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useDroppable } from "@dnd-kit/core";
 import { Typography } from "@mui/material";
 import type { BuilderComponent } from "../../../types/builder";
-import type { RootState } from "../../../features/store";
+import type { RootState } from "../../../store/store";
 import {
   updateComponent,
   setSelectedComponent,
-} from "../../../features/builder/builderSlice";
+} from "../../../store/builder/builderSlice";
 import { DroppableComponent } from "../../atoms";
 import styles from "./BuilderCanvas.module.css";
 

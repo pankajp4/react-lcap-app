@@ -26,10 +26,10 @@ import {
 import { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { saveForm } from "../../../features/builder/builderSlice";
-import { redo, undo } from "../../../features/builder/historySlice";
+import { saveForm } from "../../../store/builder/builderSlice";
+import { redo, undo } from "../../../store/builder/historySlice";
 
-import type { RootState } from "../../../features/store";
+import type { RootState } from "../../../store/store";
 import styles from "./TopNavbar.module.css";
 
 /**

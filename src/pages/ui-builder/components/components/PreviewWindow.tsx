@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Button } from "@mui/material";
 import ComponentRenderer from "./ComponentRenderer";
-import type { BaseComponent } from "../types";
+import type { BaseComponent } from "../../../../store/builder/types";
 
 const PreviewOverlay = styled.div<{ isOpen: boolean }>`
   position: fixed;

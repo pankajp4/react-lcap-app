@@ -9,8 +9,8 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Paper, Typography } from "@mui/material";
-import type { RootState } from "../../../features/store";
-import { updateComponent } from "../../../features/builder/builderSlice";
+import type { RootState } from "../../../store/store";
+import { updateComponent } from "../../../store/builder/builderSlice";
 import type { PropertyConfig } from "../../../types/builder";
 import { PropertyField } from "../../atoms";
 import styles from "./PropertiesSidebar.module.css";

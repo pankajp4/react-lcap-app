@@ -17,8 +17,8 @@ import React from "react";
 import {
   Textbox,
   // Add other components as they become available
-} from "../../../components/atoms";
-import type { BaseComponent } from "../types";
+} from "../../../../components/atoms";
+import type { BaseComponent } from "../../../../store/builder/types";
 
 interface ComponentRendererProps {
   component: BaseComponent;

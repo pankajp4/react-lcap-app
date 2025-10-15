@@ -1,4 +1,4 @@
-import type { BaseComponent } from "./types";
+import type { BaseComponent } from "../../store/builder/types";
 import { componentRegistry } from "./componentRegistry";
 
 const generateImports = (components: BaseComponent[]): string => {

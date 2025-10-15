@@ -1,6 +1,6 @@
 import React from "react";
-import { componentRegistry } from "../../componentRegistry";
-import type { BaseComponent } from "../../types";
+import { componentRegistry } from "../../../../../utils/builder/componentRegistry";
+import type { BaseComponent } from "../../../../../store/builder/types";
 import { Box, IconButton, Button, Stack } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Close";
 import clsx from "clsx";
