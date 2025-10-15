@@ -1,6 +1,4 @@
 import React, { useCallback, useState, useEffect } from "react";
-import { styled as _styled } from "@mui/material/styles";
-import { Box as _Box } from "@mui/material";
 import { useSelector } from "react-redux";
 import type { BuilderComponent } from "../../../types/builder";
 import type { RootState } from "../../../store/store";

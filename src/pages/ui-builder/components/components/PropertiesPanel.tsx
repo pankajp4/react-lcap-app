@@ -9,63 +9,12 @@
  */
 
 import React from "react";
-import styled from "@emotion/styled";
 import { componentRegistry } from "../../../../utils/builder/componentRegistry";
 import type {
   BaseComponent,
   PropertyDefinition,
 } from "../../../../store/builder/types";
-
-const PropertiesPanelContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
-
-const PanelTitle = styled.h2`
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: #1a202c;
-`;
-
-const PropertyGroup = styled.div`
-  margin-bottom: 1rem;
-`;
-
-const PropertyLabel = styled.label`
-  display: block;
-  font-size: 0.875rem;
-  color: #4a5568;
-  margin-bottom: 0.5rem;
-`;
-
-const PropertyInput = styled.input`
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #e2e8f0;
-  border-radius: 4px;
-  &:focus {
-    outline: none;
-    border-color: #4299e1;
-  }
-`;
-
-const PropertySelect = styled.select`
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #e2e8f0;
-  border-radius: 4px;
-  background-color: white;
-  &:focus {
-    outline: none;
-    border-color: #4299e1;
-  }
-`;
-
-const PropertyCheckbox = styled.input`
-  margin-right: 0.5rem;
-`;
+import styles from "./PropertiesPanel.module.css";
 
 interface PropertiesPanelProps {
   selectedComponent: BaseComponent | null;
@@ -80,7 +29,8 @@ const PropertyField: React.FC<{
   switch (property.type) {
     case "string":
       return (
-        <PropertyInput
+        <input
+          className={styles.input}
           type="text"
           value={value || ""}
           onChange={(e) => onChange(e.target.value)}
@@ -88,7 +38,8 @@ const PropertyField: React.FC<{
       );
     case "number":
       return (
-        <PropertyInput
+        <input
+          className={styles.input}
           type="number"
           value={value || 0}
           onChange={(e) => onChange(Number(e.target.value))}
@@ -96,7 +47,8 @@ const PropertyField: React.FC<{
       );
     case "boolean":
       return (
-        <PropertyCheckbox
+        <input
+          className={styles.checkbox}
           type="checkbox"
           checked={value || false}
           onChange={(e) => onChange(e.target.checked)}
@@ -104,7 +56,8 @@ const PropertyField: React.FC<{
       );
     case "select":
       return (
-        <PropertySelect
+        <select
+          className={styles.select}
           value={value || property.default}
           onChange={(e) => onChange(e.target.value)}
         >
@@ -113,11 +66,12 @@ const PropertyField: React.FC<{
               {option}
             </option>
           ))}
-        </PropertySelect>
+        </select>
       );
     case "color":
       return (
-        <PropertyInput
+        <input
+          className={styles.input}
           type="color"
           value={value || "#000000"}
           onChange={(e) => onChange(e.target.value)}
@@ -134,10 +88,10 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
 }) => {
   if (!selectedComponent) {
     return (
-      <PropertiesPanelContainer>
-        <PanelTitle>Properties</PanelTitle>
-        <p>No component selected</p>
-      </PropertiesPanelContainer>
+      <div className={styles.container}>
+        <h2 className={styles.title}>Properties</h2>
+        <p className={styles.emptyMessage}>No component selected</p>
+      </div>
     );
   }
 
@@ -147,41 +101,52 @@ const PropertiesPanel: React.FC<PropertiesPanelProps> = ({
 
   if (!componentDef) {
     return (
-      <PropertiesPanelContainer>
-        <PanelTitle>Properties</PanelTitle>
-        <p>Component type not found</p>
-      </PropertiesPanelContainer>
+      <div className={styles.container}>
+        <h2 className={styles.title}>Properties</h2>
+        <p className={styles.emptyMessage}>Component type not found</p>
+      </div>
     );
   }
 
   return (
-    <PropertiesPanelContainer>
-      <PanelTitle>{componentDef.name} Properties</PanelTitle>
+    <div className={styles.container}>
+      <h2 className={styles.title}>{componentDef.name} Properties</h2>
 
-      <PropertyGroup>
-        <PropertyLabel>Component Type</PropertyLabel>
-        <PropertyInput value={selectedComponent.type} disabled />
-      </PropertyGroup>
+      <div className={styles.propertyGroup}>
+        <label className={styles.label} htmlFor="component-type">
+          Component Type
+        </label>
+        <input
+          id="component-type"
+          className={styles.input}
+          value={selectedComponent.type}
+          disabled
+        />
+      </div>
 
-      <PropertyGroup>
-        <PropertyLabel>ID</PropertyLabel>
-        <PropertyInput
+      <div className={styles.propertyGroup}>
+        <label className={styles.label} htmlFor="component-id">
+          ID
+        </label>
+        <input
+          id="component-id"
+          className={styles.input}
           value={selectedComponent.id}
           onChange={(e) => onPropertyChange("id", e.target.value)}
         />
-      </PropertyGroup>
+      </div>
 
       {componentDef.properties.map((property) => (
-        <PropertyGroup key={property.name}>
-          <PropertyLabel>{property.label}</PropertyLabel>
+        <div key={property.name} className={styles.propertyGroup}>
+          <label className={styles.label}>{property.label}</label>
           <PropertyField
             property={property}
             value={selectedComponent.props[property.name]}
             onChange={(value) => onPropertyChange(property.name, value)}
           />
-        </PropertyGroup>
+        </div>
       ))}
-    </PropertiesPanelContainer>
+    </div>
   );
 };
 

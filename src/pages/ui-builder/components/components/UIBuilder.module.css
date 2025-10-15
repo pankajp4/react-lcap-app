@@ -1,0 +1,132 @@
+/**
+ * @fileoverview
+ * Styles for the UIBuilder component.
+ * Provides main layout styling for the UI builder interface.
+ * 
+ * @category Styles
+ * @module Pages/UIBuilder/Components/UIBuilder
+ * @since 1.0.0
+ */
+
+/**
+ * Builder container
+ * @description
+ * Main container for the entire UI builder.
+ */
+.builderContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background-color: #f7f8fa;
+  overflow: hidden;
+}
+
+/**
+ * Editor container
+ * @description
+ * Container for the main editor area with panels.
+ */
+.editorContainer {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  height: calc(100vh - 64px);
+}
+
+/**
+ * Component panel
+ * @description
+ * Left panel for component palette.
+ */
+.componentPanel {
+  width: 280px;
+  background: linear-gradient(180deg, #2d3748 0%, #1a202c 100%);
+  color: white;
+  padding: 20px 16px;
+  overflow-y: auto;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.componentPanel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.componentPanel::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.componentPanel::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.componentPanel::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/**
+ * Canvas container
+ * @description
+ * Main canvas area for building the UI.
+ */
+.canvasContainer {
+  flex: 1;
+  padding: 24px;
+  overflow: auto;
+  background-color: #f7f8fa;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.canvasContainer::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.canvasContainer::-webkit-scrollbar-track {
+  background: #e2e8f0;
+}
+
+.canvasContainer::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 5px;
+}
+
+.canvasContainer::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+/**
+ * Properties panel container
+ * @description
+ * Right panel for component properties.
+ */
+.propertiesPanelContainer {
+  width: 320px;
+  background-color: #ffffff;
+  border-left: 1px solid #e2e8f0;
+  padding: 20px;
+  overflow-y: auto;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.propertiesPanelContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.propertiesPanelContainer::-webkit-scrollbar-track {
+  background: #f7f8fa;
+}
+
+.propertiesPanelContainer::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 3px;
+}
+
+.propertiesPanelContainer::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}

@@ -18,7 +18,7 @@
   position: relative;
   min-height: 40px;
   border: 2px solid transparent;
-  transition: border-color 0.2s ease;
+  transition: border-color var(--transition-normal);
   cursor: pointer;
 }
 
@@ -28,7 +28,7 @@
  * Highlights the droppable area when an item is being dragged over it.
  */
 .draggingOver {
-  border-color: #1976d2;
+  border-color: var(--primary-main);
 }
 
 /**
@@ -37,7 +37,7 @@
  * Highlights the droppable component when selected for editing.
  */
 .selected {
-  border-color: #1976d2;
+  border-color: var(--primary-main);
 }
 
 /**
@@ -58,13 +58,13 @@
 /**
  * Base resize handle styles
  * @description
- * Common styles for all resize handles with blue background and white border.
+ * Common styles for all resize handles with primary color background and white border.
  */
 .handle {
   position: absolute;
   width: 8px;
   height: 8px;
-  background-color: #1976d2;
+  background-color: var(--primary-main);
   border: 1px solid #fff;
   pointer-events: auto;
   cursor: nwse-resize;

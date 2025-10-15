@@ -1,0 +1,146 @@
+/**
+ * @fileoverview
+ * Styles for the PropertiesPanel component.
+ * Provides styling for the properties editor panel.
+ * 
+ * @category Styles
+ * @module Pages/UIBuilder/Components/PropertiesPanel
+ * @since 1.0.0
+ */
+
+/**
+ * Properties panel container
+ * @description
+ * Main container with vertical layout and spacing.
+ */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/**
+ * Panel title
+ * @description
+ * Title heading for the properties panel.
+ */
+.title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #2d3748;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+/**
+ * Property group container
+ * @description
+ * Groups related property fields together.
+ */
+.propertyGroup {
+  margin-bottom: 20px;
+}
+
+/**
+ * Property label
+ * @description
+ * Label for property input fields.
+ */
+.label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 8px;
+}
+
+/**
+ * Property input base styles
+ * @description
+ * Base styling for text and number inputs.
+ */
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #2d3748;
+  font-size: 0.875rem;
+  transition: all var(--transition-fast);
+}
+
+/**
+ * Input focus state
+ * @description
+ * Focus state styling for inputs.
+ */
+.input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/**
+ * Disabled input state
+ * @description
+ * Styling for disabled inputs.
+ */
+.input:disabled {
+  opacity: 0.5;
+  background-color: #f7f8fa;
+  cursor: not-allowed;
+}
+
+/**
+ * Select dropdown styles
+ * @description
+ * Styling for select dropdown fields.
+ */
+.select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #2d3748;
+  font-size: 0.875rem;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+/**
+ * Select focus state
+ * @description
+ * Focus state styling for select dropdowns.
+ */
+.select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/**
+ * Checkbox input styles
+ * @description
+ * Spacing for checkbox inputs.
+ */
+.checkbox {
+  margin-right: 8px;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  accent-color: #667eea;
+}
+
+/**
+ * Empty state message
+ * @description
+ * Styling for the message shown when no component is selected.
+ */
+.emptyMessage {
+  color: var(--text-secondary);
+  text-align: center;
+  padding: var(--spacing-lg);
+}

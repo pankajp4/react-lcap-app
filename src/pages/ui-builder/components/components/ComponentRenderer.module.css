@@ -1,0 +1,47 @@
+/**
+ * @fileoverview
+ * Styles for the ComponentRenderer component.
+ * Provides styling for dynamically rendered components.
+ * 
+ * @category Styles
+ * @module Pages/UIBuilder/Components/ComponentRenderer
+ * @since 1.0.0
+ */
+
+/**
+ * Grid child wrapper
+ * @description
+ * Flex wrapper for grid child components with responsive width.
+ */
+.gridChild {
+  flex: 1;
+  width: 100%;
+  padding: var(--spacing-sm);
+}
+
+/**
+ * Table row striped (odd) style
+ * @description
+ * Alternating row background for better readability.
+ */
+.tableRowStriped {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+/**
+ * Table row hover state
+ * @description
+ * Hover effect for table rows.
+ */
+.tableRowHoverable:hover {
+  background-color: var(--hover-background);
+}
+
+/**
+ * Grid container
+ * @description
+ * Full width container for grid layout.
+ */
+.gridContainer {
+  width: 100%;
+}

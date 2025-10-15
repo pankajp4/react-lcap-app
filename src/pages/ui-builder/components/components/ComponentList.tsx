@@ -9,47 +9,10 @@
  */
 
 import React from "react";
-import styled from "@emotion/styled";
 import { componentRegistry } from "../../../../utils/builder/componentRegistry";
 import type { BaseComponent } from "../../../../store/builder/types";
 import type { CustomTemplate } from "../../../../utils/builder/customComponentManager";
-
-const ComponentListContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-`;
-
-const SearchInput = styled.input`
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #2d3748;
-  border-radius: 4px;
-  background-color: #2d3748;
-  color: white;
-  &::placeholder {
-    color: #a0aec0;
-  }
-`;
-
-const ComponentGroup = styled.div`
-  margin-bottom: 1rem;
-`;
-
-const GroupTitle = styled.h3`
-  font-size: 0.875rem;
-  color: #a0aec0;
-  margin-bottom: 0.5rem;
-`;
-
-const ComponentItem = styled.div`
-  padding: 0.5rem;
-  cursor: pointer;
-  border-radius: 4px;
-  &:hover {
-    background-color: #2d3748;
-  }
-`;
+import styles from "./ComponentList.module.css";
 
 interface ComponentListProps {
   onEditTemplate?: (template: CustomTemplate) => void;
@@ -85,20 +48,24 @@ const ComponentList: React.FC<ComponentListProps> = ({
   }, [searchTerm]);
 
   return (
-    <ComponentListContainer>
-      <SearchInput
+    <div className={styles.container}>
+      <input
+        className={styles.searchInput}
         type="text"
         placeholder="Search components..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       {filteredRegistry.map((group) => (
-        <ComponentGroup key={group.name}>
-          <GroupTitle>{group.name}</GroupTitle>
+        <div key={group.name} className={styles.componentGroup}>
+          <h3 className={styles.groupTitle}>{group.name}</h3>
           {group.components.map((component) => (
-            <ComponentItem
+            <div
               key={component.type}
+              className={styles.componentItem}
               draggable
+              role="button"
+              tabIndex={0}
               onDragStart={(e) =>
                 handleDragStart(e, {
                   id: "",
@@ -109,11 +76,11 @@ const ComponentList: React.FC<ComponentListProps> = ({
               }
             >
               {component.name}
-            </ComponentItem>
+            </div>
           ))}
-        </ComponentGroup>
+        </div>
       ))}
-    </ComponentListContainer>
+    </div>
   );
 };
 

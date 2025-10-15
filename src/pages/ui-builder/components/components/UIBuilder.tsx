@@ -10,7 +10,6 @@
  */
 
 import React from "react";
-import styled from "@emotion/styled";
 import ComponentList from "./ComponentList";
 import Canvas from "./canvas/Canvas";
 import PropertiesPanel from "./PropertiesPanel";
@@ -21,42 +20,7 @@ import type { BaseComponent } from "../../../../store/builder/types";
 import type { CustomTemplate } from "../../../../utils/builder/customComponentManager";
 import { exportToCode } from "../../../../utils/builder/codeExporter";
 import HistoryManager from "../../../../utils/builder/HistoryManager";
-
-const BuilderContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100vh;
-  background-color: #f5f6f7;
-`;
-
-const EditorContainer = styled.div`
-  display: flex;
-  flex: 1;
-  overflow: hidden;
-`;
-
-const ComponentPanel = styled.div`
-  width: 250px;
-  background-color: #1a202c;
-  color: white;
-  padding: 1rem;
-  overflow-y: auto;
-`;
-
-const CanvasContainer = styled.div`
-  flex: 1;
-  padding: 2rem;
-  overflow: auto;
-`;
-
-const PropertiesPanelContainer = styled.div`
-  width: 300px;
-  background-color: white;
-  border-left: 1px solid #e2e8f0;
-  padding: 1rem;
-  overflow-y: auto;
-`;
+import styles from "./UIBuilder.module.css";
 
 const UIBuilder: React.FC = () => {
   const [components, setComponents] = React.useState<BaseComponent[]>([]);
@@ -243,7 +207,7 @@ const UIBuilder: React.FC = () => {
   };
 
   return (
-    <BuilderContainer>
+    <div className={styles.builderContainer}>
       <TopBar>
         <h1>UI Builder</h1>
         <ButtonGroup>
@@ -281,8 +245,8 @@ const UIBuilder: React.FC = () => {
           </Button>
         </ButtonGroup>
       </TopBar>
-      <EditorContainer>
-        <ComponentPanel>
+      <div className={styles.editorContainer}>
+        <div className={styles.componentPanel}>
           <ComponentList
             onEditTemplate={(template: CustomTemplate) => {
               setComponents(template.components);
@@ -294,8 +258,8 @@ const UIBuilder: React.FC = () => {
               });
             }}
           />
-        </ComponentPanel>
-        <CanvasContainer>
+        </div>
+        <div className={styles.canvasContainer}>
           <Canvas
             components={components}
             selectedId={selectedComponent?.id || null}
@@ -320,14 +284,14 @@ const UIBuilder: React.FC = () => {
             }}
             onDeleteComponent={handleDeleteComponent}
           />
-        </CanvasContainer>
-        <PropertiesPanelContainer>
+        </div>
+        <div className={styles.propertiesPanelContainer}>
           <PropertiesPanel
             selectedComponent={selectedComponent}
             onPropertyChange={handlePropertyChange}
           />
-        </PropertiesPanelContainer>
-      </EditorContainer>
+        </div>
+      </div>
       <PreviewWindow
         isOpen={isPreviewMode}
         onClose={() => setIsPreviewMode(false)}
@@ -343,7 +307,7 @@ const UIBuilder: React.FC = () => {
           forceUpdate();
         }}
       />
-    </BuilderContainer>
+    </div>
   );
 };
 

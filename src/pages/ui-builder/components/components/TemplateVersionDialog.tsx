@@ -18,7 +18,6 @@ import {
   List,
   IconButton,
   Typography,
-  Box,
 } from "@mui/material";
 import RestoreIcon from "@mui/icons-material/Restore";
 
@@ -26,6 +25,7 @@ import type {
   CustomTemplate,
   TemplateVersion,
 } from "../../../../utils/builder/customComponentManager";
+import styles from "./TemplateVersionDialog.module.css";
 
 /**
  * Props for the TemplateVersionDialog
@@ -87,23 +87,15 @@ const TemplateVersionDialog: React.FC<TemplateVersionDialogProps> = ({
             .slice()
             .reverse()
             .map((version) => (
-              <Box
+              <div
                 key={version.version}
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "flex-start",
-                  p: 1,
-                  bgcolor:
-                    version.version === template.currentVersion
-                      ? "action.selected"
-                      : "transparent",
-                  "&:hover": {
-                    bgcolor: "action.hover",
-                  },
-                }}
+                className={`${styles.versionItem} ${
+                  version.version === template.currentVersion
+                    ? styles.currentVersion
+                    : ""
+                }`}
               >
-                <Box sx={{ flexGrow: 1 }}>
+                <div className={styles.versionContent}>
                   <Typography variant="subtitle1">
                     Version {version.version}
                   </Typography>
@@ -111,11 +103,11 @@ const TemplateVersionDialog: React.FC<TemplateVersionDialogProps> = ({
                     {formatDate(version.updatedAt)}
                   </Typography>
                   {version.notes && (
-                    <Typography variant="body2" sx={{ mt: 0.5 }}>
+                    <Typography variant="body2" className={styles.versionNotes}>
                       {version.notes}
                     </Typography>
                   )}
-                </Box>
+                </div>
                 {version.version !== template.currentVersion && (
                   <IconButton
                     size="small"
@@ -125,7 +117,7 @@ const TemplateVersionDialog: React.FC<TemplateVersionDialogProps> = ({
                     <RestoreIcon />
                   </IconButton>
                 )}
-              </Box>
+              </div>
             ))}
         </List>
       </DialogContent>

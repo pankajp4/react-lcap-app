@@ -14,7 +14,7 @@
  * Sets vertical margin for property fields with exceptions for first and last children.
  */
 .field {
-  margin: 8px 0;
+  margin: var(--spacing-sm) 0;
 }
 
 /**

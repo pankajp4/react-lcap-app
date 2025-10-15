@@ -9,48 +9,10 @@
  */
 
 import React from "react";
-import styled from "@emotion/styled";
 import { Button } from "@mui/material";
 import ComponentRenderer from "./ComponentRenderer";
 import type { BaseComponent } from "../../../../store/builder/types";
-
-const PreviewOverlay = styled.div<{ isOpen: boolean }>`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: white;
-  z-index: 1000;
-  display: ${(props) => (props.isOpen ? "flex" : "none")};
-  flex-direction: column;
-`;
-
-const PreviewHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  background-color: #1a202c;
-  color: white;
-`;
-
-const PreviewTitle = styled.h2`
-  margin: 0;
-  font-size: 1.25rem;
-`;
-
-const PreviewContent = styled.div`
-  flex: 1;
-  overflow: auto;
-  padding: 2rem;
-`;
-
-const ViewportSelector = styled.div`
-  display: flex;
-  gap: 1rem;
-  margin-right: 2rem;
-`;
+import styles from "./PreviewWindow.module.css";
 
 interface PreviewWindowProps {
   isOpen: boolean;
@@ -67,22 +29,22 @@ const PreviewWindow: React.FC<PreviewWindowProps> = ({
     "desktop" | "tablet" | "mobile"
   >("desktop");
 
-  const getViewportWidth = () => {
+  const getViewportClass = () => {
     switch (viewport) {
       case "mobile":
-        return "375px";
+        return styles.viewportMobile;
       case "tablet":
-        return "768px";
+        return styles.viewportTablet;
       default:
-        return "100%";
+        return styles.viewportDesktop;
     }
   };
 
   return (
-    <PreviewOverlay isOpen={isOpen}>
-      <PreviewHeader>
-        <PreviewTitle>Preview</PreviewTitle>
-        <ViewportSelector>
+    <div className={`${styles.overlay} ${!isOpen ? styles.overlayHidden : ""}`}>
+      <div className={styles.header}>
+        <h2 className={styles.title}>Preview</h2>
+        <div className={styles.viewportSelector}>
           <Button
             variant={viewport === "desktop" ? "contained" : "text"}
             color="inherit"
@@ -104,25 +66,19 @@ const PreviewWindow: React.FC<PreviewWindowProps> = ({
           >
             Mobile
           </Button>
-        </ViewportSelector>
+        </div>
         <Button variant="outlined" color="inherit" onClick={onClose}>
           Close Preview
         </Button>
-      </PreviewHeader>
-      <PreviewContent>
-        <div
-          style={{
-            maxWidth: getViewportWidth(),
-            margin: "0 auto",
-            transition: "max-width 0.3s ease-in-out",
-          }}
-        >
+      </div>
+      <div className={styles.content}>
+        <div className={`${styles.viewportContainer} ${getViewportClass()}`}>
           {components.map((component) => (
             <ComponentRenderer key={component.id} component={component} />
           ))}
         </div>
-      </PreviewContent>
-    </PreviewOverlay>
+      </div>
+    </div>
   );
 };
 

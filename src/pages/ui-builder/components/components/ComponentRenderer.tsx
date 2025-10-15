@@ -29,6 +29,7 @@ import {
   // Add other components as they become available
 } from "../../../../components/atoms";
 import type { BaseComponent } from "../../../../store/builder/types";
+import styles from "./ComponentRenderer.module.css";
 
 /**
  * Props for the ComponentRenderer
@@ -84,16 +85,14 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({ component }) => {
         <Grid
           container
           spacing={Number(component.props.gap?.replace("rem", "") || 1)}
-          style={{ width: "100%" }}
+          className={styles.gridContainer}
         >
           {component.children?.map((child) => (
             <div
               key={child.id}
+              className={styles.gridChild}
               style={{
-                flex: 1,
-                width: "100%",
                 maxWidth: `${100 / (component.props.columns || 1)}%`,
-                padding: "8px",
               }}
             >
               <ComponentRenderer component={child} />
@@ -161,16 +160,13 @@ const ComponentRenderer: React.FC<ComponentRendererProps> = ({ component }) => {
               {component.props.data?.map((row: any[], rowIndex: number) => (
                 <TableRow
                   key={`row-${component.id}-${rowIndex}`}
-                  sx={
-                    component.props.striped
-                      ? {
-                          "&:nth-of-type(odd)": {
-                            backgroundColor: "rgba(0, 0, 0, 0.04)",
-                          },
-                        }
-                      : undefined
-                  }
-                  hover={component.props.hoverable}
+                  className={`${
+                    component.props.striped && rowIndex % 2 !== 0
+                      ? styles.tableRowStriped
+                      : ""
+                  } ${
+                    component.props.hoverable ? styles.tableRowHoverable : ""
+                  }`}
                 >
                   {row.map((cell, cellIndex) => (
                     <TableCell

@@ -1,0 +1,59 @@
+/**
+ * @fileoverview
+ * Styles for the TemplateVersionDialog component.
+ * Provides styling for version history display.
+ * 
+ * @category Styles
+ * @module Pages/UIBuilder/Components/TemplateVersionDialog
+ * @since 1.0.0
+ */
+
+/**
+ * Version item container
+ * @description
+ * Flexbox container for each version item with padding and hover effect.
+ */
+.versionItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: var(--spacing-sm);
+  background-color: transparent;
+  transition: background-color var(--transition-fast);
+}
+
+/**
+ * Version item hover state
+ * @description
+ * Hover effect for version items.
+ */
+.versionItem:hover {
+  background-color: var(--hover-background);
+}
+
+/**
+ * Current version highlight
+ * @description
+ * Highlights the currently active version.
+ */
+.currentVersion {
+  background-color: var(--active-background);
+}
+
+/**
+ * Version content container
+ * @description
+ * Flexible container for version details.
+ */
+.versionContent {
+  flex-grow: 1;
+}
+
+/**
+ * Version notes
+ * @description
+ * Spacing for version notes text.
+ */
+.versionNotes {
+  margin-top: calc(var(--spacing-xs) / 2);
+}

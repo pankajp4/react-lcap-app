@@ -17,7 +17,7 @@
   display: flex;
   justify-content: space-between;
   background-color: #fff;
-  padding: 0 16px;
+  padding: 0 var(--spacing-md);
 }
 
 /**
@@ -48,9 +48,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: var(--spacing-sm);
   flex: 1;
-  margin: 0 24px;
+  margin: 0 var(--spacing-lg);
 }
 
 /**
@@ -88,10 +88,10 @@
  */
 .searchIcon {
   position: absolute;
-  left: 8px;
+  left: var(--spacing-sm);
   top: 50%;
   transform: translateY(-50%);
-  color: rgba(0, 0, 0, 0.54);
+  color: var(--text-secondary);
   pointer-events: none;
 }
 
@@ -113,5 +113,5 @@
 .menuItem {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--spacing-sm);
 }

@@ -1,0 +1,21 @@
+/**
+ * @fileoverview
+ * Module styles for the App component.
+ * Defines root application container styles.
+ * 
+ * @category Styles
+ * @module Styles/App
+ * @since 1.0.0
+ */
+
+/**
+ * Root application container
+ * @description
+ * Full-height container with theme-aware background and text colors.
+ * Uses CSS custom properties for theme consistency.
+ */
+.appContainer {
+  min-height: 100vh;
+  background-color: var(--background-default);
+  color: var(--text-primary);
+}

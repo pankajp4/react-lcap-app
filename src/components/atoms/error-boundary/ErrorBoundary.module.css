@@ -15,10 +15,10 @@
  * Creates an alert-style appearance for caught errors.
  */
 .errorContainer {
-  padding: 16px;
-  margin: 16px;
+  padding: var(--spacing-md);
+  margin: var(--spacing-md);
   border: 1px solid #ff5252;
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
   background-color: #ffebee;
 }
 
@@ -38,7 +38,7 @@
  * Styles for the expandable details section containing error stack trace.
  */
 .errorContainer details {
-  margin-top: 8px;
+  margin-top: var(--spacing-sm);
 }
 
 /**
@@ -58,9 +58,9 @@
  * Uses white background with horizontal scrolling for long traces.
  */
 .errorContainer pre {
-  margin-top: 8px;
-  padding: 8px;
+  margin-top: var(--spacing-sm);
+  padding: var(--spacing-sm);
   background-color: #fff;
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
   overflow-x: auto;
 }

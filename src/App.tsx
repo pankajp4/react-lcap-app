@@ -28,10 +28,11 @@
  * ```
  */
 
-import { Box, ThemeProvider, createTheme } from "@mui/material";
+import { ThemeProvider, createTheme } from "@mui/material";
 import React from "react";
 import { ErrorBoundary, NotificationSystem } from "./components/atoms";
 import { BuilderLayout } from "./components/organisms";
+import styles from "./App.module.css";
 
 /**
  * Dark theme configuration for the builder interface
@@ -70,24 +71,18 @@ const darkTheme = createTheme({
  * 3. Error boundary configuration
  * 4. Notification system integration
  *
- * The component uses a full-height Box component to ensure
+ * The component uses a full-height container to ensure
  * proper layout structure and theme color application.
  */
 const App: React.FC = () => {
   return (
     <ThemeProvider theme={darkTheme}>
-      <Box
-        sx={{
-          minHeight: "100vh",
-          bgcolor: "background.default",
-          color: "text.primary",
-        }}
-      >
+      <div className={styles.appContainer}>
         <ErrorBoundary>
           <NotificationSystem />
           <BuilderLayout />
         </ErrorBoundary>
-      </Box>
+      </div>
     </ThemeProvider>
   );
 };

@@ -14,11 +14,13 @@
  * Main canvas container with themeable padding, height, background, and borders.
  */
 .canvasContainer {
-  padding: var(--canvas-padding);
-  min-height: var(--canvas-min-height);
-  background-color: var(--canvas-background);
-  border-radius: var(--canvas-border-radius);
-  border: var(--canvas-border);
+  padding: 24px;
+  min-height: 400px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 2px dashed transparent;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all var(--transition-fast);
 }
 
 /**
@@ -27,10 +29,18 @@
  * Wrapper for each component on the canvas with customizable spacing and borders.
  */
 .componentWrapper {
-  padding: var(--component-wrapper-padding);
-  margin-bottom: var(--component-wrapper-margin-bottom);
-  border: var(--component-wrapper-border);
-  border-radius: var(--component-wrapper-border-radius);
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  transition: all var(--transition-fast);
+  background-color: #ffffff;
+  position: relative;
+}
+
+.componentWrapper:hover {
+  border-color: #cbd5e0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 /**
@@ -39,7 +49,9 @@
  * Special border styling for the currently selected component.
  */
 .isSelected {
-  border: var(--component-wrapper-selected-border);
+  border: 2px solid #667eea !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+  background-color: #f7fafc;
 }
 
 /**
@@ -62,6 +74,19 @@
   flex-grow: 1;
   justify-content: flex-start;
   text-align: left;
+  padding: 8px 12px;
+  background-color: #f7f8fa;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  color: #2d3748;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.componentButton:hover {
+  background-color: #edf2f7;
+  border-color: #cbd5e0;
 }
 
 /**
@@ -71,8 +96,13 @@
  */
 .deleteButton {
   min-width: auto !important;
-  padding: 4px !important;
-  color: var(--delete-icon-button-color) !important;
+  padding: 6px !important;
+  color: #e53e3e !important;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
 }
 
 /**
@@ -81,8 +111,9 @@
  * Hover effects for the delete button with color and background changes.
  */
 .deleteButton:hover {
-  color: var(--delete-icon-button-hover-color) !important;
-  background-color: var(--icon-button-hover-bg) !important;
+  color: #c53030 !important;
+  background-color: #fed7d7 !important;
+  border-color: #fc8181 !important;
 }
 
 /**
@@ -91,7 +122,7 @@
  * Active state background for delete button on click.
  */
 .deleteButton:active {
-  background-color: var(--icon-button-active-bg) !important;
+  background-color: #feb2b2 !important;
 }
 
 /**
@@ -100,12 +131,13 @@
  * Visual indicator for drop zones between components.
  */
 .dropIndicator {
-  margin-top: var(--drop-area-margin-top);
-  padding: var(--drop-area-padding);
-  border: var(--drop-area-border);
-  border-radius: var(--drop-area-border-radius);
-  min-height: var(--drop-area-min-height);
-  background-color: var(--drop-area-background);
+  margin-top: 8px;
+  padding: 16px;
+  border: 2px dashed #cbd5e0;
+  border-radius: 8px;
+  min-height: 60px;
+  background-color: #f7fafc;
+  transition: all var(--transition-fast);
 }
 
 /**
@@ -114,7 +146,8 @@
  * Highlights the drop indicator when dragging over it.
  */
 .isOver {
-  border: var(--drop-area-active-border);
+  border: 2px dashed #667eea;
+  background-color: rgba(102, 126, 234, 0.05);
 }
 
 /**
@@ -124,13 +157,16 @@
  */
 .emptyCanvas {
   height: 100%;
-  min-height: var(--empty-canvas-min-height);
+  min-height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: var(--empty-canvas-border);
-  border-radius: var(--canvas-border-radius);
-  color: var(--empty-canvas-text-color);
+  border: 2px dashed #cbd5e0;
+  border-radius: 12px;
+  color: #a0aec0;
+  font-size: 1rem;
+  background-color: #fafafa;
+  transition: all var(--transition-fast);
 }
 
 /**
@@ -139,7 +175,9 @@
  * Highlights the empty canvas when dragging components over it.
  */
 .emptyCanvas.isOver {
-  border: var(--empty-canvas-active-border);
+  border: 2px dashed #667eea;
+  background-color: rgba(102, 126, 234, 0.03);
+  color: #667eea;
 }
 
 /**
@@ -148,6 +186,8 @@
  * Centered text for drop zone instructions and feedback.
  */
 .dropText {
-  color: var(--drop-area-text-color);
+  color: #718096;
   text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
 }

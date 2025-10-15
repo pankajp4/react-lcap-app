@@ -1,0 +1,94 @@
+/**
+ * @fileoverview
+ * Styles for shared UI Builder components.
+ * Provides common styling for buttons and layout elements.
+ * 
+ * @category Styles
+ * @module Pages/UIBuilder/Components/Styles
+ * @since 1.0.0
+ */
+
+/**
+ * Top bar container
+ * @description
+ * Header bar for the UI builder with controls.
+ */
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  min-height: 64px;
+}
+
+.topBar h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+/**
+ * Button base styles
+ * @description
+ * Primary button styling with transitions.
+ */
+.button {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  backdrop-filter: blur(10px);
+}
+
+/**
+ * Button hover state
+ * @description
+ * Lighter background on hover.
+ */
+.button:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/**
+ * Button active state
+ * @description
+ * Pressed state styling.
+ */
+.button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/**
+ * Button disabled state
+ * @description
+ * Muted appearance for disabled buttons.
+ */
+.button:disabled {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/**
+ * Button group container
+ * @description
+ * Groups multiple buttons together with spacing.
+ */
+.buttonGroup {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}

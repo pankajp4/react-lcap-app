@@ -1,0 +1,122 @@
+/**
+ * @fileoverview
+ * Styles for the PreviewWindow component.
+ * Provides styling for the full-screen preview overlay.
+ * 
+ * @category Styles
+ * @module Pages/UIBuilder/Components/PreviewWindow
+ * @since 1.0.0
+ */
+
+/**
+ * Preview overlay
+ * @description
+ * Full-screen overlay for preview mode.
+ */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ffffff;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+/**
+ * Overlay hidden state
+ * @description
+ * Hides the overlay when not in preview mode.
+ */
+.overlayHidden {
+  display: none;
+}
+
+/**
+ * Preview header
+ * @description
+ * Header section with controls and title.
+ */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  min-height: 64px;
+}
+
+/**
+ * Preview title
+ * @description
+ * Title text in the preview header.
+ */
+.title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+}
+
+/**
+ * Viewport selector
+ * @description
+ * Container for viewport toggle buttons.
+ */
+.viewportSelector {
+  display: flex;
+  gap: 12px;
+  margin-right: 24px;
+}
+
+/**
+ * Preview content area
+ * @description
+ * Main content area for rendered components.
+ */
+.content {
+  flex: 1;
+  overflow: auto;
+  padding: var(--spacing-xl);
+}
+
+/**
+ * Viewport container
+ * @description
+ * Container that adapts to selected viewport size.
+ */
+.viewportContainer {
+  margin: 0 auto;
+  transition: max-width var(--transition-slow);
+}
+
+/**
+ * Desktop viewport
+ * @description
+ * Full width for desktop view.
+ */
+.viewportDesktop {
+  max-width: 100%;
+}
+
+/**
+ * Tablet viewport
+ * @description
+ * Tablet width (768px).
+ */
+.viewportTablet {
+  max-width: 768px;
+}
+
+/**
+ * Mobile viewport
+ * @description
+ * Mobile width (375px).
+ */
+.viewportMobile {
+  max-width: 375px;
+}

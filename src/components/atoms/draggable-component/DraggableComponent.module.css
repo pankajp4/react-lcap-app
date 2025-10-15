@@ -16,10 +16,10 @@
  */
 .draggable {
   cursor: grab;
-  margin: 8px 0;
+  margin: var(--spacing-sm) 0;
   user-select: none;
   touch-action: none;
-  transition: opacity 0.2s;
+  transition: opacity var(--transition-normal);
 }
 
 /**
@@ -50,8 +50,8 @@
 .content {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
 }
 
 /**
@@ -61,5 +61,5 @@
  */
 .icon {
   font-size: 20px;
-  color: #666;
+  color: var(--text-secondary);
 }

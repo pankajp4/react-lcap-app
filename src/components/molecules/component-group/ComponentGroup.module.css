@@ -14,9 +14,9 @@
  * Removes default shadow and adds a subtle border for accordion containers.
  */
 .accordion {
-  margin-bottom: 8px;
+  margin-bottom: var(--spacing-sm);
   box-shadow: none;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  border: 1px solid var(--divider);
 }
 
 /**
@@ -46,8 +46,8 @@
  * Container for expanded accordion content with vertical layout and spacing.
  */
 .details {
-  padding: 8px;
+  padding: var(--spacing-sm);
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--spacing-sm);
 }

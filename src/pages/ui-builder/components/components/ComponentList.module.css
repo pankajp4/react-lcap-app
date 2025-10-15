@@ -1,0 +1,121 @@
+/**
+ * @fileoverview
+ * Styles for the ComponentList component.
+ * Provides styling for the component palette list.
+ * 
+ * @category Styles
+ * @module Pages/UIBuilder/Components/ComponentList
+ * @since 1.0.0
+ */
+
+/**
+ * Component list container
+ * @description
+ * Main container with vertical layout and spacing.
+ */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/**
+ * Search input field
+ * @description
+ * Search input for filtering components.
+ */
+.searchInput {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 0.875rem;
+  transition: all var(--transition-fast);
+}
+
+/**
+ * Search input placeholder
+ * @description
+ * Placeholder text styling.
+ */
+.searchInput::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/**
+ * Search input focus state
+ * @description
+ * Focus state styling for search input.
+ */
+.searchInput:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+/**
+ * Component group container
+ * @description
+ * Container for grouping related components.
+ */
+.componentGroup {
+  margin-bottom: 20px;
+}
+
+/**
+ * Group title
+ * @description
+ * Title for component groups.
+ */
+.groupTitle {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding-left: 4px;
+}
+
+/**
+ * Component item
+ * @description
+ * Individual draggable component item.
+ */
+.componentItem {
+  padding: 12px;
+  cursor: grab;
+  border-radius: 8px;
+  transition: all var(--transition-fast);
+  user-select: none;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/**
+ * Component item hover state
+ * @description
+ * Hover effect for component items.
+ */
+.componentItem:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/**
+ * Component item active/dragging state
+ * @description
+ * Visual feedback when dragging.
+ */
+.componentItem:active {
+  cursor: grabbing;
+  opacity: 0.7;
+}

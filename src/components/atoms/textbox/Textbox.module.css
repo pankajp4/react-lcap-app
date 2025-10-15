@@ -16,7 +16,7 @@
  */
 .textbox {
   width: var(--textbox-width, 100%);
-  margin: var(--textbox-margin, 4px 0);
+  margin: var(--textbox-margin, var(--spacing-xs) 0);
   padding: var(--textbox-padding, 0);
 }
 
@@ -28,11 +28,11 @@
  */
 .textbox input {
   font-size: var(--textbox-font-size, 14px);
-  color: var(--textbox-color, inherit);
+  color: var(--textbox-color, var(--text-primary));
   background-color: var(--textbox-bg-color, transparent);
-  border: var(--textbox-border, 1px solid #ccc);
-  border-radius: var(--textbox-border-radius, 4px);
-  padding: var(--textbox-input-padding, 8px 12px);
+  border: var(--textbox-border, 1px solid var(--border-color));
+  border-radius: var(--textbox-border-radius, var(--border-radius-sm));
+  padding: var(--textbox-input-padding, var(--spacing-sm) 12px);
 }
 
 /**
@@ -43,7 +43,7 @@
  */
 .textbox input:focus {
   outline: none;
-  border-color: var(--textbox-focus-border-color, #1976d2);
+  border-color: var(--textbox-focus-border-color, var(--primary-main));
   box-shadow: var(--textbox-focus-shadow, 0 0 0 2px rgba(25, 118, 210, 0.2));
 }
 
@@ -64,5 +64,5 @@
  * Placeholder text color using CSS variable for theming.
  */
 .textbox input::placeholder {
-  color: var(--textbox-placeholder-color, #757575);
+  color: var(--textbox-placeholder-color, var(--text-secondary));
 }
